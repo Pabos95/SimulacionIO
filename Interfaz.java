@@ -1,5 +1,6 @@
+package SimulacionIO;
 public class Interfaz{
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
     }
 }
