@@ -15,8 +15,9 @@ class Simulacion{
   public void ejecutarSimulacion(){
   while(iteracionActual <= numIteraciones){
     while(tiempoActual <tiempoMaximo){
-      
+
     }
   }
+  iteracionActual++;
   }
 }
