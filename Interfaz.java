@@ -1,9 +1,12 @@
 package SimulacionIO;
 import javax.swing.*;
 public class Interfaz extends JFrame{
+    JTextField numeroCorridas;
+    JTextField modoLento;
     public Interfaz(){
         numeroCorridas = new JTextField();
         modoLento = new JTextField();
+
     }
     public static void main(String[] args) {
         Interfaz miAplicacion = new Interfaz();
