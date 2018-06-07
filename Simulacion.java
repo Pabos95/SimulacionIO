@@ -8,10 +8,15 @@ class Simulacion{
   int m; //numero de procesos disponibles para la ejecución de consultas
   int t; //cantidad de segundos para el timeout de las conexiones
   bool modoLento// true si la conexión está en modoLento y falso en caso contrario
+  float tiempoActual
   public Simulacion(int numCorridas,int numConexionesConcurrentesMaximo){
 
   }
   public void ejecutarSimulacion(){
-
+  while(iteracionActual <= numIteraciones){
+    while(tiempoActual <tiempoMaximo){
+      
+    }
+  }
   }
 }
