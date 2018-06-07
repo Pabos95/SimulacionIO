@@ -1,7 +1,6 @@
 package SimulacionIO;
 class Simulacion{
   int iteracionActual;
-  int numIteraciones;
   int tiempoMaximo;  //tiempo maximo de la simulacion
   int k; // numero maximo de conexiones concurrentes que puede administrar el sistema
   int n; //numero de procesos disponibles para el procesamiento de consultas. concurrentes que puede manejar el sistema.
@@ -10,11 +9,9 @@ class Simulacion{
   int t; //cantidad de segundos para el timeout de las conexiones
   bool modoLento// true si la conexión está en modoLento y falso en caso contrario
   public Simulacion(int numCorridas,int numConexionesConcurrentesMaximo){
-   iteracionActual = 0;
+
   }
   public void ejecutarSimulacion(){
-  while(iteracionActual <= numIteraciones){
-    
-  }
+
   }
 }
