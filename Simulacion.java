@@ -12,10 +12,14 @@ class Simulacion{
   public Simulacion(int numCorridas,int numConexionesConcurrentesMaximo){
 
   }
+  public consulta generarConsulta(){
+    consulta c;
+    return c;
+  }
   public void ejecutarSimulacion(){
   while(iteracionActual <= numIteraciones){
     while(tiempoActual <tiempoMaximo){
-
+    c = generarConsulta();
     }
   }
   iteracionActual++;
