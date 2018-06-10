@@ -92,10 +92,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        BotonListo.setActionCommand("");
         BotonListo.setBackground(javax.swing.UIManager.getDefaults().getColor("nb.output.selectionBackground"));
         BotonListo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotonListo.setLabel("Listo");
+        BotonListo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonListoMouseClicked(evt);
+            }
+        });
         BotonListo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonListoActionPerformed(evt);
@@ -183,9 +187,9 @@ public class Interfaz extends javax.swing.JFrame {
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
+                                .addGap(55, 55, 55)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(273, 273, 273)
+                                .addGap(247, 247, 247)
                                 .addComponent(NumCorridas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(586, Short.MAX_VALUE))
         );
@@ -219,6 +223,11 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BotonListoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+
+    private void BotonListoMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        jPanel1.setVisible(false);
     }
 
     /**
