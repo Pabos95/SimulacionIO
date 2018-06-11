@@ -7,6 +7,7 @@ public class Interfaz extends javax.swing.JFrame {
          */
         public Interfaz() {
                 initComponents();
+                int i = 2;
         }
 
         /**
