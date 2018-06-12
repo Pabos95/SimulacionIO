@@ -1,13 +1,13 @@
 package SimulacionIO;
-import javax.swing.*;
-public class Interfaz extends javax.swing.JFrame {
 
+public class Interfaz extends javax.swing.JFrame {
+import javax.swing.*;
         /**
          * Creates new form Interfaz
          */
+        Simulacion s;
         public Interfaz() {
                 initComponents();
-                int i = 2;
         }
 
         /**
@@ -253,7 +253,20 @@ public class Interfaz extends javax.swing.JFrame {
                         jDialog1.setVisible(true);
 
                 }
-                jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos
+            text = NumCorridas.getText();
+            try {
+                int corridas = Integer.parseInt(text);
+                // or Integer.parseInt(text), etc.
+                // OK, valid number.
+            } catch (NumberFormatException nfe) {
+                // Muestra un mensaje de error y reinicia el programa
+                this.setVisible(false);
+                jPanel1.setVisible(false);
+                jDialog1.setVisible(true);
+
+            }
+
+            jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos
                 // TODO add your handling code here
         }
 

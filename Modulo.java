@@ -1,5 +1,5 @@
 package SimulacionIO;
-import java.util.*;
+
 class Modulo{
     int tamFinalCola;
     int tamActualCola;
