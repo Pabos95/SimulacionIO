@@ -4,10 +4,10 @@ public class Consulta{
         select, update, join, ddl;
     }
     boolean activo;
-    float tiempoCola;
-    float tiempoTotal;
+    double tiempoCola;
+    double tiempoTotal;
     tipoConsulta tConsulta;
-    public Consulta(float numAelatorio){
+    public Consulta(double numAelatorio){
      if(numAelatorio >= 0.0 && numAelatorio <= 0.30){
          tConsulta = tipoConsulta.select;
      }
@@ -21,4 +21,5 @@ public class Consulta{
          tConsulta = tipoConsulta.ddl;
      }
     }
-}
+   
+    }
