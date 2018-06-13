@@ -1,24 +1,24 @@
 package SimulacionIO;
 public class Consulta{
-    bool activo;
-    float tiempoCola;
-    float tiempoTotal;
-
     public enum tipoConsulta{
         select, update, join, ddl;
     }
+    boolean activo;
+    float tiempoCola;
+    float tiempoTotal;
+    tipoConsulta tConsulta;
     public Consulta(float numAelatorio){
-     if(numAelatorio >= 0.0 && umAealatorio <= 0.30){
-         tipoConsulta = select
+     if(numAelatorio >= 0.0 && numAelatorio <= 0.30){
+         tConsulta = tipoConsulta.select;
      }
      else if(numAelatorio >= 0.31 && numAelatorio <= 0.55){
-         tipoConsulta = update;
+         tConsulta = tipoConsulta.update;
      }
      else if(numAelatorio >= 0.56 && numAelatorio <= 0.80){
-         tipoConsulta = join;
+         tConsulta = tipoConsulta.join;
      }
      else if(numAelatorio >= 0.56 && numAelatorio <= 1.00){
-         tipoConsulta = ddl;
+         tConsulta = tipoConsulta.ddl;
      }
     }
 }
