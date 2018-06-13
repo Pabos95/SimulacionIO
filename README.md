@@ -1,6 +1,6 @@
 # SimulacionIO
-Cosas por hacer:__
-Interfaz__
+Cosas por hacer: </br>
+Interfaz </br>
 -Cambiar los nombres de los TextField para que sean significativos__
 -Añadir manejo de execepciones para todos los TextField__
 -Hacer el método update de la interfaz para que se vean los cambios en cada tiempo de reloj__
