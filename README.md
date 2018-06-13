@@ -19,3 +19,5 @@ Generadora de números aelatorios </br>
 -Generar números aelatorios con distribuición uniforme</br>
 Documentación </br>
 Hacer ingeniería inversa porque posiblemente la arquitectura de clases no quedará exactamente igual a como la habíamos planeado</br>
+Pasar el código fuente ,menos el de la interfaz, a Latex (ya están algunos métodos) </br>
+Terminar manual de instalación y ejecución del programa </br>
