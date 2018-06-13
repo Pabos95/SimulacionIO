@@ -12,9 +12,10 @@ Modulos </br>
 -Mover la cola de prioridad al modulo de administración de transacciones </br>
 -Comparación de prioridades en el modulo de administración de transacciones   de acuerdo a si es Update, Select, DDL O JOIN </br>
 Estadisticos </br>
--(Casi todo)
+-(Casi todo) </br>
 Generadora de números aelatorios </br>
--Terminar la generación de numeros aelatorios con distribuición uniforme </br>
+-Terminar la generación de numeros aelatorios con distribuición normal </br>
 -Generar números aelatorios con distribuición exponencial </br>
+-Generar números aelatorios con distribuición uniforme</br>
 Documentación </br>
 Hacer ingeniería inversa porque posiblemente la arquitectura de clases no quedará exactamente igual a como la habíamos planeado</br>
