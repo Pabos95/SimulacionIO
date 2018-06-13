@@ -14,7 +14,7 @@ Modulos </br>
 Estadisticos </br>
 -(Casi todo) </br>
 Generadora de números aelatorios </br>
--Terminar la generación de numeros aelatorios con distribuición normal </br>
+-Terminar la generación de numeros aelatorios con distribuición normal YA </br>
 -Generar números aelatorios con distribuición exponencial </br>
 -Generar números aelatorios con distribuición uniforme</br>
 Documentación </br>
