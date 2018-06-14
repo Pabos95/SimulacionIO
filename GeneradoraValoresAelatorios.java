@@ -18,8 +18,8 @@ public double generarValorDistribuicionExponencial(double media){
     double nuevoValor = 0;
     return nuevoValor;
 }
-public double generarValorDistribuicionUniforme(){
-    double nuevoValor = 0;
+public double generarValorDistribuicionUniforme(double a, double b){ // utiliza el método de la transformación inversa para generar un valor aelatorio con distribuición uniforme
+    double nuevoValor = a + (b - a)*generarNumeroAelatorio();
     return nuevoValor;
 }
 public double generarNumeroAelatorio(){ //genera un número entre 0 y 1
