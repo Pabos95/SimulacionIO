@@ -15,7 +15,9 @@ public double generarValorDistribuicionNormal(double media, double varianza){ //
          return nuevoValor;
         }
 public double generarValorDistribuicionExponencial(double media){
-    double nuevoValor = 0;
+    double nuevoValor = r.nextDouble();
+    nuevoValor = Math.log(nuevoValor);
+    nuevoValor= nuevoValor*( -1*media);
     return nuevoValor;
 }
 public double generarValorDistribuicionUniforme(double a, double b){ // utiliza el método de la transformación inversa para generar un valor aelatorio con distribuición uniforme
