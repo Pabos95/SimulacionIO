@@ -14,9 +14,9 @@ Modulos </br>
 Estadisticos </br>
 -(Casi todo) </br>
 Generadora de números aelatorios </br>
--Terminar la generación de numeros aelatorios con distribuición normal YA </br>
--Generar números aelatorios con distribuición exponencial </br>
--Generar números aelatorios con distribuición uniforme</br>
+-<strike>Terminar la generación de numeros aelatorios con distribuición normal</strike> </br>
+-<strike>Generar números aelatorios con distribuición exponencial </strike></br>
+-<strike>Generar números aelatorios con distribuición uniforme</strike></br>
 Documentación </br>
 Hacer ingeniería inversa porque posiblemente la arquitectura de clases no quedará exactamente igual a como la habíamos planeado</br>
 Pasar el código fuente ,menos el de la interfaz, a Latex (ya están algunos métodos) </br>
