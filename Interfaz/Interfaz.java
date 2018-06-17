@@ -212,6 +212,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(1, 1, 1))
         );
 
+        MostrarListaEventos.setVisible(false);
         MostrarListaEventos.setEditable(false);
         MostrarListaEventos.setColumns(20);
         MostrarListaEventos.setRows(5);

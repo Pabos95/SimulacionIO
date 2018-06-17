@@ -318,6 +318,9 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="text" type="java.lang.String" value="Lista de Eventos:&#xa;Tiempo de Reloj: 0&#xa;"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="MostrarListaEventos.setVisible(false);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
