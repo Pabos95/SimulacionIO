@@ -266,9 +266,13 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_NumMaxConexionesConcurrentesActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String text = NumCorridas.getText();
+        String text1 = NumCorridas.getText();
+        String text2 = NumMaxConexionesConcurrentes.getText();
+        String text3 = NumProcesosDisponiblesConsultasConcurrentes.getText();
   try {
-    int corridas = Integer.parseInt(text);
+    int corridas = Integer.parseInt(text1);
+    int maxConexionesConcurrentes = Integer.parseInt(text2);
+    int procesosDisponiblesConsultasConcurrentes = Integer.parseInt(text3);
     // or Integer.parseInt(text), etc.
     // OK, valid number.
   } catch (NumberFormatException nfe) {
