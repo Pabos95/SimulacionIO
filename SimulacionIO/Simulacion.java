@@ -1,5 +1,7 @@
 package SimulacionIO;
 import java.util.*;
+import Modulo.*;
+import Estadisticos.*;
 public class Simulacion{
   int iteracionActual;
   double tiempoMaximo;  //tiempo maximo de la simulacion
@@ -12,6 +14,7 @@ public class Simulacion{
   boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
   List <Evento> listaEventos;
   ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
+  ArrayList <EstadisticosModulo> estadisticasModulo;
   double tiempoActual;
   GeneradoraValoresAelatorios gen;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut){
