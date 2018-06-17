@@ -16,6 +16,8 @@ public class EstadisticosModulo {
     private double sumatoriaConsultasEnCola;
     private double sumatoriaConsultasSiendoAtendidas;
     private double lambda;
+    private double mu; //tasa de servicio del modulo 
+    private double rho; // tasa de ocupación del modulo
     private int consultasServidas;
     private int consultasPasadasEnCola; //cantidad de consultas que han pasado por la cola del modulo
     public EstadisticosModulo(){ //constructor de la clase, inicializa todos los datos en 0
@@ -32,6 +34,8 @@ public class EstadisticosModulo {
         lambda = 0;
         consultasServidas = 0;
         consultasPasadasEnCola = 0;
+        rho = 0;
+        mu = 0;
     }
     public double getTamañoPromedioCola(){
         return tamañoPromedioCola;
@@ -47,6 +51,9 @@ public class EstadisticosModulo {
     }
     public double getLambda(){
         return lambda;
+    }
+    public double getRho(){
+        return rho;
     }
     public void actualizarTiempoPromedioServicio(double tiempoServicio){
         sumatoriaTiempoServicio += tiempoServicio;
@@ -64,15 +71,22 @@ public class EstadisticosModulo {
     }
     public void actualizarLambda(){
         lambda = promedioConsultasEnModulo/tiempoPromedio;
+        actualizarRho();
     }
     public void actualizarPromedioConsultasEnModulo(){
         promedioConsultasEnModulo = tamañoPromedioCola + promedioConsultasSiendoServidas;
         actualizarLambda();
     }
+    public void actualizarRho(){
+        rho = lambda/mu;
+    }
     public void actualizarTiempoPromedio(){
         tiempoPromedio = tiempoPromedioEnCola + tiempoPromedioServicio;
         actualizarLambda();
     }
-    
+    public void actualizarMu(){
+        mu = 1/tiempoPromedioServicio;
+        actualizarRho();
+    }
     
 }
