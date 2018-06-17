@@ -3,11 +3,12 @@ public class Consulta{
     public enum tipoConsulta{
         select, update, join, ddl;
     }
-    boolean activo;
+    boolean muerto;
     double tiempoCola;
     double tiempoTotal;
     tipoConsulta tConsulta;
     public Consulta(double numAelatorio){
+     muerto = false;
      if(numAelatorio >= 0.0 && numAelatorio <= 0.30){
          tConsulta = tipoConsulta.select;
      }
@@ -21,5 +22,8 @@ public class Consulta{
          tConsulta = tipoConsulta.ddl;
      }
     }
-   
+    public void matarConsulta(){
+        muerto = true;
     }
+    }
+ 

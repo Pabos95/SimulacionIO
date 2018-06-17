@@ -5,8 +5,10 @@ import Estadisticos.*;
 class Modulo{
     int tamFinalCola;
     int tamActualCola;
+    int capacidadMaxima;
     Queue<Consulta> colaConsulta;
     EstadisticosModulo estadisticosMod;
+    GeneradoraValoresAelatorios generador;
    public void procesarLlegada(){
 
    }
