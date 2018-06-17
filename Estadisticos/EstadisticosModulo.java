@@ -13,6 +13,8 @@ public class EstadisticosModulo {
     private double tiempoPromedio; // W del modulo
     private double sumatoriaTiempoServicio;//sumatorio de los tiempos de servicio de todas las consultas que han sido atendidas en el modulo
     private double sumatoriaTiempoCola;
+    private double sumatoriaConsultasEnCola;
+    private double sumatoriaConsultasSiendoAtendidas;
     private double lambda;
     private int consultasServidas;
     private int consultasPasadasEnCola; //cantidad de consultas que han pasado por la cola del modulo
@@ -60,15 +62,17 @@ public class EstadisticosModulo {
     public void aumentarConsultasEnCola(){
         consultasPasadasEnCola++;
     }
-    public void actualizarPromedioConsultasEnModulo(){
-        promedioConsultasEnModulo = tamañoPromedioCola + promedioConsultasSiendoServidas;
-    }
-    public void actualizarTiempoPromedio(){
-        tiempoPromedio = tiempoPromedioEnCola + tiempoPromedioServicio;
-    }
     public void actualizarLambda(){
         lambda = promedioConsultasEnModulo/tiempoPromedio;
     }
+    public void actualizarPromedioConsultasEnModulo(){
+        promedioConsultasEnModulo = tamañoPromedioCola + promedioConsultasSiendoServidas;
+        actualizarLambda();
+    }
+    public void actualizarTiempoPromedio(){
+        tiempoPromedio = tiempoPromedioEnCola + tiempoPromedioServicio;
+        actualizarLambda();
+    }
+    
     
 }
-
