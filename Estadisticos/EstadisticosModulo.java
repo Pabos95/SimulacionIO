@@ -21,6 +21,17 @@ public class EstadisticosModulo {
     private int consultasServidas;
     private int consultasPasadasEnCola; //cantidad de consultas que han pasado por la cola del modulo
     private double probabilidadOcio; //probabilidad de que el sistema esté ocioso
+    private double[] tiempoPromedioPorTipoSentencia; //W de cada sentencia:
+    /* 0 DDL
+    /* 1 Update
+    /* 2 Join
+    /* 3 Select
+    */
+    private double[] sumatoriaTiempoSentencias;/* 0 DDL
+    /* 1 Update
+    /* 2 Join
+    /* 3 Select
+    */
     public EstadisticosModulo(){ //constructor de la clase, inicializa todos los datos en 0
         tamañoPromedioCola = 0;
         promedioConsultasSiendoServidas = 0;
@@ -37,25 +48,9 @@ public class EstadisticosModulo {
         consultasPasadasEnCola = 0;
         rho = 0;
         mu = 0;
+        tiempoPromedioPorTipoSentencia = new double[4];
     }
-    public double getTamañoPromedioCola(){
-        return tamañoPromedioCola;
-    }
-    public double getPromedioConsultasSiendoServidas(){
-        return promedioConsultasSiendoServidas;
-    }
-    public double getTiempoPromedioEnCola(){
-        return tiempoPromedioEnCola;
-    }
-    public double getTiempoPromedioServicio(){
-        return tiempoPromedioServicio;
-    }
-    public double getLambda(){
-        return lambda;
-    }
-    public double getRho(){
-        return rho;
-    }
+    
     public void actualizarTiempoPromedioServicio(double tiempoServicio){
         sumatoriaTiempoServicio += tiempoServicio;
         tiempoPromedioServicio = sumatoriaTiempoServicio/consultasServidas;
@@ -92,5 +87,56 @@ public class EstadisticosModulo {
     }
     public void actualizarProbabilidadOcio(){
         probabilidadOcio = 1 - rho;
+    }
+    public void actualizarTiempoPromedioConsultasDDL(){
+        
+    }
+    public void actualizarTiempoPromedioConsultasUpdate(){
+        
+    }
+    public void actualizarTiempoPromedioConsultasJoin(){
+        
+    }
+    public void actualizarTiempoPromedioConsultasSelect(){
+        
+    }
+    public void agregarTiempoConsultaEnModulo(Consulta c){
+        if(c.tConsulta == DDL){
+            
+        }
+        else if(c.tConsulta == select){
+            
+        }
+        else if(c.tConsulta == update){
+            
+        }
+        else if(c.tConsulta == join){
+            
+        }
+               
+    }
+    private double getConsultasServidas(){
+        return consultasServidas;
+    }
+    private double getConsultasPasadasEnCola(){
+        return consultasPasadasEnCola;
+    }
+    public double getTamañoPromedioCola(){
+        return tamañoPromedioCola;
+    }
+    public double getPromedioConsultasSiendoServidas(){
+        return promedioConsultasSiendoServidas;
+    }
+    public double getTiempoPromedioEnCola(){
+        return tiempoPromedioEnCola;
+    }
+    public double getTiempoPromedioServicio(){
+        return tiempoPromedioServicio;
+    }
+    public double getLambda(){
+        return lambda;
+    }
+    public double getRho(){
+        return rho;
     }
 }
