@@ -5,7 +5,7 @@ public class Consulta{
     }
     boolean muerto;
     double tiempoCola;
-    double tiempoTotal;
+    double tiempoVida;
     tipoConsulta tConsulta;
     public Consulta(double numAelatorio){
      muerto = false;
@@ -21,6 +21,7 @@ public class Consulta{
      else if(numAelatorio >= 0.56 && numAelatorio <= 1.00){
          tConsulta = tipoConsulta.ddl;
      }
+     tiempoVida = 0;
     }
     public void matarConsulta(){
         muerto = true;
