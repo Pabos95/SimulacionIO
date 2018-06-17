@@ -22,6 +22,7 @@ public class Simulacion{
     cantidadCorridas = numCorridas;
     k = numConexionesConcurrentesMaximo;
     n = numProcesosEjecucionConsultas;
+    tiempoActual = 0.0;
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAelatorio();
