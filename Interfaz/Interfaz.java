@@ -35,11 +35,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        NumCorridas5 = new javax.swing.JTextField();
+        NumMaxConexionesConcurrentes = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         NumCorridas = new javax.swing.JTextField();
-        NumCorridas3 = new javax.swing.JTextField();
-        NumProcesosConsultasConcurrentes = new javax.swing.JTextField();
+        TiempoTotal = new javax.swing.JTextField();
+        NumProcesosDisponiblesConsultasConcurrentes = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -94,9 +94,9 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel6.setText("Numero de procesos disponibles para procesamiento de consultas concurrentes");
 
-        NumCorridas5.addActionListener(new java.awt.event.ActionListener() {
+        NumMaxConexionesConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumCorridas5ActionPerformed(evt);
+                NumMaxConexionesConcurrentesActionPerformed(evt);
             }
         });
 
@@ -109,15 +109,15 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        NumCorridas3.addActionListener(new java.awt.event.ActionListener() {
+        TiempoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumCorridas3ActionPerformed(evt);
+                TiempoTotalActionPerformed(evt);
             }
         });
 
-        NumProcesosConsultasConcurrentes.addActionListener(new java.awt.event.ActionListener() {
+        NumProcesosDisponiblesConsultasConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumProcesosConsultasConcurrentesActionPerformed(evt);
+                NumProcesosDisponiblesConsultasConcurrentesActionPerformed(evt);
             }
         });
 
@@ -144,6 +144,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         checkbox1.setLabel("ModoLento");
+        checkbox1.setName("ModoLento"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,11 +161,11 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NumCorridas5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(NumMaxConexionesConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NumCorridas3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(TiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(258, 258, 258)
                                     .addComponent(jButton1)
@@ -177,7 +178,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addGap(174, 174, 174)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(NumProcesosConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(NumProcesosDisponiblesConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(NumCorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(705, Short.MAX_VALUE))
@@ -194,16 +195,16 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(NumProcesosConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NumProcesosDisponiblesConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NumCorridas5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NumMaxConexionesConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NumCorridas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -252,17 +253,17 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NumCorridasActionPerformed
 
-    private void NumProcesosConsultasConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumProcesosConsultasConcurrentesActionPerformed
+    private void NumProcesosDisponiblesConsultasConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumProcesosDisponiblesConsultasConcurrentesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NumProcesosConsultasConcurrentesActionPerformed
+    }//GEN-LAST:event_NumProcesosDisponiblesConsultasConcurrentesActionPerformed
 
-    private void NumCorridas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumCorridas3ActionPerformed
+    private void TiempoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TiempoTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NumCorridas3ActionPerformed
+    }//GEN-LAST:event_TiempoTotalActionPerformed
 
-    private void NumCorridas5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumCorridas5ActionPerformed
+    private void NumMaxConexionesConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumMaxConexionesConcurrentesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NumCorridas5ActionPerformed
+    }//GEN-LAST:event_NumMaxConexionesConcurrentesActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String text = NumCorridas.getText();
@@ -327,9 +328,9 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea MostrarListaEventos;
     private javax.swing.JTextField NumCorridas;
-    private javax.swing.JTextField NumCorridas3;
-    private javax.swing.JTextField NumCorridas5;
-    private javax.swing.JTextField NumProcesosConsultasConcurrentes;
+    private javax.swing.JTextField NumMaxConexionesConcurrentes;
+    private javax.swing.JTextField NumProcesosDisponiblesConsultasConcurrentes;
+    private javax.swing.JTextField TiempoTotal;
     private java.awt.Checkbox checkbox1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

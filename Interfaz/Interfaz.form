@@ -142,12 +142,12 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="NumCorridas5" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="NumMaxConexionesConcurrentes" min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="NumCorridas3" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="TiempoTotal" min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="NumProcesosConsultasConcurrentes" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="NumProcesosDisponiblesConsultasConcurrentes" min="-2" pref="73" max="-2" attributes="0"/>
                                   <Component id="NumCorridas" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -189,18 +189,18 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NumProcesosConsultasConcurrentes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NumProcesosDisponiblesConsultasConcurrentes" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="checkbox1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="151" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="NumCorridas5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NumMaxConexionesConcurrentes" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="NumCorridas3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TiempoTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
@@ -227,9 +227,9 @@
             <Property name="text" type="java.lang.String" value="Numero de procesos disponibles para procesamiento de consultas concurrentes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NumCorridas5">
+        <Component class="javax.swing.JTextField" name="NumMaxConexionesConcurrentes">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumCorridas5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumMaxConexionesConcurrentesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -245,14 +245,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumCorridasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="NumCorridas3">
+        <Component class="javax.swing.JTextField" name="TiempoTotal">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumCorridas3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TiempoTotalActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="NumProcesosConsultasConcurrentes">
+        <Component class="javax.swing.JTextField" name="NumProcesosDisponiblesConsultasConcurrentes">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumProcesosConsultasConcurrentesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumProcesosDisponiblesConsultasConcurrentesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
@@ -296,6 +296,7 @@
         <Component class="java.awt.Checkbox" name="checkbox1">
           <Properties>
             <Property name="label" type="java.lang.String" value="ModoLento"/>
+            <Property name="name" type="java.lang.String" value="ModoLento" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
