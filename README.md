@@ -12,7 +12,8 @@ Modulos </br>
 -Mover la cola de prioridad al modulo de administración de transacciones </br>
 -Comparación de prioridades en el modulo de administración de transacciones   de acuerdo a si es Update, Select, DDL O JOIN </br>
 Estadisticos </br>
--(Casi todo) </br>
+-Porcentaje de ocupacion en la clase Estadisticos modulo </br>
+-Métodos y variables de las clases EstadisticosIteracion y EstadisticosGenerales </br>
 Generadora de números aelatorios </br>
 -<strike>Terminar la generación de numeros aelatorios con distribuición normal</strike> </br>
 -<strike>Generar números aelatorios con distribuición exponencial </strike></br>
