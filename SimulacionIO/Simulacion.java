@@ -28,13 +28,6 @@ public class Simulacion{
     Consulta c = new Consulta(numAelatorio);
     return c;
   }
-  public void ejecutarSimulacion(){
-  Consulta c;
-  while(iteracionActual <= cantidadCorridas){
-    while(tiempoActual <tiempoMaximo){
-    c = generarConsulta();
-    }
-  }
-  iteracionActual++;
+  public void procesarEvento(){
   }
 }
