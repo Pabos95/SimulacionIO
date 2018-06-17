@@ -16,6 +16,21 @@ public class EstadisticosModulo {
     private double lambda;
     private int consultasServidas;
     private int consultasPasadasEnCola; //cantidad de consultas que han pasado por la cola del modulo
+    public EstadisticosModulo(){ //constructor de la clase, inicializa todos los datos en 0
+        tamañoPromedioCola = 0;
+        promedioConsultasSiendoServidas = 0;
+        promedioConsultasEnModulo = 0;
+        tiempoPromedioServicio = 0;
+        tiempoPromedioEnCola = 0;
+        tiempoPromedio = 0;
+        sumatoriaTiempoServicio = 0;
+        sumatoriaTiempoCola = 0;
+        sumatoriaConsultasEnCola = 0;
+        sumatoriaConsultasSiendoAtendidas = 0;
+        lambda = 0;
+        consultasServidas = 0;
+        consultasPasadasEnCola = 0;
+    }
     public double getTamañoPromedioCola(){
         return tamañoPromedioCola;
     }
