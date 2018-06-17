@@ -20,6 +20,7 @@ public class EstadisticosModulo {
     private double rho; // tasa de ocupación del modulo
     private int consultasServidas;
     private int consultasPasadasEnCola; //cantidad de consultas que han pasado por la cola del modulo
+    private double probabilidadOcio; //probabilidad de que el sistema esté ocioso
     public EstadisticosModulo(){ //constructor de la clase, inicializa todos los datos en 0
         tamañoPromedioCola = 0;
         promedioConsultasSiendoServidas = 0;
@@ -87,6 +88,9 @@ public class EstadisticosModulo {
     public void actualizarMu(){
         mu = 1/tiempoPromedioServicio;
         actualizarRho();
+        actualizarProbabilidadOcio();
     }
-    
+    public void actualizarProbabilidadOcio(){
+        probabilidadOcio = 1 - rho;
+    }
 }
