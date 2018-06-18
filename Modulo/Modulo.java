@@ -2,24 +2,25 @@ package Modulo;
 import java.util.*;
 import SimulacionIO.*;
 import Estadisticos.*;
-class Modulo{
+
+abstract class Modulo {
     int tamFinalCola;
     int tamActualCola;
-    int consultasEnProceso; 
+    int consultasEnProceso;
     int capacidadMaxima;
-    Queue<Consulta> colaConsultas;
+    List<Consulta> colaConsultas;
     EstadisticosModulo estadisticosMod;
     GeneradoraValoresAelatorios generador;
-   public void procesarLlegada(){
- 
-   }
-   public void procesarSalida(){
 
-   }
-   public void procesarTimeOut(){
+    public abstract void procesarLlegada(Consulta consulta);
 
-   }
-   public int capacidadRestante(){
-    return (capacidadMaxima - consultasEnProceso);
-}
+    public abstract void procesarSalida(Consulta consulta);
+
+    public abstract void procesarTimeOut(Consulta consulta);
+
+    public int capacidadRestante() { //Será necesario realemente ??
+        return (capacidadMaxima - consultasEnProceso);
+
+    }
+
 }

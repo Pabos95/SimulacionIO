@@ -3,6 +3,7 @@ import java.util.*;
 import Modulo.*;
 import Estadisticos.*;
 public class Simulacion{
+
   int iteracionActual;
   double tiempoMaximo;  //tiempo maximo de la simulacion
   int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
