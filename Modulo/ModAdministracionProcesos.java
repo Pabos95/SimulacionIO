@@ -7,12 +7,22 @@ package Modulo;
 
 
 import SimulacionIO.Consulta;
+import SimulacionIO.GeneradoraValoresAelatorios;
 
 import java.util.Iterator;
 
 public class ModAdministracionProcesos extends Modulo {
 
+    boolean systemCall;
+    double timeWhereGonnaBeFree;
+    double n;
+    GeneradoraValoresAelatorios gen;
 
+    public ModAdministracionProcesos(){
+        systemCall = false;
+        gen = new GeneradoraValoresAelatorios();
+
+    }
     public void agregarConsulta (Consulta c){//Se usa para agregar consultas desde el controlador, según se requiere en particular por cada módulo
         //En ese lugar, se preguntarán las condiciones: colaVacia, mod Ocupado, timeOut....
 
@@ -26,7 +36,7 @@ public class ModAdministracionProcesos extends Modulo {
             int espacio = 0;
             while(it.hasNext() && !campo){
                 aux = (Consulta)it.next();
-                if(aux.getTiempoCola() <= c.getTiempoCola()){
+                if(aux.getTiempoActual() <= c.getTiempoActual()){
                     ++espacio;
                 }
                 else{
@@ -44,12 +54,20 @@ public class ModAdministracionProcesos extends Modulo {
     }
     @Override
     public void procesarLlegada(Consulta consulta) {
+        if(!consulta.getMuerto()){
+            if(!systemCall) {
+                systemCall = true;
+                timeWhereGonnaBeFree = consulta.getTiempoActual() + gen.generarValorDistribuicionExponencial(1.0, 0.01);
 
+            }
+        }
     }
 
     @Override
     public void procesarSalida(Consulta consulta) {
-
+        //Preguntar por el timeWhereGonnaBeFree
+        //Preguntar por la cola
+        //Pensar que hacer con la consulta que va a salir como parámetro
     }
 
     @Override

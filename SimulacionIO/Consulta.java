@@ -5,6 +5,7 @@ public class Consulta{
     boolean muerto;
     double tiempoCola;
     double tiempoVida;
+    double tiempoActual;
     tipoConsulta tConsulta;
     public enum tipoConsulta{
         select, update, join, ddl;
@@ -27,7 +28,8 @@ public class Consulta{
              tConsulta = tipoConsulta.ddl;
          }
          tiempoVida = 0;
-         tiempoCola = tiempoCreacion;
+         tiempoCola = 0;
+         tiempoActual = tiempoCreacion;
     }
     public void matarConsulta(){
         muerto = true;
@@ -39,10 +41,21 @@ public class Consulta{
 
     public double getTiempoCola(){
         return tiempoCola;
-
+    }
+    public void setTiempoCola(double param){
+        tiempoCola = param;
     }
     public double getTiempoVida(){
         return tiempoVida;
+    }
+    public void setTiempoVida(double param){
+        tiempoVida = param;
+    }
+    public double getTiempoActual(){
+        return  tiempoActual;
+    }
+    public void setTiempoActual(double param){
+        tiempoActual = param;
     }
     public boolean getMuerto(){
         return muerto;

@@ -16,4 +16,19 @@ public class ModAdministracionTransacciones extends Modulo {
     ModAdministracionTransacciones(){
         PriorityQueue<Consulta> colaSentencias = new PriorityQueue<Consulta>(10, new ComparadorConsultas());
     }
+
+    @Override
+    public void procesarLlegada(Consulta consulta) {
+
+    }
+
+    @Override
+    public void procesarSalida(Consulta consulta) {
+
+    }
+
+    @Override
+    public void procesarTimeOut(Consulta consulta) {
+
+    }
 }
