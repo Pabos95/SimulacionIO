@@ -11,7 +11,7 @@ public class Consulta{
     }
 
 
-    public Consulta(double numAelatorio){
+    public Consulta(double numAelatorio, double tiempoCreacion){
 
          muerto = false;
          if(numAelatorio >= 0.0 && numAelatorio <= 0.30){
@@ -27,6 +27,7 @@ public class Consulta{
              tConsulta = tipoConsulta.ddl;
          }
          tiempoVida = 0;
+         tiempoCola = tiempoCreacion;
     }
     public void matarConsulta(){
         muerto = true;
@@ -36,6 +37,10 @@ public class Consulta{
         return tConsulta;
     }
 
+    public double getTiempoCola(){
+        return tiempoCola;
+
+    }
     public double getTiempoVida(){
         return tiempoVida;
     }
