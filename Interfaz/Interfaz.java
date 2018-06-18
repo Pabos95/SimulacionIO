@@ -390,7 +390,15 @@ public class Interfaz extends javax.swing.JFrame {
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos
              // TODO add your handling code here   
     }                                     
-
+        private void checkbox1ItemStateChanged(java.awt.event.ItemEvent evt) {                                           
+        // TODO add your handling code here
+        if(checkbox1.getState() == true){
+            modLento = true;
+        }
+        else{
+            modLento = false;
+        }
+    }   
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
