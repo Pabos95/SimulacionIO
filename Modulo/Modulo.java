@@ -6,8 +6,7 @@ import Estadisticos.*;
 abstract class Modulo {
     int tamFinalCola;
     int tamActualCola;
-    int consultasEnProceso;
-    int capacidadMaxima;
+    int consultasActuales;
     List<Consulta> colaConsultas;
     EstadisticosModulo estadisticosMod;
     GeneradoraValoresAelatorios generador;
@@ -17,10 +16,5 @@ abstract class Modulo {
     public abstract void procesarSalida(Consulta consulta);
 
     public abstract void procesarTimeOut(Consulta consulta);
-
-    public int capacidadRestante() { //Será necesario realemente ??
-        return (capacidadMaxima - consultasEnProceso);
-
-    }
 
 }
