@@ -18,6 +18,7 @@ public class Simulacion{
   ArrayList <EstadisticosModulo> estadisticasModulo;
   double tiempoActual;
   GeneradoraValoresAelatorios gen;
+
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut){
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
@@ -27,7 +28,7 @@ public class Simulacion{
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAelatorio();
-    Consulta c = new Consulta(numAelatorio);
+    Consulta c = new Consulta(numAelatorio,tiempoActual);
     return c;
   }
   public void procesarEvento(){

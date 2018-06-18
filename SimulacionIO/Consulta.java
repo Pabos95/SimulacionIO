@@ -13,7 +13,7 @@ public class Consulta{
 
     public Consulta(double numAelatorio, double tiempoCreacion){
 
-         muerto = false;
+         muerto = true; //Cuando entra al primer módulo, si se le admite se cambia
          if(numAelatorio >= 0.0 && numAelatorio <= 0.30){
              tConsulta = tipoConsulta.select;
          }
@@ -43,6 +43,12 @@ public class Consulta{
     }
     public double getTiempoVida(){
         return tiempoVida;
+    }
+    public boolean getMuerto(){
+        return muerto;
+    }
+    public void setMuerto(boolean value){
+        muerto = value;
     }
 }
  
