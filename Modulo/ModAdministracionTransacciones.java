@@ -6,20 +6,30 @@
 package Modulo;
 
 import SimulacionIO.*;
+import SimulacionIO.Consulta;
 import java.util.PriorityQueue;
 
-/**
- *
- * @author Pabos95
- */
-public class ModAdministracionTransacciones extends Modulo {
+public class ModAdministracionTransacciones extends Modulo {  
+    int p;
+    GeneradoraValoresAelatorios gen;
+    
     ModAdministracionTransacciones(){
+        gen = new GeneradoraValoresAelatorios();
         PriorityQueue<Consulta> colaSentencias = new PriorityQueue<Consulta>(10, new ComparadorConsultas());
     }
 
     @Override
-    public void procesarLlegada(Consulta consulta) {
-
+    public void procesarLlegada(Consulta consulta) { //Se agrega la consulta a la cola según su prioridad
+      String name = consulta.getTipoConsulta();
+      if (name.equals("ddl")) {
+        
+      } else if (name.equals("update")){
+        
+      } else if (name.equals("join")){
+        
+      } else if (name.equals("select")){
+        
+      }
     }
 
     @Override

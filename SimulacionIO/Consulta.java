@@ -11,7 +11,6 @@ public class Consulta{
         select, update, join, ddl;
     }
 
-
     public Consulta(double numAelatorio, double tiempoCreacion){
 
          muerto = true; //Cuando entra al primer módulo, si se le admite se cambia
@@ -63,5 +62,9 @@ public class Consulta{
     public void setMuerto(boolean value){
         muerto = value;
     }
+    public String getTipoConsulta(){
+        return tConsulta.toString();
+    }
 }
+
  
