@@ -31,10 +31,11 @@ public class EstadisticosIteracion {
 
     public void calcularTiempoPromedioVida(ArrayList <Consulta> listaConsultas){
         double sumatoria = 0;
-        Consulta [] arregloConsultas = listaConsultas.toArray();
+        Consulta[] arregloConsultas =  new Consulta[listaConsultas.size()];
         for(int i = 0; i <= listaConsultas.size()- 1; i++){
-         sumatoria = sumatoria + arregloConsultas[i];
+         arregloConsultas[i] = listaConsultas.get(i);
+         sumatoria = sumatoria + arregloConsultas[i].getTiempoVida();
         }
-        tiempoPromedioVida = sumatoria/arregloConsultas.size();
+        tiempoPromedioVida = sumatoria/listaConsultas.size();
     }
 }

@@ -35,5 +35,9 @@ public class Consulta{
     public tipoConsulta getTConsulta(){
         return tConsulta;
     }
+
+    public double getTiempoVida(){
+        return tiempoVida;
+    }
 }
  
