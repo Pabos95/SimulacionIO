@@ -20,16 +20,20 @@ public class EstadisticosIteracion {
     3 Modulo AdministracionProcesos
     4 Modulo Administracion Transacciones*/
     public EstadisticosIteracion(){
-        tamañoPromedioColaModulo = new double[5];       
+
+        tamañoPromedioColaModulo = new double[5];
     }
+
     public void agregarTamañoPromedio(double tamPromedio,int pos){ //se usa para agregar un tamaño promedio al arreglo
+
         tamañoPromedioColaModulo[pos] = tamPromedio;
     }
+
     public void calcularTiempoPromedioVida(ArrayList <Consulta> listaConsultas){
         double sumatoria = 0;
         Consulta [] arregloConsultas = listaConsultas.toArray();
         for(int i = 0; i <= listaConsultas.size()- 1; i++){
-         sumatoria += arregloConsultas[i];
+         sumatoria = sumatoria + arregloConsultas[i];
         }
         tiempoPromedioVida = sumatoria/arregloConsultas.size();
     }

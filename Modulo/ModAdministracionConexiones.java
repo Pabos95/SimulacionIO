@@ -5,10 +5,6 @@
  */
 package Modulo;
 
-/**
- *
- * @author Pabos95
- */
 public class ModAdministracionConexiones extends Modulo{
     
 }

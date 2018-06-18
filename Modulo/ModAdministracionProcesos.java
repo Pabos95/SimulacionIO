@@ -5,10 +5,7 @@
  */
 package Modulo;
 
-/**
- *
- * @author Pabos95
- */
-public class ModAdministracionProcesos {
+
+public class ModAdministracionProcesos extends Modulo {
     
 }

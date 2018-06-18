@@ -1,9 +1,6 @@
 package Estadisticos;
 import SimulacionIO.*;
-/**
- *
- * @author Pabos95
- */
+
 public class EstadisticosModulo {
     private double tamañoPromedioCola; //Lq del modulo
     private double promedioConsultasSiendoServidas; //Ls del modulo
@@ -101,16 +98,16 @@ public class EstadisticosModulo {
         
     }
     public void agregarTiempoConsultaEnModulo(Consulta c){
-        if(c.tConsulta == DDL){
+        if(c.getTConsulta() == Consulta.tipoConsulta.ddl){
             
         }
-        else if(c.tConsulta == select){
+        else if(c.getTConsulta() ==  Consulta.tipoConsulta.select){
             
         }
-        else if(c.tConsulta == update){
+        else if(c.getTConsulta() ==  Consulta.tipoConsulta.update){
             
         }
-        else if(c.tConsulta == join){
+        else if(c.getTConsulta() ==  Consulta.tipoConsulta.join){
             
         }
                
