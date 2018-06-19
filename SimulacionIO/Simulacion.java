@@ -3,7 +3,11 @@ import java.util.*;
 import Modulo.*;
 import Estadisticos.*;
 public class Simulacion{
-
+  ModuloAdministracionClientes modAdminClientes;
+  ModuloAdministracionConexiones modAdminConexiones;
+  ModuloAdministracionConsultas modAminConsultas;
+  ModuloAdministracionProcesos modAdminProcesos;
+  ModuloAdministracionTransacciones modAdminTransacciones;
   int iteracionActual;
   double tiempoMaximo;  //tiempo maximo de la simulacion
   int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
@@ -34,6 +38,7 @@ public class Simulacion{
   }
   public void procesarSimulacion(){
   while(iteracionActual <= cantidadCorridas){
+    
   }
  */   while(no hayamos hecho la cantidad de simulaciones)
     *   *Creacion e inicializacion de todos los modulos
