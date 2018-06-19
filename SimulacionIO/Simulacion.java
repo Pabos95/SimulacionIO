@@ -25,6 +25,7 @@ public class Simulacion{
     k = numConexionesConcurrentesMaximo;
     n = numProcesosEjecucionConsultas;
     tiempoActual = 0.0;
+    iteracionActual = 1;
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAelatorio();
@@ -32,7 +33,9 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion(){
-    /* while(no hayamos hecho la cantidad de simulaciones)
+  while(iteracionActual <= cantidadCorridas){
+  }
+ */   while(no hayamos hecho la cantidad de simulaciones)
     *   *Creacion e inicializacion de todos los modulos
     *   while(el tiempo de simulacion no haya llegado al indicado, o algun otra condicion que se agregue como extra
     *     generarConsulta
