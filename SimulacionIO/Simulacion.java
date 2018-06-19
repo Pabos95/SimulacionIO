@@ -43,6 +43,8 @@ public class Simulacion{
     modAdminConsultas = new ModAdministracionConsultas();
     modAdminProcesos = new ModAdministracionProcesos();
     modAdminTransacciones = new ModAdministracionTransacciones();
+    while(tiempoActual < tiempoMaximo){
+    }
   }
  */   while(no hayamos hecho la cantidad de simulaciones)
     *   *Creacion e inicializacion de todos los modulos
