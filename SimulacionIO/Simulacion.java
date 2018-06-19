@@ -38,7 +38,11 @@ public class Simulacion{
   }
   public void procesarSimulacion(){
   while(iteracionActual <= cantidadCorridas){
-    
+    modClientes = new ModAdministracionClientes();
+    modAdminConexiones = new ModAdministracionConexiones();
+    modAdminConsultas = new ModAdministracionConsultas();
+    modAdminProcesos = new ModAdministracionProcesos();
+    modAdminTransacciones = new ModAdministracionTransacciones();
   }
  */   while(no hayamos hecho la cantidad de simulaciones)
     *   *Creacion e inicializacion de todos los modulos
