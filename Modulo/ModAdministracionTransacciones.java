@@ -11,6 +11,7 @@ import java.util.PriorityQueue;
 
 public class ModAdministracionTransacciones extends Modulo {  
     int p;
+    int contador = 0; //cantidad de consultas que están siendo procesadas
     GeneradoraValoresAelatorios gen;
     
     ModAdministracionTransacciones(){
@@ -19,22 +20,20 @@ public class ModAdministracionTransacciones extends Modulo {
     }
 
     @Override
-    public void procesarLlegada(Consulta consulta) { //Se agrega la consulta a la cola según su prioridad
-      String name = consulta.getTipoConsulta();
-      if (name.equals("ddl")) {
-        
-      } else if (name.equals("update")){
-        
-      } else if (name.equals("join")){
-        
-      } else if (name.equals("select")){
-        
+    public void procesarLlegada(Consulta consulta) { //Se agrega la consulta a la cola y la clase ComparadorConsultas se encarga de asignar la prioridad
+      //Si hay p cantidad de consultas siendo procesadas el resto tienen que ser enviadas a la cola
+      if (contador < p) { 
+        //Se procesan consultas 
+        contador = contador + 1;
+              
+      } else {
+        colaSentencias.add(consulta);
       }
     }
 
     @Override
     public void procesarSalida(Consulta consulta) {
-
+      
     }
 
     @Override

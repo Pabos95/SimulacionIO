@@ -13,6 +13,7 @@ public class ComparadorConsultas implements Comparator<Consulta> {
    public ComparadorConsultas(){
         
     }
+   @Override
     public int compare(Consulta c1, Consulta c2){
         int prioridadC1 = 0;
         int prioridadC2 = 0;
