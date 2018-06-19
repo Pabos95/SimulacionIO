@@ -5,7 +5,7 @@ import SimulacionIO.Consulta;
 
 import java.util.*;
 
-class ModAdministracionClientes extends Modulo {
+public class ModAdministracionClientes extends Modulo {
     int k;
     int consultasRechazadas;
 

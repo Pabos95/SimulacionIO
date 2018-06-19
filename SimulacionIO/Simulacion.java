@@ -3,9 +3,9 @@ import java.util.*;
 import Modulo.*;
 import Estadisticos.*;
 public class Simulacion{
-  ModAdministracionClientes modClientes;
+  ModAdministracionClientes modAdminClientes;
   ModAdministracionConexiones modAdminConexiones;
-  ModAdministracionConsultas modAminConsultas;
+  ModAdministracionConsultas modAdminConsultas;
   ModAdministracionProcesos modAdminProcesos;
   ModAdministracionTransacciones modAdminTransacciones;
   int iteracionActual;
@@ -37,7 +37,7 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion(){
-   Consulta cActual;
+   Consulta cActual;/*
   while(iteracionActual <= cantidadCorridas){
     modClientes = new ModAdministracionClientes();
     modAdminConexiones = new ModAdministracionConexiones();
@@ -47,14 +47,14 @@ public class Simulacion{
     while(tiempoActual < tiempoMaximo){
       cActual = generarConsulta();
       modAdminClientes.procesarLlegada(cActual);
-      modAminClientes.procesarLlegada(cActual);
+      modAdminClientes.procesarLlegada(cActual);
       verificarTimeOut(cActual);
       modAdminProcesos.procesarLlegada(cActual);
       modAminProcesos.procesarLlegada(cActual);
       verificarTimeOut(cActual);
     }
   }
- */   while(no hayamos hecho la cantidad de simulaciones)
+ */ /*  while(no hayamos hecho la cantidad de simulaciones)
     *   *Creacion e inicializacion de todos los modulos
     *   while(el tiempo de simulacion no haya llegado al indicado, o algun otra condicion que se agregue como extra
     *     generarConsulta

@@ -11,8 +11,9 @@ import java.util.PriorityQueue;
 
 public class ModAdministracionTransacciones extends Modulo {  
     int p;
-    int contador = 0; //cantidad de consultas que están siendo procesadas
+    int contador = 0; //cantidad de consultas que estï¿½n siendo procesadas
     GeneradoraValoresAelatorios gen;
+    PriorityQueue<Consulta> colaSentencias;
     
     ModAdministracionTransacciones(){
         gen = new GeneradoraValoresAelatorios();
