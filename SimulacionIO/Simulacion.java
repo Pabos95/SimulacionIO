@@ -37,6 +37,7 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion(){
+   Consulta cActual;
   while(iteracionActual <= cantidadCorridas){
     modClientes = new ModAdministracionClientes();
     modAdminConexiones = new ModAdministracionConexiones();
@@ -44,6 +45,9 @@ public class Simulacion{
     modAdminProcesos = new ModAdministracionProcesos();
     modAdminTransacciones = new ModAdministracionTransacciones();
     while(tiempoActual < tiempoMaximo){
+      cActual = generarConsulta();
+      modAdminClientes.procesarLlegada(cActual);
+      modAminClientes.procesarLlegada(cActual);
     }
   }
  */   while(no hayamos hecho la cantidad de simulaciones)
