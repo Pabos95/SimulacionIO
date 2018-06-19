@@ -48,6 +48,10 @@ public class Simulacion{
       cActual = generarConsulta();
       modAdminClientes.procesarLlegada(cActual);
       modAminClientes.procesarLlegada(cActual);
+      verificarTimeOut(cActual);
+      modAdminProcesos.procesarLlegada(cActual);
+      modAminProcesos.procesarLlegada(cActual);
+      verificarTimeOut(cActual);
     }
   }
  */   while(no hayamos hecho la cantidad de simulaciones)
