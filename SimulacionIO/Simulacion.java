@@ -3,11 +3,11 @@ import java.util.*;
 import Modulo.*;
 import Estadisticos.*;
 public class Simulacion{
-  ModuloAdministracionClientes modAdminClientes;
-  ModuloAdministracionConexiones modAdminConexiones;
-  ModuloAdministracionConsultas modAminConsultas;
-  ModuloAdministracionProcesos modAdminProcesos;
-  ModuloAdministracionTransacciones modAdminTransacciones;
+  ModAdministracionClientes modClientes;
+  ModAdministracionConexiones modAdminConexiones;
+  ModAdministracionConsultas modAminConsultas;
+  ModAdministracionProcesos modAdminProcesos;
+  ModAdministracionTransacciones modAdminTransacciones;
   int iteracionActual;
   double tiempoMaximo;  //tiempo maximo de la simulacion
   int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
