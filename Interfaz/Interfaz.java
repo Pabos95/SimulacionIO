@@ -388,7 +388,7 @@ public class Interfaz extends javax.swing.JFrame  {
   int procesosEjecucionConsultas = Integer.parseInt(text3);
     int procesosEjecucionTransacciones = Integer.parseInt(text5);
     int segundostimeOut = Integer.parseInt(text6);      
- s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundosTimeOut, modLento);
+    s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos
              // TODO add your handling code here   
     }                                     

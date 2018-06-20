@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package simulaciondbms;
+package Interfaz;
+
 import javax.swing.*;
 import SimulacionIO.*;
+import Interfaz.*;
 /**
  *
  * @author Pabos95
  */
 public class VentanaParametros extends javax.swing.JFrame {
     Boolean modLento;
+    Simulacion s;
     /**
      * Creates new form Interfaz
      */
@@ -317,7 +320,7 @@ public class VentanaParametros extends javax.swing.JFrame {
     int procesosEjecucionTransacciones = Integer.parseInt(text5);
     int segundostimeOut = Integer.parseInt(text6);
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos 
-  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundosTimeOut, modLento);
+  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

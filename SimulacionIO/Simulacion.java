@@ -26,7 +26,7 @@ public class Simulacion{
   double tiempoActual;
   GeneradoraValoresAelatorios gen;
   Interfaz ventana;
-  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, bool slow){
+  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, boolean slow){
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
     /*Falta asignar los otros valores, p, m , t*/
