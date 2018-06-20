@@ -28,9 +28,13 @@ public class ModAdministracionConsultas extends Modulo{
                 timeSalida = timeSalida + gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
                 timeSalida = timeSalida + gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
                 timeSalida = timeSalida + gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
-                
-                //Arreglar optimización de consultas ya que el tiempo varía según el tipo de consulta.
-                timeSalida = timeSalida + 1/10; //Optimización de consultas             
+				//Optimización de consultas               
+                if ((consulta.getTConsulta().compareTo(Consulta.tipoConsulta.ddl) == 0) ||  //No son de read-only
+                        (consulta.getTConsulta().compareTo(Consulta.tipoConsulta.update) == 0)){  //No son de read-only                   
+                    timeSalida = timeSalida + 1/4;                   
+                } else { //Son read-only
+                    timeSalida = timeSalida + 0.1;
+                }                  
             } else {
                 //Se agrega a la cola
                 agregarConsulta(consulta);
