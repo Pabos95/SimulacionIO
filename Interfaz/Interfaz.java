@@ -5,7 +5,7 @@ import SimulacionIO.*;
  *
  * @author Pabos95
  */
-public class Interfaz extends javax.swing.JFrame implements Runnable {
+public class Interfaz extends javax.swing.JFrame  {
     Simulacion s;
     Boolean modLento; // si el usuario desea correr la simulación en modo lentp
     /**
