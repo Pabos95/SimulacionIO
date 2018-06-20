@@ -26,7 +26,7 @@ public class Simulacion{
   double tiempoActual;
   GeneradoraValoresAelatorios gen;
   Interfaz ventana;
-  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut){
+  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, bool slow){
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
     /*Falta asignar los otros valores, p, m , t*/
@@ -34,6 +34,7 @@ public class Simulacion{
     n = numProcesosEjecucionConsultas;
     tiempoActual = 0.0;
     iteracionActual = 1;
+    modoLento = slow;
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAelatorio();
