@@ -105,8 +105,6 @@ public class Interfaz extends javax.swing.JFrame  {
         jLabel10.setFont(new java.awt.Font("Liberation Serif", 0, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
         jLabel10.setText("Simulacion DBMS");
-        label.setFont(new Font("Serif", Font.PLAIN, 14));
-
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
@@ -384,6 +382,12 @@ public class Interfaz extends javax.swing.JFrame  {
     jPanel1.setVisible(false); 
     jDialog1.setVisible(true);
   }
+  int corridas = Integer.parseInt(text1);
+  int tiempoSimulacion = Integer.parseInt(text2);
+  int maxConexionesConcurrentes = Integer.parseInt(text4);
+  int procesosEjecucionConsultas = Integer.parseInt(text3);
+    int procesosEjecucionTransacciones = Integer.parseInt(text5);
+    int segundostimeOut = Integer.parseInt(text6);      
  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundosTimeOut, modLento);
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos
              // TODO add your handling code here   
