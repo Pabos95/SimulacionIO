@@ -2,6 +2,7 @@ package SimulacionIO;
 import java.util.*;
 import Modulo.*;
 import Estadisticos.*;
+import Interfaz;
 public class Simulacion{
   ModAdministracionClientes modAdminClientes;
   ModAdministracionConexiones modAdminConexiones;
@@ -22,7 +23,7 @@ public class Simulacion{
   ArrayList <EstadisticosModulo> estadisticasModulo;
   double tiempoActual;
   GeneradoraValoresAelatorios gen;
-
+  Interfaz ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut){
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
@@ -69,5 +70,7 @@ public class Simulacion{
  *
  *    }
  *    breack;*/
+  }
+  public void actualizarVentena(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect.
   }
 }

@@ -23,7 +23,7 @@ public class Consulta{
          else if(numAelatorio >= 0.55 && numAelatorio <= 0.89){
              tConsulta = tipoConsulta.join;
          }
-         else if(numAelatorio >= 0.90 && numAelatorio <= 1.00){
+         else if(numAelatorio >= 0.90 && numAelatorio <= 0.99){
              tConsulta = tipoConsulta.ddl;
          }
          tiempoVida = 0;

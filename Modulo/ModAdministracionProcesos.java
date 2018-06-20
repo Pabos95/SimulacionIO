@@ -57,11 +57,11 @@ public class ModAdministracionProcesos extends Modulo {
         if(!consulta.getMuerto()){//Si está muerto significa que no fue admitido en el módulo pasado
             if(!systemCall) {
                 systemCall = true;
-                timeWhereGonnaBeFree = consulta.getTiempoActual() + gen.generarValorDistribuicionExponencial(1.0, 0.01);
+                timeWhereGonnaBeFree = consulta.getTiempoActual() + gen.generarValorDistribuicionNormal(1.0, 0.01);
             }
             else{
                 //Agregar a la cola
-
+				agregarConsulta(consulta);
             }
         }
     }
