@@ -4,12 +4,15 @@ import SimulacionIO.*;
 import Estadisticos.*;
 public class ModAdministracionConsultas extends Modulo{
     int n;
+    int m;
 	double timeSalida; //Tiempo de salida después de realizar las etapas de validación 
     int tamFinalColaP;
     int tamActualColaP;
 	GeneradoraValoresAelatorios gen;
 
-	public ModAdministracionConsultas(){
+	public ModAdministracionConsultas(int tam, int tam2){
+	    n = tam;
+	    m = tam2;
         gen = new GeneradoraValoresAelatorios();
         timeSalida = 0;
     }

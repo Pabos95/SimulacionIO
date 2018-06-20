@@ -31,7 +31,7 @@ public class ModAdministracionClientes extends Modulo {
             agregarConsulta(consulta);
         }
         else {//Cuando trae los bloques de datos
-            //Procesar los datos
+            //Procesar los datos y no tiene timeout
         }
     }
 

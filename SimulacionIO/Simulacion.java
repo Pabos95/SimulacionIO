@@ -2,7 +2,8 @@ package SimulacionIO;
 import java.util.*;
 import Modulo.*;
 import Estadisticos.*;
-import Interfaz;
+import Interfaz.*;
+
 public class Simulacion{
   ModAdministracionClientes modAdminClientes;
   ModAdministracionConexiones modAdminConexiones;
@@ -27,6 +28,7 @@ public class Simulacion{
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut){
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
+    /*Falta asignar los otros valores, p, m , t*/
     k = numConexionesConcurrentesMaximo;
     n = numProcesosEjecucionConsultas;
     tiempoActual = 0.0;
@@ -38,24 +40,19 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion(){
-   Consulta cActual;/*
-  while(iteracionActual <= cantidadCorridas){
-    modClientes = new ModAdministracionClientes();
-    modAdminConexiones = new ModAdministracionConexiones();
-    modAdminConsultas = new ModAdministracionConsultas();
-    modAdminProcesos = new ModAdministracionProcesos();
-    modAdminTransacciones = new ModAdministracionTransacciones();
-    while(tiempoActual < tiempoMaximo){
-      cActual = generarConsulta();
-      modAdminClientes.procesarLlegada(cActual);
-      modAdminClientes.procesarLlegada(cActual);
-      verificarTimeOut(cActual);
-      modAdminProcesos.procesarLlegada(cActual);
-      modAminProcesos.procesarLlegada(cActual);
-      verificarTimeOut(cActual);
-    }
-  }
- */ /*Hacer lista de todos los eventos con su modulo
+   Consulta consultaActual = generarConsulta();
+   while(iteracionActual <= cantidadCorridas){
+      modAdminClientes = new ModAdministracionClientes(k);
+      modAdminConexiones = new ModAdministracionConexiones();
+      modAdminConsultas = new ModAdministracionConsultas(n,m);
+      modAdminProcesos = new ModAdministracionProcesos();
+      modAdminTransacciones = new ModAdministracionTransacciones(p);
+      while(tiempoActual < tiempoMaximo){
+        consultaActual = generarConsulta();
+
+      }
+   }
+  /*Hacer lista de todos los eventos con su modulo
  *   elemento = lista.sacar elemento()
  *   switch (elemento.tipoEvento()):
  *    case: entradamodulo 1{
@@ -71,6 +68,9 @@ public class Simulacion{
  *    }
  *    breack;*/
   }
+
+
+
   public void actualizarVentena(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect.
   }
 }

@@ -15,7 +15,8 @@ public class ModAdministracionTransacciones extends Modulo {
     GeneradoraValoresAelatorios gen;
     PriorityQueue<Consulta> colaSentencias;
     
-    ModAdministracionTransacciones(){
+    public ModAdministracionTransacciones(int tam){
+        p = tam;
         gen = new GeneradoraValoresAelatorios();
         PriorityQueue<Consulta> colaSentencias = new PriorityQueue<Consulta>(10, new ComparadorConsultas());
     }
@@ -31,6 +32,11 @@ public class ModAdministracionTransacciones extends Modulo {
         colaSentencias.add(consulta);
       }
     }
+
+    public void procesarLlegada(Consulta consulta, double B) { //Se agrega la consulta a la cola y la clase ComparadorConsultas se encarga de asignar la prioridad
+
+    }
+
 
     @Override
     public void procesarSalida(Consulta consulta) {
