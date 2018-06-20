@@ -5,13 +5,10 @@
  */
 package SimulacionIO;
 
-/**
- *
- * @author Pabos95
- */
 public class Evento {
     public enum tipoEvento{
-        llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,salidaModuloAdministracionProcesos, salidaModuloProcesamientoConsultas, salidaModuloTransacciones, salidaModuloAdministracionConexiones, timeOut
+        llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,salidaModuloAdministracionProcesos,
+        salidaModuloProcesamientoConsultas, salidaModuloTransacciones, salidaModuloAdministracionConexiones, timeOut
     }
     tipoEvento e;
 }

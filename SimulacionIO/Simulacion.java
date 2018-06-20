@@ -54,26 +54,20 @@ public class Simulacion{
       verificarTimeOut(cActual);
     }
   }
- */ /*  while(no hayamos hecho la cantidad de simulaciones)
-    *   *Creacion e inicializacion de todos los modulos
-    *   while(el tiempo de simulacion no haya llegado al indicado, o algun otra condicion que se agregue como extra
-    *     generarConsulta
-    *     modAdminClientes.procesarLlegada(consulta)
-    *     modAdminClientes.procesarSalida(consulta)
-    *     controlarTimeout
-    *     modAdminProcesos.procesarLlegada(consulta)
-    *     modAdminProcesos.procesarSalida(consulta)
-    *     controlarTimeout
-    *     .
-    *     .
-    *     .
-    *      controlarTimeout
-    *     modAdminClientes.procesarLlegada(consulta)
-    *     modAdminClientes.procesarSalida(consulta)
-    *     AnalizarConsulta(consulta) Se encargaría de ver si se murió o logró pasar el proceso, tiempo de vida, tiempo en cola, tipo de consulta. . .
-    *                                 Podría devovler una especie de estructura de datos para eventualmente pasarselo a estadísticas
-    *     actualizarTimpoActual
-    *       Si el tiempo de la consulta que llegó al final es mayor o igual al tiempo actual
-    *       tiempoactual = timpode la consulta*/
+ */ /*Hacer lista de todos los eventos con su modulo
+ *   elemento = lista.sacar elemento()
+ *   switch (elemento.tipoEvento()):
+ *    case: entradamodulo 1{
+ *
+ *    aux = procesarEntrada();
+ *    if (null != aux)
+ *      agregaraLISTA(aux);
+ *    }
+ *    breack;
+ *    case salidamodulo 1{
+ *
+ *
+ *    }
+ *    breack;*/
   }
 }
