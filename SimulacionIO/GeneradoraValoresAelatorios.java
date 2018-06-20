@@ -16,10 +16,10 @@ public class GeneradoraValoresAelatorios{
         nuevoValor = media + (nuevoValor*Math.sqrt(varianza));
         return nuevoValor;
     }
-    public double generarValorDistribuicionExponencial(double media, double varianza){
+    public double generarValorDistribuicionExponencial(double lambda){
         double nuevoValor = 0;
         double r = generarNumeroAelatorio();
-        nuevoValor = (-1/media)*(Math.log(1-r));       
+        nuevoValor = (-1/lambda)*(Math.log(1-r));       
         return nuevoValor;
     }
     public double generarValorDistribuicionUniforme(double a, double b){
