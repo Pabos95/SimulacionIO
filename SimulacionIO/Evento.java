@@ -7,8 +7,12 @@ package SimulacionIO;
 
 public class Evento {
     public enum tipoEvento{
-        llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,salidaModuloAdministracionProcesos,
-        salidaModuloProcesamientoConsultas, salidaModuloTransacciones, salidaModuloAdministracionConexiones, timeOut
+        llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,
+        llegadaModuloAdministracionConexiones, salidaModuloAdministracionConexiones,
+        llegadaModuloProcesamientoConsultas, salidaModuloProcesamientoConsultas,
+        llegadaModuloAdministracionProcesos,salidaModuloAdministracionProcesos,
+        llegadaModuloTransacciones, salidaModuloTransacciones,
+        ,timeOut
     }
     tipoEvento e;
 }

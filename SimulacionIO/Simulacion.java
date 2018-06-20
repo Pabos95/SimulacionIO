@@ -47,6 +47,7 @@ public class Simulacion{
       modAdminConsultas = new ModAdministracionConsultas(n,m);
       modAdminProcesos = new ModAdministracionProcesos();
       modAdminTransacciones = new ModAdministracionTransacciones(p);
+
       while(tiempoActual < tiempoMaximo){
         consultaActual = generarConsulta();
 
