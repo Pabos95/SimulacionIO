@@ -10,6 +10,7 @@ public class Consulta{
     public enum tipoConsulta{
         select, update, join, ddl;
     }
+    Evento.tipoEvento tipoEvento;
 
     public Consulta(double numAelatorio, double tiempoCreacion){
 
@@ -65,6 +66,8 @@ public class Consulta{
     public String getTipoConsulta(){
         return tConsulta.toString();
     }
+    public void setTipoEvento(Evento.tipoEvento t){tipoEvento = t;}
+    public Evento.tipoEvento getTipoEvento(){return tipoEvento;}
 }
 
  

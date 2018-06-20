@@ -6,6 +6,12 @@
 package SimulacionIO;
 
 public class Evento {
+
+    tipoEvento tipo;
+
+    public Evento(){
+        tipo = tipoEvento.llegadaModuloAdministracionClientes;
+    }
     public enum tipoEvento{
         llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,
         llegadaModuloAdministracionConexiones, salidaModuloAdministracionConexiones,
@@ -14,5 +20,11 @@ public class Evento {
         llegadaModuloTransacciones, salidaModuloTransacciones,
         ,timeOut
     }
-    tipoEvento e;
+
+    public void setTipoEvento(tipoEvento type){
+        tipo = type;
+    }
+    public  tipoEvento getTipoEvento(){
+        return tipo;
+    }
 }

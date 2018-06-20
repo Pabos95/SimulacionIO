@@ -1,5 +1,6 @@
 package SimulacionIO;
 import java.util.Random;
+
 public class GeneradoraValoresAelatorios{
     Random r;
     public GeneradoraValoresAelatorios(){      
