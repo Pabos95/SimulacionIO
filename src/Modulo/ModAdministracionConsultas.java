@@ -13,6 +13,8 @@ public class ModAdministracionConsultas extends Modulo{
     int sentenciasEjecucion; //Contador de cuantas sentencias están siendo ejecutadas
 
     public ModAdministracionConsultas(int tam, int tam2){
+		n = tam;
+		m = tam2;
         gen = new GeneradoraValoresAelatorios();
         colaConsultas = new ArrayList<>(); //Esto podría ser new LinkedList<>() que tiene los mismos métodos que Priority Queue y disciplina FIFO
         colaEjecutar = new ArrayList<>();
