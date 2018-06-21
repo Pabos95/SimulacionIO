@@ -41,33 +41,48 @@ public class Simulacion{
     Consulta c = new Consulta(numAelatorio,tiempoActual);
     return c;
   }
-  public void procesarSimulacion(){
+  public void procesarSimulacion() {
 
-      while(iteracionActual <= cantidadCorridas){
+      while (iteracionActual <= cantidadCorridas) {
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
           modAdminConexiones = new ModAdministracionConexiones();
-          modAdminConsultas = new ModAdministracionConsultas(n,m);
+          modAdminConsultas = new ModAdministracionConsultas(n, m);
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           double num = gen.generarNumeroAelatorio();
-          Consulta consultaActual = new Consulta(num,0);
+          Consulta consultaActual = new Consulta(num, 0);
           Evento e = new Evento();
           List listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
           listaEventos.add(consultaActual);//El evento por default es entrada al modulo adm clientes y la consulta si es aleatoria
-          while(tiempoActual < tiempoMaximo){
+          while (tiempoActual < tiempoMaximo) {
               consultaActual = generarConsulta();
               consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
-              consultaActual = (Consulta)listaEventos.get(0); //Tomamos el primer valor de la lista
+              consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
-              switch (consultaActual.tipoEvento){
+              switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:
                       modAdminClientes.procesarLlegada(consultaActual);
-
+                      if(!consultaActual.getMuerto()){//Si fue admitida
+                          consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
+                          listaEventos.add(consultaActual);//Hay que implementar esto para que agregue por orden de prioridad
+                                                            //Primero por tiempo y luego por el tipo de consulta, por ahora agrega al final
+                      }
                       break;
 
                   case salidaModuloAdministracionClientes:
                       modAdminClientes.procesarSalida(consultaActual);
+                      if(consultaActual.getTiempoVida() == 0){
+                          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionProcesos);
+                          listaEventos.add(consultaActual);//OJO QUE NO AGREGA POR EL TIEMPO, SOLO AL FINAL A LO CERDO
+                          //agregarElemento(consultaActual)*/
+                      }
+                      else{//Enviar datos al usuario, cerrar la conexion
+
+                      }
+
+
+
                       break;
 
                   case llegadaModuloAdministracionProcesos:
@@ -108,24 +123,11 @@ public class Simulacion{
                       break;
 
               }
-
+                //Se podría sacar parte de la info guardada en cada modulo para presentarla al usuario
           }
+
+          //Actualizar estadísticas por cada corrida
       }
-  /*Hacer lista de todos los eventos con su modulo
- *   elemento = lista.sacar elemento()
- *   switch (elemento.tipoEvento()):
- *    case: entradamodulo 1{
- *
- *    aux = procesarEntrada();
- *    if (null != aux)
- *      agregaraLISTA(aux);
- *    }
- *    breack;
- *    case salidamodulo 1{
- *
- *
- *    }
- *    breack;*/
   }
 
 

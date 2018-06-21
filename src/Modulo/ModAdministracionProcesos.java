@@ -54,16 +54,13 @@ public class ModAdministracionProcesos extends Modulo {
     }
     @Override
     public void procesarLlegada(Consulta consulta) {
-        if(!consulta.getMuerto()){//Si está muerto significa que no fue admitido en el módulo pasado
-            if(!systemCall) {
-                systemCall = true;
-                timeWhereGonnaBeFree = consulta.getTiempoActual() + gen.generarValorDistribuicionNormal(1.0, 0.01);
-            }
-            else{
-                //Agregar a la cola
-				agregarConsulta(consulta);
-            }
+        if(!systemCall) {
+            systemCall = true;
         }
+        else{
+            agregarConsulta(consulta);
+        }
+
     }
 
     @Override
