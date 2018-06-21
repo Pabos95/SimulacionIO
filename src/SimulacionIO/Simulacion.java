@@ -58,7 +58,56 @@ public class Simulacion{
           while(tiempoActual < tiempoMaximo){
               consultaActual = generarConsulta();
               consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
-              consultaActual = (Consulta)listaEventos.get(0);
+              consultaActual = (Consulta)listaEventos.get(0); //Tomamos el primer valor de la lista
+              listaEventos.remove(0); //Sacamos de la lista el primer elemento
+              switch (consultaActual.tipoEvento){
+                  case llegadaModuloAdministracionClientes:
+                      modAdminClientes.procesarLlegada(consultaActual);
+
+                      break;
+
+                  case salidaModuloAdministracionClientes:
+                      modAdminClientes.procesarSalida(consultaActual);
+                      break;
+
+                  case llegadaModuloAdministracionProcesos:
+                      modAdminProcesos.procesarLlegada(consultaActual);
+
+
+                      break;
+
+
+                  case salidaModuloAdministracionProcesos:
+                      modAdminProcesos.procesarSalida(consultaActual);
+
+                      break;
+
+                  case llegadaModuloProcesamientoConsultas:
+                      modAdminConsultas.procesarLlegada(consultaActual);
+                      break;
+
+                  case salidaModuloProcesamientoConsultas:
+                      modAdminConsultas.procesarSalida(consultaActual);
+                      break;
+
+                  case llegadaModuloTransacciones:
+                      modAdminTransacciones.procesarLlegada(consultaActual);
+                      break;
+
+                  case salidaModuloTransacciones:
+                      modAdminTransacciones.procesarSalida(consultaActual);
+                      break;
+
+
+                  case llegadaModuloAdministracionConexiones:
+                      modAdminConexiones.procesarLlegada(consultaActual);
+                      break;
+
+                  case salidaModuloAdministracionConexiones:
+                      modAdminConexiones.procesarSalida(consultaActual);
+                      break;
+
+              }
 
           }
       }
