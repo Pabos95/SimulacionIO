@@ -10,14 +10,14 @@
  */
 package Interfaz;
 public class Portada extends javax.swing.JFrame {
-
+    VentanaParametros vp;
     /**
      * Creates new form Portada
      */
     public Portada() {
+        vp = new VentanaParametros();
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(800, 800);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Portada extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Continuar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -46,17 +46,22 @@ public class Portada extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(140, 20, 170, 90);
 
-        jButton1.setBackground(java.awt.SystemColor.controlHighlight);
-        jButton1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 153, 0));
-        jButton1.setText("Continuar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        Continuar.setBackground(java.awt.SystemColor.controlHighlight);
+        Continuar.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        Continuar.setForeground(new java.awt.Color(255, 153, 0));
+        Continuar.setText("Continuar");
+        Continuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ContinuarMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(120, 300, 90, 23);
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Continuar);
+        Continuar.setBounds(120, 300, 90, 23);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 153, 51));
@@ -71,20 +76,26 @@ public class Portada extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/White-Abstract-background-1.jpg"))); // NOI18N
         jLabel2.setMinimumSize(new java.awt.Dimension(300, 400));
-        jLabel2.setPreferredSize(new java.awt.Dimension(300, 400));
+        jLabel2.setPreferredSize(new java.awt.Dimension(522, 402));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -40, 520, 460);
+        jLabel2.setBounds(0, -40, 520, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ContinuarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinuarMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        vp.setVisible(true);
+    }//GEN-LAST:event_ContinuarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -122,7 +133,7 @@ public class Portada extends javax.swing.JFrame {
     }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Continuar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
