@@ -25,7 +25,7 @@ public class Simulacion{
   ArrayList <EstadisticosModulo> estadisticasModulo;
   double tiempoActual;
   GeneradoraValoresAelatorios gen;
-  Interfaz ventana;
+  VentanaEjecucion ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, boolean slow){
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;

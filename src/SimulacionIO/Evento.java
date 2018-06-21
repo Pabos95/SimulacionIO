@@ -17,7 +17,7 @@ public class Evento {
         llegadaModuloAdministracionConexiones, salidaModuloAdministracionConexiones,
         llegadaModuloProcesamientoConsultas, salidaModuloProcesamientoConsultas,
         llegadaModuloAdministracionProcesos,salidaModuloAdministracionProcesos,
-        llegadaModuloTransacciones, salidaModuloTransacciones,
+        llegadaModuloTransacciones, salidaModuloTransacciones
         ,timeOut
     }
 
