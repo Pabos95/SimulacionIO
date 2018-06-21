@@ -52,6 +52,10 @@ public class ModAdministracionConsultas extends Modulo{
 
     }
 
+	public void procesarLlegada(Consulta consulta, double B) { //Cuando la llegada viene del modulo de Transacciones
+
+    }
+	
     @Override
     public void procesarTimeOut(Consulta consulta) {
 

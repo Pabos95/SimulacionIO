@@ -31,7 +31,7 @@ public class Portada extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         Continuar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,16 +63,21 @@ public class Portada extends javax.swing.JFrame {
         getContentPane().add(Continuar);
         Continuar.setBounds(120, 300, 90, 23);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 153, 51));
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        Salir.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        Salir.setForeground(new java.awt.Color(255, 153, 51));
+        Salir.setText("Salir");
+        Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SalirMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(270, 300, 80, 23);
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Salir);
+        Salir.setBounds(270, 300, 80, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/White-Abstract-background-1.jpg"))); // NOI18N
         jLabel2.setMinimumSize(new java.awt.Dimension(300, 400));
@@ -87,15 +92,21 @@ public class Portada extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ContinuarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+     
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void ContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinuarMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
         vp.setVisible(true);
     }//GEN-LAST:event_ContinuarMouseClicked
+
+    private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_SalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -134,7 +145,7 @@ public class Portada extends javax.swing.JFrame {
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
