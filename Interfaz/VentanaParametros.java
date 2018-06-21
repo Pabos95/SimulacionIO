@@ -94,7 +94,6 @@ public class VentanaParametros extends javax.swing.JFrame {
         setTitle("SimulacionDBMS");
         setBackground(javax.swing.UIManager.getDefaults().getColor("MenuItem.selectionBackground"));
         setForeground(javax.swing.UIManager.getDefaults().getColor("menu"));
-        setPreferredSize(new java.awt.Dimension(700, 700));
 
         jLabel4.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel4.setText("k");
