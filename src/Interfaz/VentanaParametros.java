@@ -95,6 +95,8 @@ public class VentanaParametros extends javax.swing.JFrame {
         setBackground(javax.swing.UIManager.getDefaults().getColor("MenuItem.selectionBackground"));
         setForeground(javax.swing.UIManager.getDefaults().getColor("menu"));
 
+        jPanel1.setOpaque(false);
+
         jLabel4.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel4.setText("k");
 

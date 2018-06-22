@@ -80,7 +80,8 @@ public class Simulacion{
               System.out.println("check: se agregó evento dentro del ciclo");
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
-              tiempoActual = consultaActual.getTiempoActual();
+              tiempoActual = consultaActual.getTiempoActual(); //El tiempo actual no se est� actualizando bien, nunca pasa de 0
+              System.out.println("Tiempo actual " + String.valueOf(tiempoActual));
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:
                         modAdminClientes.procesarLlegada(consultaActual);
@@ -91,13 +92,13 @@ public class Simulacion{
                         else{
                             agregarEvento(consultaActual);
                         }
-                       ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
+                      // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
                       break;
 
                   case salidaModuloAdministracionClientes:
                       
                       modAdminClientes.procesarSalida(consultaActual);
-                       ventana.setBackground(Color.BLACK); //Para prueba unicamente, si llega hasta la linea 95 la ventana se pone de fondo negro
+                    //   ventana.setBackground(Color.BLACK); //Para prueba unicamente, si llega hasta la linea 95 la ventana se pone de fondo negro
 
                       break;
 
@@ -108,7 +109,7 @@ public class Simulacion{
                           agregarEvento(consultaActual);
                       }
                       //En caso contrario no se agrega nada porque entró a la cola
-                       ventana.setBackground(Color.blue); //Para prueba unicamente, si llega hasta la linea 107 la ventana se pone de fondo azul
+                       //ventana.setBackground(Color.blue); //Para prueba unicamente, si llega hasta la linea 107 la ventana se pone de fondo azul
                       break;
 
 
@@ -121,7 +122,7 @@ public class Simulacion{
                       else{
                           modAdminClientes.restarConeccionesActivas(); //Así libera recursos para la próxima conección
                       }
-                       ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
+                      // ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
                       break;
 
                   case llegadaModuloProcesamientoConsultas:
@@ -211,6 +212,10 @@ public class Simulacion{
 
   public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
      ventana.actualizarTiempoActual(tiempoActual);
+     ventana.actualizarLongitudModAdministracionClientes(modAdminClientes.getTamActualCola());
+     ventana.actualizarLongitudModAdministracionProcesos(modAdminProcesos.getTamActualCola());
+     ventana.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
+     ventana.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
   }
 
   public static void agregarEvento(Consulta c) {
