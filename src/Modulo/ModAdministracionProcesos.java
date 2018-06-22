@@ -58,6 +58,12 @@ public class ModAdministracionProcesos extends Modulo {
     public void procesarLlegada(Consulta consulta) {
         if(!systemCall) {
             systemCall = true;
+            
+             //Procesa la salida de la consulta que llega como parámetro
+            GeneradoraValoresAelatorios g = new GeneradoraValoresAelatorios();
+            double valor = g.generarValorDistribuicionNormal(1.0,0.01);
+            consulta.setTiempoActual(consulta.getTiempoActual() + valor);
+            consulta.setTiempoVida( consulta.getTiempoVida() + valor);
             consulta.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionProcesos);
         }
         else{
@@ -68,26 +74,18 @@ public class ModAdministracionProcesos extends Modulo {
     @Override
     public void procesarSalida(Consulta consultaSaliente) {
 
-        //Procesa la salida de la consulta que llega como parámetro
-        GeneradoraValoresAelatorios g = new GeneradoraValoresAelatorios();
-        double valor = g.generarValorDistribuicionNormal(1.0,0.01);
-        consultaSaliente.setTiempoActual(consultaSaliente.getTiempoActual() + valor);
-        consultaSaliente.setTiempoVida( consultaSaliente.getTiempoVida() + valor);
-
-        //Si nadie está esperando un sysCall, se libera el recurso
-        if(colaConsultas.isEmpty()){
-            systemCall = false;
-        }
-        else{//En caso contrario, se saca un elemento de la cola y se le asigna el siguiente campo
+        systemCall = false;
+        //Si hay alguien en cola se debe proveer del recurso
+        if(!colaConsultas.isEmpty()){
             Consulta c = colaConsultas.get(0);
             colaConsultas.remove(0);
             c.setTiempoCola(c.getTiempoCola() + (consultaSaliente.getTiempoActual() - c.getTiempoActual()));
             c.setTiempoVida(c.getTiempoVida() + c.getTiempoCola());
             c.setTiempoActual(c.getTiempoActual() + c.getTiempoCola());
-            c.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionProcesos);
-            agregarEvento(c);
+            procesarLlegada(c);//Así se procesará adecuadamente
+            agregarEvento(c); //Se agrega para que en un futuro se procese su salida
         }
-
+            
 
     }
 
@@ -96,7 +94,7 @@ public class ModAdministracionProcesos extends Modulo {
 
     }
     public int getTamActualCola(){
-        return this.tamFinalCola;
+        return colaConsultas.size();
     }
 }
 /*Hay que actualizar los estadísticos
