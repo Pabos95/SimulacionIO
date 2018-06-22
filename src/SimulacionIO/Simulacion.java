@@ -97,6 +97,7 @@ public class Simulacion{
                       break;
 
                   case llegadaModuloAdministracionProcesos:
+                      //Deberiamos hacer los casos cuando entra por primera y segunda vez
                       modAdminProcesos.procesarLlegada(consultaActual);
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloAdministracionProcesos){
                           agregarEvento(consultaActual);
@@ -112,11 +113,19 @@ public class Simulacion{
                           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloProcesamientoConsultas);
                           agregarEvento(consultaActual);
                       }
+                      else{
+                          modAdminClientes.restarConeccionesActivas(); //Así libera recursos para la próxima conección
+                      }
 
                       break;
 
                   case llegadaModuloProcesamientoConsultas:
                       modAdminConsultas.procesarLlegada(consultaActual);
+                      if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
+                          agregarEvento(consultaActual);
+                      }
+
+
                       break;
 
                   case salidaModuloProcesamientoConsultas:
