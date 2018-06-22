@@ -9,8 +9,7 @@ package Modulo;
 import SimulacionIO.Consulta;
 import SimulacionIO.Evento;
 import SimulacionIO.GeneradoraValoresAelatorios;
-
-import java.util.Iterator;
+import java.util.*;
 
 import static SimulacionIO.Simulacion.agregarEvento;
 
@@ -23,6 +22,7 @@ public class ModAdministracionProcesos extends Modulo {
     public ModAdministracionProcesos(){
         systemCall = false;
         gen = new GeneradoraValoresAelatorios();
+        colaConsultas = new ArrayList<>();
 
     }
     public void agregarConsulta (Consulta c){//Agrega consultas en orden FIFO, considerando los tiempos en los que arribaron
