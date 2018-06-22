@@ -1,4 +1,4 @@
-ppackage SimulacionIO;
+package SimulacionIO;
 import java.util.Random;
 
 public class GeneradoraValoresAelatorios{
