@@ -5,6 +5,7 @@
  */
 package Interfaz;
 import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author Pabos95
@@ -16,6 +17,7 @@ public class VentanaEjecucion extends javax.swing.JFrame {
      */
     public VentanaEjecucion() {
         initComponents();
+      
     }
 
     /**
@@ -195,7 +197,7 @@ public class VentanaEjecucion extends javax.swing.JFrame {
     public javax.swing.JTextField LongitudModAdministracionProcesos;
     public javax.swing.JTextField LongitudModAdministracionTransacciones;
     public javax.swing.JTextField NumConexionesDescartadas;
-    public javax.swing.JTextField TiempoEjecucion;
+    public static javax.swing.JTextField TiempoEjecucion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
