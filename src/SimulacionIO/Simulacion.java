@@ -35,6 +35,8 @@ public class Simulacion{
     /*Falta asignar los otros valores, p, m , t*/
     k = numConexionesConcurrentesMaximo;
     n = numProcesosEjecucionConsultas;
+    p = numProcesosEjecucionTransacciones;
+   t = segundosParaTimeOut;
     tiempoActual = 0.0;
     iteracionActual = 1;
     modoLento = slow;
