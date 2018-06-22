@@ -54,7 +54,8 @@ public class Simulacion{
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           tiempoActual = 0;
-          double num = gen.generarNumeroAelatorio();
+          double num;
+          num = gen.generarNumeroAelatorio();
           Consulta consultaActual = new Consulta(num, 0);
           List listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
