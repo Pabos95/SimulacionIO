@@ -4,7 +4,7 @@ import Modulo.*;
 import Estadisticos.*;
 import Interfaz.*;
 import javafx.util.Pair;
-
+import java.awt.Color;
 
 public class Simulacion{
   ModAdministracionClientes modAdminClientes;
@@ -29,7 +29,8 @@ public class Simulacion{
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, boolean slow){
-    tiempoMaximo = tMax;
+   
+      tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
     /*Falta asignar los otros valores, p, m , t*/
     k = numConexionesConcurrentesMaximo;
@@ -44,7 +45,9 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion() {
-
+      ventana = new VentanaEjecucion();
+     ventana.setVisible(true);
+     ventana.setLocationRelativeTo(null);
       while (iteracionActual <= cantidadCorridas) {
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
           modAdminConsultas = new ModAdministracionConsultas(n, m);
@@ -77,8 +80,7 @@ public class Simulacion{
                       else{//Procesar con los Bloques
                          //modAdminClientes.procesarLlegada(consultaActual, BLOQUES);
                       }
-
-
+                       ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
                       break;
 
                   case salidaModuloAdministracionClientes:
@@ -90,8 +92,7 @@ public class Simulacion{
                       else{//Enviar datos al usuario, cerrar la conexion
                           //procesarSalida(consultaActual) . . .
                       }
-
-
+                       ventana.setBackground(Color.BLACK); //Para prueba unicamente, si llega hasta la linea 95 la ventana se pone de fondo negro
 
                       break;
 
@@ -102,7 +103,7 @@ public class Simulacion{
                           agregarEvento(consultaActual);
                       }
                       //En caso contrario no se agrega nada porque entró a la cola
-
+                       ventana.setBackground(Color.blue); //Para prueba unicamente, si llega hasta la linea 107 la ventana se pone de fondo azul
                       break;
 
 
@@ -115,7 +116,7 @@ public class Simulacion{
                       else{
                           modAdminClientes.restarConeccionesActivas(); //Así libera recursos para la próxima conección
                       }
-
+                       ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
                       break;
 
                   case llegadaModuloProcesamientoConsultas:
@@ -125,6 +126,7 @@ public class Simulacion{
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
                           agregarEvento(consultaActual);
                       }
+                       ventana.setBackground(Color.ORANGE); //Para prueba unicamente, si llega hasta la linea 128 la ventana se pone de fondo negro
                       //modAdminConsultas.procesarLlegada(consultaActual); //Cuando viene del modulo de transacciones
 
 
@@ -176,6 +178,7 @@ public class Simulacion{
 
           //Actualizar estadísticas por cada corrida
       }
+      System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
 
 
