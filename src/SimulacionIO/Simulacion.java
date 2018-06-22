@@ -29,8 +29,8 @@ public class Simulacion{
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
-
-      tiempoMaximo = tMax;
+      
+    tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
     k = numConexionesConcurrentesMaximo;
     n = numProcesosProcesamientoConsultasConcurrentes;
@@ -40,6 +40,7 @@ public class Simulacion{
     tiempoActual = 0.0;
     iteracionActual = 1;
     modoLento = slow;
+    gen = new GeneradoraValoresAelatorios();
     System.out.println("funciono constructor de simulacion");
   }
   public Consulta generarConsulta(){
@@ -72,7 +73,8 @@ public class Simulacion{
 
           while (tiempoActual < tiempoMaximo) {
               System.out.println("Estamos ejecutando por el tiempo determinado");
-              consultaActual = generarConsulta(); //Creamos un nuevo arribo en cada iteracion
+              consultaActual = generarConsulta(); //Creamos un nuevo arribo en cada iteracion             
+              System.out.println("¡Se generó la consulta!");
               consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
               agregarEvento(consultaActual); //Se agrega a la lista
               System.out.println("check: se agregó evento dentro del ciclo");
@@ -236,3 +238,4 @@ public class Simulacion{
 
   }
 }
+
