@@ -11,7 +11,7 @@ public class GeneradoraValoresAelatorios{
     public double generarValorDistribuicionNormal(double media, double varianza){ //utiliza el método de convolución para generar un valor aelatorio con distribuición uniforme
         double nuevoValor = 0;
         for(int i = 0; i <= 11; i++){
-            nuevoValor += generarNumeroAelatorio();
+            nuevoValor += generarNumeroAleatorio();
         }
         nuevoValor -= 6;
         nuevoValor = media + (nuevoValor*Math.sqrt(varianza));
@@ -19,12 +19,12 @@ public class GeneradoraValoresAelatorios{
     }
     public double generarValorDistribuicionExponencial(double lambda){
         double nuevoValor = 0;
-        double r = generarNumeroAelatorio();
+        double r = generarNumeroAleatorio();
         nuevoValor = (-1/lambda)*(Math.log(1-r));       
         return nuevoValor;
     }
     public double generarValorDistribuicionUniforme(double a, double b){
-        double nuevoValor = a + (b - a)*generarNumeroAelatorio();
+        double nuevoValor = a + (b - a)*generarNumeroAleatorio();
         return nuevoValor;
     }
     public double generarNumeroAleatorio(){ //genera un número entre 0 y 1            

@@ -40,7 +40,7 @@ public class Simulacion{
     modoLento = slow;
   }
   public Consulta generarConsulta(){
-    double numAelatorio = gen.generarNumeroAelatorio();
+    double numAelatorio = gen.generarNumeroAleatorio();
     Consulta c = new Consulta(numAelatorio,tiempoActual);
     return c;
   }
