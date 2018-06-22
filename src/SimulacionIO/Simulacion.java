@@ -201,6 +201,7 @@ public class Simulacion{
 
 
   public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
+     ventana.actualizarTiempoActual(tiempoActual);
   }
 
   public static void agregarEvento(Consulta c) {
