@@ -16,38 +16,90 @@ public class ModAdministracionConsultas extends Modulo{
 		n = tam;
 		m = tam2;
         gen = new GeneradoraValoresAelatorios();
-        colaConsultas = new ArrayList<>(); //Esto podría ser new LinkedList<>() que tiene los mismos métodos que Priority Queue y disciplina FIFO
-        colaEjecutar = new ArrayList<>();
+        colaConsultas = new ArrayList<Consulta>(); //Esto podría ser new LinkedList<>() que tiene los mismos métodos que Priority Queue y disciplina FIFO
+        colaEjecutar = new ArrayList<Consulta>();
         timeSalida = 0;
         sentenciasEjecucion = 0;
         
     }
     
-    public void agregarConsulta (Consulta c){ //Se agrega la consulta a una cola con disciplina FIFO
-        colaConsultas.add(c);
+    public void agregarConsulta (Consulta c){ //Se agrega la consulta a una cola con disciplina FIFO,donde importa el orden de llegada
+        if(colaConsultas.isEmpty()){//En caso que la cola esté vacía
+            colaConsultas.add(c);
+        }
+        else{
+            Iterator it =  colaConsultas.iterator();
+            Consulta aux;
+            boolean campo = false;
+            int espacio = 0;
+            while(it.hasNext() && !campo){
+                aux = (Consulta)it.next();
+                if(aux.getTiempoActual() <= c.getTiempoActual()){
+                    ++espacio;
+                }
+                else{
+                    campo = true;
+                }
+            }
+            if(campo) {
+                colaConsultas.add(espacio, c);
+            }
+            else{
+                colaConsultas.add(++espacio,c);
+            }
+        }
         
+    }
+
+    public void agregarConsultaEjecutar(Consulta c){
+        if(colaEjecutar.isEmpty()){//En caso que la cola esté vacía
+            colaEjecutar.add(c);
+        }
+        else{
+            Iterator it =  colaEjecutar.iterator();
+            Consulta aux;
+            boolean campo = false;
+            int espacio = 0;
+            while(it.hasNext() && !campo){
+                aux = (Consulta)it.next();
+                if(aux.getTiempoActual() <= c.getTiempoActual()){
+                    ++espacio;
+                }
+                else{
+                    campo = true;
+                }
+            }
+            if(campo) {
+                colaEjecutar.add(espacio, c);
+            }
+            else{
+                colaEjecutar.add(++espacio,c);
+            }
+        }
     }
 
     @Override
     public void procesarLlegada(Consulta consulta) {
-        if(!consulta.getMuerto()){//Si está muerto significa que no fue admitido en el módulo pasado
-            if (consultasActuales < n){ //Hay al menos un proceso disponible para atender la consulta que viene
-                //Se procesan consultas haciendo etapas de validación
-                timeSalida = consulta.getTiempoActual() + 1/10; //Duración de validación Léxica
-                timeSalida = timeSalida + gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
-                timeSalida = timeSalida + gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
-                timeSalida = timeSalida + gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
-				//Optimización de consultas               
-                if ((consulta.getTConsulta().compareTo(Consulta.tipoConsulta.ddl) == 0) ||  //No son de read-only
-                        (consulta.getTConsulta().compareTo(Consulta.tipoConsulta.update) == 0)){  //No son de read-only                   
-                    timeSalida = timeSalida + 1/4;                   
-                } else { //Son read-only
-                    timeSalida = timeSalida + 0.1;
-                }                  
-            } else {
-                //Se agrega a la cola
-                agregarConsulta(consulta);
-            }                  
+        if (consultasActuales < n){ //Hay al menos un proceso disponible para atender la consulta que viene
+            //Se procesan consultas haciendo etapas de validación
+            timeSalida = consulta.getTiempoActual() + 1/10; //Duración de validación Léxica
+            timeSalida +=  gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
+            timeSalida +=  gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
+            timeSalida +=  gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
+            //Optimización de consultas
+            if ((consulta.getTConsulta().compareTo(Consulta.tipoConsulta.ddl) == 0) ||  //No son de read-only
+                (consulta.getTConsulta().compareTo(Consulta.tipoConsulta.update) == 0)){  //No son de read-only
+                timeSalida +=  1/4;
+            } else { //Son read-only
+                timeSalida +=  0.1;
+            }
+            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+            consulta.setTipoEvento(Evento.tipoEvento.salidaModuloProcesamientoConsultas);
+        }
+        else {
+            //Se agrega a la cola
+            agregarConsulta(consulta);
         }
         timeSalida = 0; //Se resetea
     }
@@ -74,11 +126,11 @@ public class ModAdministracionConsultas extends Modulo{
                     timeSalida = consulta.getTiempoActual() + (Math.pow(B, 2) * 0.001);
                 break;                   
             }
-            
-        } else {
-            colaEjecutar.add(consulta);
-        }
 
+        } else {
+            agregarConsultaEjecutar(consulta);
+        }
+        timeSalida  = 0;
     }
 	
     @Override
