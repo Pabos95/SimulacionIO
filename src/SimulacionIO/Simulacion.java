@@ -29,17 +29,18 @@ public class Simulacion{
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
-   
+
       tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
     k = numConexionesConcurrentesMaximo;
     n = numProcesosProcesamientoConsultasConcurrentes;
     p = numProcesosEjecucionTransacciones;
     m = numProcesosEjecucionConsultas;
-   t = segundosParaTimeOut;
+    t = segundosParaTimeOut;
     tiempoActual = 0.0;
     iteracionActual = 1;
     modoLento = slow;
+    System.out.println("funciono constructor de simulacion");
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAleatorio();
@@ -52,6 +53,7 @@ public class Simulacion{
      ventana.setLocationRelativeTo(null);
      double num = 0;
      Random a;
+      System.out.println("So far so good");
       while (iteracionActual <= cantidadCorridas) {
           a = new Random();
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
@@ -59,16 +61,21 @@ public class Simulacion{
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           tiempoActual = 0;
+          System.out.println("check: Instancia de modulos");
           num = a.nextDouble();
           Consulta consultaActual = new Consulta(num, 0);
-          List listaEventos = new ArrayList<Consulta>(200);
+          listaEventos = new ArrayList<>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
+          System.out.println("check: Primer evento");
           agregarEvento(consultaActual); //En tiempo 0
+          System.out.println("check: se agregó el primer evento");
 
           while (tiempoActual < tiempoMaximo) {
+              System.out.println("Estamos ejecutando por el tiempo determinado");
               consultaActual = generarConsulta(); //Creamos un nuevo arribo en cada iteracion
               consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
               agregarEvento(consultaActual); //Se agrega a la lista
+              System.out.println("check: se agregó evento dentro del ciclo");
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               tiempoActual = consultaActual.getTiempoActual();
@@ -204,6 +211,7 @@ public class Simulacion{
   }
 
   public static void agregarEvento(Consulta c) {
+      //listaEventos.add(c);
       if (listaEventos.isEmpty()) {//En caso que la cola esté vacía
           listaEventos.add(0,c);
       } else {
