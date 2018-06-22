@@ -42,7 +42,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         numMaxConexionesConcurrentes = new javax.swing.JTextField();
         numCorridas = new javax.swing.JTextField();
-        numProcesosEjecucionConsultas = new javax.swing.JTextField();
+        numProcesosConsultasConcurrentes = new javax.swing.JTextField();
         duracion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -51,7 +51,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         checkbox1 = new java.awt.Checkbox();
         jLabel8 = new javax.swing.JLabel();
         numProcesosEjecucionTransacciones = new javax.swing.JTextField();
-        NumCorridas6 = new javax.swing.JTextField();
+        numProcesosEjecucionConsultas = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         segundosTimeOut = new javax.swing.JTextField();
@@ -115,9 +115,9 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
 
-        numProcesosEjecucionConsultas.addActionListener(new java.awt.event.ActionListener() {
+        numProcesosConsultasConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numProcesosEjecucionConsultasActionPerformed(evt);
+                numProcesosConsultasConcurrentesActionPerformed(evt);
             }
         });
 
@@ -144,7 +144,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("c = numero de corridas a realizar\nd = tiempo maximoo de una corrida\nk = numero de conexiones concurrentes que puede manejar el sistema\nn = numero de procesos disponibles para el procesamiento de consultos\np = numero de procesos para la ejecucion de transacciones\nt = numero de segundos para el timeOut de una conexion\nm = numero de procesos disponibles para ejecutar consultas\n");
+        jTextArea1.setText("c = numero de corridas a realizar\nd = tiempo maximoo de una corrida\nk = numero de conexiones concurrentes que puede manejar el sistema\nn = numero de procesos disponibles para el procesamiento de consultas concurrentes\np = numero de procesos para la ejecucion de transacciones\nt = numero de segundos para el timeOut de una conexion\nm = numero de procesos disponibles para ejecutar consultas\n");
         jScrollPane1.setViewportView(jTextArea1);
 
         checkbox1.setLabel("ModoLento");
@@ -158,9 +158,9 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
 
-        NumCorridas6.addActionListener(new java.awt.event.ActionListener() {
+        numProcesosEjecucionConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumCorridas6ActionPerformed(evt);
+                numProcesosEjecucionConsultasActionPerformed(evt);
             }
         });
 
@@ -185,15 +185,12 @@ public class VentanaParametros extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(268, 268, 268)
                                 .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(numProcesosEjecucionConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(numProcesosConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
@@ -205,7 +202,7 @@ public class VentanaParametros extends javax.swing.JFrame {
                                         .addComponent(numCorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(numMaxConexionesConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(numProcesosEjecucionTransacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(NumCorridas6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numProcesosEjecucionConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(segundosTimeOut, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -215,8 +212,11 @@ public class VentanaParametros extends javax.swing.JFrame {
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(716, Short.MAX_VALUE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(824, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +224,7 @@ public class VentanaParametros extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numProcesosEjecucionConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numProcesosConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -244,7 +244,7 @@ public class VentanaParametros extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(NumCorridas6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numProcesosEjecucionConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,10 +253,10 @@ public class VentanaParametros extends javax.swing.JFrame {
                             .addComponent(segundosTimeOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(1, 1, 1))
         );
@@ -273,9 +273,9 @@ public class VentanaParametros extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(67, 67, 67)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         pack();
@@ -289,9 +289,9 @@ public class VentanaParametros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_duracionActionPerformed
 
-    private void numProcesosEjecucionConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosEjecucionConsultasActionPerformed
+    private void numProcesosConsultasConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosConsultasConcurrentesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numProcesosEjecucionConsultasActionPerformed
+    }//GEN-LAST:event_numProcesosConsultasConcurrentesActionPerformed
 
     private void numMaxConexionesConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numMaxConexionesConcurrentesActionPerformed
         // TODO add your handling code here:
@@ -300,17 +300,19 @@ public class VentanaParametros extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String text1 = numCorridas.getText();
         String text2 = duracion.getText();
-        String text3 = numProcesosEjecucionConsultas.getText();
+        String text3 = numProcesosConsultasConcurrentes.getText();
         String text4 = numMaxConexionesConcurrentes.getText();
         String text5 = numProcesosEjecucionTransacciones.getText();
         String text6 = segundosTimeOut.getText();
+        String text7 = numProcesosEjecucionConsultas.getText();
         
   try {
     int corridas = Integer.parseInt(text1);
     double tiempoSimulacion = Double.parseDouble(text2);
     int maxConexionesConcurrentes = Integer.parseInt(text4);
-    int procesosEjecucionConsultas = Integer.parseInt(text3);
+    int procesosEjecucionConsultasConcurrentes = Integer.parseInt(text3);
     int procesosEjecucionTransacciones = Integer.parseInt(text5);
+    int procesosEjecucionConsultas = Integer.parseInt(text7);
     int segundostimeOut = Integer.parseInt(text6);
     // or Integer.parseInt(text), etc.
     // OK, valid number.
@@ -322,6 +324,7 @@ public class VentanaParametros extends javax.swing.JFrame {
     numCorridas.setText(null);
     numMaxConexionesConcurrentes.setText(null);
     numProcesosEjecucionConsultas.setText(null);
+    numProcesosConsultasConcurrentes.setText(null);
     numProcesosEjecucionTransacciones.setText(null);
     segundosTimeOut.setText(null);
     this.setVisible(true);
@@ -329,12 +332,13 @@ public class VentanaParametros extends javax.swing.JFrame {
   int corridas = Integer.parseInt(text1);
       double tiempoSimulacion = Double.parseDouble(text2);
   int maxConexionesConcurrentes = Integer.parseInt(text4);
-  int procesosEjecucionConsultas = Integer.parseInt(text3);
+  int procesosConsultasConcurrentes = Integer.parseInt(text7);
     int procesosEjecucionTransacciones = Integer.parseInt(text5);
     int segundostimeOut = Integer.parseInt(text6);
+    int procesosEjecucionConsultas= Integer.parseInt(text3);
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos 
   this.setVisible(false);
-  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
+  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
   s.procesarSimulacion();
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -346,9 +350,9 @@ public class VentanaParametros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numProcesosEjecucionTransaccionesActionPerformed
 
-    private void NumCorridas6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumCorridas6ActionPerformed
+    private void numProcesosEjecucionConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosEjecucionConsultasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NumCorridas6ActionPerformed
+    }//GEN-LAST:event_numProcesosEjecucionConsultasActionPerformed
 
     private void segundosTimeOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundosTimeOutActionPerformed
         // TODO add your handling code here:
@@ -394,7 +398,6 @@ public class VentanaParametros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField NumCorridas6;
     private java.awt.Checkbox checkbox1;
     private javax.swing.JTextField duracion;
     private javax.swing.JButton jButton1;
@@ -414,6 +417,7 @@ public class VentanaParametros extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField numCorridas;
     private javax.swing.JTextField numMaxConexionesConcurrentes;
+    private javax.swing.JTextField numProcesosConsultasConcurrentes;
     private javax.swing.JTextField numProcesosEjecucionConsultas;
     private javax.swing.JTextField numProcesosEjecucionTransacciones;
     private javax.swing.JTextField segundosTimeOut;

@@ -28,14 +28,14 @@ public class Simulacion{
 
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
-  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, boolean slow){
+  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
    
       tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
-    /*Falta asignar los otros valores, p, m , t*/
     k = numConexionesConcurrentesMaximo;
-    n = numProcesosEjecucionConsultas;
+    n = numProcesosProcesamientoConsultasConcurrentes;
     p = numProcesosEjecucionTransacciones;
+    m = numProcesosEjecucionConsultas;
    t = segundosParaTimeOut;
     tiempoActual = 0.0;
     iteracionActual = 1;
@@ -47,7 +47,6 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion() {
-      Random a = New Random();
       ventana = new VentanaEjecucion();
      ventana.setVisible(true);
      ventana.setLocationRelativeTo(null);
@@ -58,7 +57,7 @@ public class Simulacion{
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           tiempoActual = 0;
-          num = a.nextDouble();
+          num = gen.generarNumeroAleatorio();
           Consulta consultaActual = new Consulta(num, 0);
           List listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);

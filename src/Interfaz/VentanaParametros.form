@@ -108,9 +108,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="175" max="32767" attributes="0"/>
+              <EmptySpace pref="174" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -126,17 +126,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="checkbox1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" min="-2" pref="688" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="checkbox1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
                                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="numProcesosEjecucionConsultas" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="numProcesosConsultasConcurrentes" min="-2" pref="73" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -149,7 +145,7 @@
                                           <Component id="numCorridas" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                                           <Component id="numMaxConexionesConcurrentes" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                                           <Component id="numProcesosEjecucionTransacciones" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="NumCorridas6" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <Component id="numProcesosEjecucionConsultas" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                                           <Component id="segundosTimeOut" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -168,8 +164,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="688" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="716" max="32767" attributes="0"/>
+                  <EmptySpace pref="824" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,7 +179,7 @@
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="numProcesosEjecucionConsultas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numProcesosConsultasConcurrentes" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -204,7 +204,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NumCorridas6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numProcesosEjecucionConsultas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -216,13 +216,12 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkbox1" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="checkbox1" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               </Group>
@@ -261,9 +260,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numCorridasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="numProcesosEjecucionConsultas">
+        <Component class="javax.swing.JTextField" name="numProcesosConsultasConcurrentes">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numProcesosEjecucionConsultasActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numProcesosConsultasConcurrentesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="duracion">
@@ -297,7 +296,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="c = numero de corridas a realizar&#xa;d = tiempo maximoo de una corrida&#xa;k = numero de conexiones concurrentes que puede manejar el sistema&#xa;n = numero de procesos disponibles para el procesamiento de consultos&#xa;p = numero de procesos para la ejecucion de transacciones&#xa;t = numero de segundos para el timeOut de una conexion&#xa;m = numero de procesos disponibles para ejecutar consultas&#xa;"/>
+                <Property name="text" type="java.lang.String" value="c = numero de corridas a realizar&#xa;d = tiempo maximoo de una corrida&#xa;k = numero de conexiones concurrentes que puede manejar el sistema&#xa;n = numero de procesos disponibles para el procesamiento de consultas concurrentes&#xa;p = numero de procesos para la ejecucion de transacciones&#xa;t = numero de segundos para el timeOut de una conexion&#xa;m = numero de procesos disponibles para ejecutar consultas&#xa;"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -320,9 +319,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numProcesosEjecucionTransaccionesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="NumCorridas6">
+        <Component class="javax.swing.JTextField" name="numProcesosEjecucionConsultas">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NumCorridas6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numProcesosEjecucionConsultasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
