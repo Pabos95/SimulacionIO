@@ -119,8 +119,8 @@ public class ModAdministracionConsultas extends Modulo{
             Consulta c = colaConsultas.get(0);
             colaConsultas.remove(0);
             c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
-            c.setTiempoVida(c.getTiempoVida() + c.getTiempoCola() );
-            c.setTiempoActual(c.getTiempoActual() + c.getTiempoCola());
+            c.setTiempoVida(c.getTiempoVida() + (consulta.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoActual(c.getTiempoActual() + (consulta.getTiempoActual() - c.getTiempoActual()));
             procesarLlegada(c);
             agregarEvento(c);
         }

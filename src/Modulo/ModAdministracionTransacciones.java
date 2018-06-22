@@ -34,6 +34,36 @@ public class ModAdministracionTransacciones extends Modulo {
               if(!flagDDL){//Si no se ha detectado ninguna sentencia DDL
                   //Se procesan consultas
                   ++consultasActuales;
+                  switch(consulta.getTConsulta()){
+                        case ddl:
+                            flagDDL = true;
+                            liberarModulo();
+                            timeSalida = consulta.getTiempoActual() + tiempoEjecucion; //Procesar ejecución de DDL
+                            //cargar bloques es Bloques * 1/10 pero DDL carga 0 bloques, es decir no hay que hacer ninguna operación
+
+                            break;
+                        case update:
+                            timeSalida = consulta.getTiempoActual() + (consultasActuales * 0.03);
+                            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+                            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                            //cargar bloques es Bloques * 1/10 pero UPDATE carga 0 bloques, es decir no hay que hacer ninguna operación
+                            break;
+                        case join:
+                            timeSalida = consulta.getTiempoActual() + (consultasActuales * 0.03);
+                            int bloques = (int)gen.generarValorDistribuicionUniforme(1.0, 64.0);
+                            timeSalida = timeSalida + 1/10 * bloques;
+                            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+                            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                            consulta.setBloques(bloques);
+                            break;
+                        case select:
+                            timeSalida = consulta.getTiempoActual() + tiempoEjecucion;
+                            timeSalida = timeSalida + 1/10 * 1; //bloques = 1
+                            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+                            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                            break;
+                    }      
+        
                   consulta.setTipoEvento(Evento.tipoEvento.salidaModuloTransacciones);
                   //Al llegar a salida se efectuan todas las operaciones necesarias
               }
@@ -48,38 +78,24 @@ public class ModAdministracionTransacciones extends Modulo {
 
     @Override
     public void procesarSalida(Consulta consulta) {
-         switch(consulta.getTConsulta()){
-            case ddl:
-                flagDDL = true;
-                timeSalida = consulta.getTiempoActual() + tiempoEjecucion; //Procesar ejecución de DDL
-                //cargar bloques es Bloques * 1/10 pero DDL carga 0 bloques, es decir no hay que hacer ninguna operación
-
-                break;
-            case update:
-                timeSalida = consulta.getTiempoActual() + (consultasActuales * 0.03);
-                //cargar bloques es Bloques * 1/10 pero UPDATE carga 0 bloques, es decir no hay que hacer ninguna operación
-                break;
-            case join:
-                timeSalida = consulta.getTiempoActual() + tiempoEjecucion;
-                timeSalida = timeSalida + 1/10 * (int)gen.generarValorDistribuicionUniforme(1.0, 64.0);
-                break;
-            case select:
-                timeSalida = consulta.getTiempoActual() + tiempoEjecucion;
-                timeSalida = timeSalida + 1/10 * 1;
-                break;
-        }      
-        
-        
+         
+        --consultasActuales;
         
         //Se pregunta por la cola
         if (colaSentencias.peek() != null){ //Hay más en la cola
-            Consulta c = colaSentencias.remove();           
+            Consulta c = colaSentencias.remove();  
+            c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoVida(c.getTiempoVida() +(consulta.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoActual(c.getTiempoActual() + (consulta.getTiempoActual() - c.getTiempoActual()));
             procesarLlegada(c);
         
         }
       
     }
-
+    
+    private void liberarModulo(){
+        
+    }
     private void recargarModulo(){
         
         
