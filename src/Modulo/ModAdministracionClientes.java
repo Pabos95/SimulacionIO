@@ -13,27 +13,20 @@ public class ModAdministracionClientes extends Modulo {
         k = tam;
     }
 
-    public void agregarConsulta(Consulta c) {//Este sería el primer paso en la simulación
+    @Override
+    public void procesarLlegada(Consulta consulta) {//Puede ser cuando entra por primera vez o justo antes  de salir
         if (consultasActuales < k) {
-            c.setMuerto(false);
+            consulta.setMuerto(false);
             ++k;
         } else {//Hemos llegado al máximo
             ++consultasRechazadas;
         }
-
     }
 
-    @Override
-    public void procesarLlegada(Consulta consulta) {//Puede ser cuando entra por primera vez o justo antes  de salir
-        if(consulta.getMuerto() && consulta.getTiempoVida() != 0) {//Si viene muerta significa que llegó al timeout
-            //matarconsulta y hacer cositas
-        }else if(0 == consulta.getTiempoVida()){//Si acaba de ingresar al DBMS, se agrega si hay campo o se mata si no hay
-            agregarConsulta(consulta);
-        }
-        else {//Cuando trae los bloques de datos
-            //Procesar los datos y no tiene timeout
-        }
-    }
+    //Falta de implementar
+    /*public void procesarLlegada(Consulta c, int bloques){
+
+    }*/
 
     @Override
     public void procesarSalida(Consulta consulta) {
