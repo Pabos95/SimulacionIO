@@ -27,8 +27,7 @@ public class ModAdministracionProcesos extends Modulo {
         gen = new GeneradoraValoresAelatorios();
 
     }
-    public void agregarConsulta (Consulta c){//Se usa para agregar consultas desde el controlador, según se requiere en particular por cada módulo
-        //En ese lugar, se preguntarán las condiciones: colaVacia, mod Ocupado, timeOut....
+    public void agregarConsulta (Consulta c){//Agrega consultas en orden FIFO, considerando los tiempos en los que arribaron
 
         if(colaConsultas.isEmpty()){//En caso que la cola esté vacía
             colaConsultas.add(c);
