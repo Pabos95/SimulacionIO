@@ -7,6 +7,7 @@ package Modulo;
 
 import SimulacionIO.*;
 import SimulacionIO.Consulta;
+import static SimulacionIO.Simulacion.agregarEvento;
 import java.util.PriorityQueue;
 
 public class ModAdministracionTransacciones extends Modulo {  
@@ -88,6 +89,7 @@ public class ModAdministracionTransacciones extends Modulo {
             c.setTiempoVida(c.getTiempoVida() +(consulta.getTiempoActual() - c.getTiempoActual()));
             c.setTiempoActual(c.getTiempoActual() + (consulta.getTiempoActual() - c.getTiempoActual()));
             procesarLlegada(c);
+            agregarEvento(c);
         
         }
       

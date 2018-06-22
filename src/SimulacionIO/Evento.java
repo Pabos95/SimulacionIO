@@ -14,7 +14,6 @@ public class Evento {
     }
     public enum tipoEvento{
         llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,
-        llegadaModuloAdministracionConexiones, salidaModuloAdministracionConexiones,
         llegadaModuloProcesamientoConsultas, salidaModuloProcesamientoConsultas,
         llegadaModuloAdministracionProcesos,salidaModuloAdministracionProcesos,
         llegadaModuloTransacciones, salidaModuloTransacciones

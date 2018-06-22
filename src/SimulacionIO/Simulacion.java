@@ -8,7 +8,6 @@ import javafx.util.Pair;
 
 public class Simulacion{
   ModAdministracionClientes modAdminClientes;
-  ModAdministracionConexiones modAdminConexiones;
   ModAdministracionConsultas modAdminConsultas;
   ModAdministracionProcesos modAdminProcesos;
   ModAdministracionTransacciones modAdminTransacciones;
@@ -48,7 +47,6 @@ public class Simulacion{
 
       while (iteracionActual <= cantidadCorridas) {
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
-          modAdminConexiones = new ModAdministracionConexiones();
           modAdminConsultas = new ModAdministracionConsultas(n, m);
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
@@ -162,15 +160,6 @@ public class Simulacion{
 
                   case salidaModuloTransacciones:
                       modAdminTransacciones.procesarSalida(consultaActual);
-                      break;
-
-
-                  case llegadaModuloAdministracionConexiones:
-                      modAdminConexiones.procesarLlegada(consultaActual);
-                      break;
-
-                  case salidaModuloAdministracionConexiones:
-                      modAdminConexiones.procesarSalida(consultaActual);
                       break;
 
               }
