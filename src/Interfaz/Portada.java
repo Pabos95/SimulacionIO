@@ -9,6 +9,7 @@
  * @author Pabos95
  */
 package Interfaz;
+import SimulacionIO.*;
 public class Portada extends javax.swing.JFrame {
     VentanaParametros vp;
     /**
@@ -129,14 +130,16 @@ public class Portada extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Portada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold>*/
+
  Portada p = new Portada();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+           public void run() {
+                
                 p.setVisible(true);
             }
-        });
+       });
     }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables

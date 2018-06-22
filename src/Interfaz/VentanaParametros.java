@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package Interfaz;
-
+import java.text.NumberFormat;
 import javax.swing.*;
 import SimulacionIO.*;
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author Pabos95
@@ -301,13 +302,14 @@ public class VentanaParametros extends javax.swing.JFrame {
         
   try {
     int corridas = Integer.parseInt(text1);
-    int tiempoSimulacion = Integer.parseInt(text2);
+    double tiempoSimulacion = Double.parseDouble(text2);
     int maxConexionesConcurrentes = Integer.parseInt(text4);
     int procesosEjecucionConsultas = Integer.parseInt(text3);
     int procesosEjecucionTransacciones = Integer.parseInt(text5);
     int segundostimeOut = Integer.parseInt(text6);
     // or Integer.parseInt(text), etc.
     // OK, valid number.
+    
   } catch (NumberFormatException nfe) {
     // Muestra un mensaje de error y reinicia el programa
     this.setVisible(false); 
@@ -317,15 +319,18 @@ public class VentanaParametros extends javax.swing.JFrame {
     numProcesosEjecucionConsultas.setText(null);
     numProcesosEjecucionTransacciones.setText(null);
     segundosTimeOut.setText(null);
+    this.setVisible(true);
   }
   int corridas = Integer.parseInt(text1);
-  int tiempoSimulacion = Integer.parseInt(text2);
+      double tiempoSimulacion = Double.parseDouble(text2);
   int maxConexionesConcurrentes = Integer.parseInt(text4);
   int procesosEjecucionConsultas = Integer.parseInt(text3);
     int procesosEjecucionTransacciones = Integer.parseInt(text5);
     int segundostimeOut = Integer.parseInt(text6);
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos 
+  this.setVisible(false);
   s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
+  s.procesarSimulacion();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

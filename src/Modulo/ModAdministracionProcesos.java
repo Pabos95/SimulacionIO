@@ -96,6 +96,9 @@ public class ModAdministracionProcesos extends Modulo {
     public int getTamActualCola(){
         return colaConsultas.size();
     }
+    public void restarConeccionesActivas(){
+        --consultasActuales;
+    }
 }
 /*Hay que actualizar los estadísticos
 * El timeout se trabaja en simulación, cuando está a punto de salir de un módulo*/
