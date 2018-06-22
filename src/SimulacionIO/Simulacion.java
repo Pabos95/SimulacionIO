@@ -221,7 +221,8 @@ public class Simulacion{
           Consulta aux;
           boolean campo = false;
           int espacio = 0;
-          while (it.hasNext() && !campo) {
+          while (it.hasNext()) {
+          //while (it.hasNext() && !campo) {
               aux = (Consulta) it.next();
               if (aux.getTiempoActual() <= c.getTiempoActual()) {
                   ++espacio;
@@ -229,13 +230,15 @@ public class Simulacion{
                   campo = true;
               }
           }
-          if (campo) {
+          listaEventos.add(espacio, c);
+          /*if (campo) {
               listaEventos.add(espacio, c);
           } else {
               listaEventos.add(++espacio, c);
-          }
+          }*/
       }
 
   }
 }
+
 
