@@ -70,29 +70,20 @@ public class Simulacion{
               tiempoActual = consultaActual.getTiempoActual();
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:
-                      if(consultaActual.getTiempoVida() == 0) {//Recien entra al DBMS
-                          modAdminClientes.procesarLlegada(consultaActual);
-                          if(!consultaActual.getMuerto()){//Si fue admitida
-                              consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
-                              agregarEvento(consultaActual);
-                          }
-
-                      }
-                      else{//Procesar con los Bloques
-                         //modAdminClientes.procesarLlegada(consultaActual, BLOQUES);
-                      }
+                        modAdminClientes.procesarLlegada(consultaActual);
+                        if(!consultaActual.getMuerto()){//Si fue admitida
+                            consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
+                            agregarEvento(consultaActual);
+                        }
+                        else{
+                            agregarEvento(consultaActual);
+                        }
                        ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
                       break;
 
                   case salidaModuloAdministracionClientes:
+                      
                       modAdminClientes.procesarSalida(consultaActual);
-                      if(consultaActual.getTiempoVida() == 0){
-                          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionProcesos);
-                          agregarEvento(consultaActual);
-                      }
-                      else{//Enviar datos al usuario, cerrar la conexion
-                          //procesarSalida(consultaActual) . . .
-                      }
                        ventana.setBackground(Color.BLACK); //Para prueba unicamente, si llega hasta la linea 95 la ventana se pone de fondo negro
 
                       break;
@@ -121,21 +112,19 @@ public class Simulacion{
                       break;
 
                   case llegadaModuloProcesamientoConsultas:
-                      //Deberiamos hacer los casos cuando entra por primera y segunda vez
+                      
 
                       modAdminConsultas.procesarLlegada(consultaActual); //Desde el modulo de procesos
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
                           agregarEvento(consultaActual);
                       }
                        ventana.setBackground(Color.ORANGE); //Para prueba unicamente, si llega hasta la linea 128 la ventana se pone de fondo negro
-                      //modAdminConsultas.procesarLlegada(consultaActual); //Cuando viene del modulo de transacciones
-
-
+                       
 
                       break;
 
                   case salidaModuloProcesamientoConsultas:
-                      //Deberiamos hacer los casos cuando sale por primera y segunda vez
+                      
                       modAdminConsultas.procesarSalida(consultaActual);//Antes de ir a transacciones y datos
                       if(Timeout(consultaActual)){
                             modAdminClientes.restarConeccionesActivas();
@@ -143,17 +132,6 @@ public class Simulacion{
                       else {
                             consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
                       }
-/*
-                      modAdminConsultas.procesarSalida(consultaActual);//Version dos, la segunda vez que sale del módoulo
-                      if(Timeout(consultaActual)){
-                          modAdminClientes.restarConeccionesActivas();
-                      }
-                      else {
-                          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
-                      }
-                      */
-
-
 
                       break;
 
@@ -168,10 +146,36 @@ public class Simulacion{
                             modAdminClientes.restarConeccionesActivas();
                       }
                         else {
-                            consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloProcesamientoConsultas);
+                            consultaActual.setTipoEvento(Evento.tipoEvento.llegada2ModuloProcesamientoConsultas);
                             agregarEvento(consultaActual);
                       }
                       break;
+                      
+                  case llegada2ModuloProcesamientoConsultas:
+                      modAdminConsultas.procesarLlegada2(consultaActual);
+                      if(consultaActual.getTipoEvento() == Evento.tipoEvento.salida2ModuloProcesamientoConsultas){
+                          agregarEvento(consultaActual);
+                      }
+                      //En caso contrario, la consulta fue agregada a la cola del módulo
+                      
+                      break;
+                      
+                      
+                  case salida2ModuloProcesamientoConsultas:
+                      modAdminConsultas.procesarSalida2(consultaActual);
+                      if(Timeout(consultaActual)){
+                          modAdminClientes.restarConeccionesActivas();
+                      }
+                      else{
+                          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
+                      }
+                      
+                      break;
+                      
+                      
+                      
+                      
+                  
 
               }
                 //Se podría sacar parte de la info guardada en cada modulo para presentarla al usuario

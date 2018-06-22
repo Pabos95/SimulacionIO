@@ -110,7 +110,7 @@ public class ModAdministracionConsultas extends Modulo{
             }
 
     }
-
+    
     @Override
     public void procesarSalida(Consulta consulta) {//Salida al entrar la primera vez a este módulo
                                                     //Viene del módulo adm de procesos
@@ -126,42 +126,55 @@ public class ModAdministracionConsultas extends Modulo{
         }
     }
 
-    public void procesarLlegada(Consulta consulta, double B) { //Cuando la llegada viene del modulo de Transacciones
+    public void procesarLlegada2(Consulta consulta) { //Cuando la llegada viene del modulo de Transacciones
         //Puede manejar m consultas en ejecución
         if (sentenciasEjecucion < m){
-            double timeSalida  = 0;
+            ++sentenciasEjecucion;
+            timeEjecucion  = 0;
             switch(consulta.getTConsulta()){
                 case ddl:                         
-                    timeEjecucion = consulta.getTiempoActual() + 0.5; //Procesar ejecución de DDL                                        
-                break;               
+                    timeEjecucion = consulta.getTiempoActual() + 0.5; //Procesar ejecución de DDL
+                break;      
+                
                 case update:
                     timeEjecucion = consulta.getTiempoActual() + 1;                    
-                break;               
+                break;  
+                
                 case join:
-                    timeEjecucion = consulta.getTiempoActual() + (Math.pow(B, 2) * 0.001); //Recordar que B^2 son milisegundos por lo que hay que pasarlos a segundos                
-                break;               
+                    timeEjecucion = consulta.getTiempoActual() + (Math.pow(consulta.getBloques(), 2) * 0.001); //Recordar que B^2 son milisegundos por lo que hay que pasarlos a segundos                
+                break;   
+                
                 case select:
-                    timeEjecucion = consulta.getTiempoActual() + (Math.pow(B, 2) * 0.001);
-                break;                   
+                    timeEjecucion = consulta.getTiempoActual() + (Math.pow(consulta.getBloques(), 2) * 0.001);
+                break;   
+                
             }
-
+            consulta.setTiempoVida(consulta.getTiempoVida() + timeEjecucion);
+            consulta.setTiempoActual(consulta.getTiempoActual() + timeEjecucion);
+            consulta.setTipoEvento(Evento.tipoEvento.salida2ModuloProcesamientoConsultas);
         } 
         else {
             agregarConsultaEjecutar(consulta);
         }
-        timeEjecucion  = 0;
+       
     }
 
 
-    public void procesarSalida(Consulta c, double b){
-
+    public void procesarSalida2(Consulta consulta){//Salir por segunda vez de este módulo
+        --sentenciasEjecucion;
+        
+        if(!colaEjecutar.isEmpty()){
+            Consulta c = colaEjecutar.get(0);
+            colaEjecutar.remove(0);
+            c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoVida(c.getTiempoVida() + (consulta.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoActual(consulta.getTiempoActual());
+            procesarLlegada2(c);
+            agregarEvento(c);
+        }
+        
     }
-
-
-    @Override
-    public void procesarTimeOut(Consulta consulta) {
-
-    }
+    
     public int getTamActualCola(){
         return this.tamActualCola;
     }

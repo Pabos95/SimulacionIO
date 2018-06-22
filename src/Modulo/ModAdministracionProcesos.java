@@ -89,10 +89,6 @@ public class ModAdministracionProcesos extends Modulo {
 
     }
 
-    @Override
-    public void procesarTimeOut(Consulta consulta) {
-
-    }
     public int getTamActualCola(){
         return colaConsultas.size();
     }

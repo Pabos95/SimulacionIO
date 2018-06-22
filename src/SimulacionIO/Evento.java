@@ -16,8 +16,9 @@ public class Evento {
         llegadaModuloAdministracionClientes,salidaModuloAdministracionClientes,
         llegadaModuloProcesamientoConsultas, salidaModuloProcesamientoConsultas,
         llegadaModuloAdministracionProcesos,salidaModuloAdministracionProcesos,
-        llegadaModuloTransacciones, salidaModuloTransacciones
-        ,timeOut
+        llegadaModuloTransacciones, salidaModuloTransacciones,
+        llegada2ModuloProcesamientoConsultas, salida2ModuloProcesamientoConsultas
+        
     }
 
     public void setTipoEvento(tipoEvento type){
