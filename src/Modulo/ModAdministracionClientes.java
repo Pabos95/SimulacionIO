@@ -17,8 +17,9 @@ public class ModAdministracionClientes extends Modulo {
     public void procesarLlegada(Consulta consulta) {//Puede ser cuando entra por primera vez o justo antes  de salir
         if (consultasActuales < k) {
             consulta.setMuerto(false);
-            ++k;
-        } else {//Hemos llegado al máximo
+            ++consultasActuales;
+        }
+        else {//Hemos llegado al máximo
             ++consultasRechazadas;
         }
     }
@@ -41,5 +42,9 @@ public class ModAdministracionClientes extends Modulo {
     @Override
     public void procesarTimeOut(Consulta consulta) {
 
+    }
+
+    public void restarConeccionesActivas(){
+        --consultasActuales;
     }
 }

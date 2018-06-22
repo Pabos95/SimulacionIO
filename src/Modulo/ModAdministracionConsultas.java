@@ -81,32 +81,43 @@ public class ModAdministracionConsultas extends Modulo{
     @Override
     public void procesarLlegada(Consulta consulta) {
         if (consultasActuales < n){ //Hay al menos un proceso disponible para atender la consulta que viene
-            //Se procesan consultas haciendo etapas de validación
-            timeSalida = consulta.getTiempoActual() + 1/10; //Duración de validación Léxica
-            timeSalida +=  gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
-            timeSalida +=  gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
-            timeSalida +=  gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
-            //Optimización de consultas
-            if ((consulta.getTConsulta().compareTo(Consulta.tipoConsulta.ddl) == 0) ||  //No son de read-only
-                (consulta.getTConsulta().compareTo(Consulta.tipoConsulta.update) == 0)){  //No son de read-only
-                timeSalida +=  1/4;
-            } else { //Son read-only
-                timeSalida +=  0.1;
-            }
-            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
-            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+            ++consultasActuales;
             consulta.setTipoEvento(Evento.tipoEvento.salidaModuloProcesamientoConsultas);
         }
         else {
             //Se agrega a la cola
             agregarConsulta(consulta);
         }
-        timeSalida = 0; //Se resetea
+
     }
 
     @Override
-    public void procesarSalida(Consulta consulta) {
+    public void procesarSalida(Consulta consulta) {//Salida al entrar la primera vez a este módulo
+                                                    //Viene del módulo adm de procesos
 
+        //Se procesan consultas haciendo etapas de validación
+        timeSalida = 0; //Se resetea
+        timeSalida = consulta.getTiempoActual() + 1/10; //Duración de validación Léxica
+        timeSalida +=  gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
+        timeSalida +=  gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
+        timeSalida +=  gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
+        //Optimización de consultas
+        if ((consulta.getTConsulta().compareTo(Consulta.tipoConsulta.ddl) == 0) ||  //No son de read-only
+                (consulta.getTConsulta().compareTo(Consulta.tipoConsulta.update) == 0)){  //No son de read-only
+            timeSalida +=  1/4;
+        } else { //Son read-only
+            timeSalida +=  0.1;
+        }
+        consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+        consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+        consulta.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
+
+        if(colaConsultas.isEmpty()){
+            --consultasActuales;
+        }
+        else{
+
+        }
     }
 
     public void procesarLlegada(Consulta consulta, double B) { //Cuando la llegada viene del modulo de Transacciones
