@@ -97,7 +97,7 @@ public class Simulacion{
                       break;
 
                   case llegadaModuloAdministracionProcesos:
-                      //Deberiamos hacer los casos cuando entra por primera y segunda vez
+
                       modAdminProcesos.procesarLlegada(consultaActual);
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloAdministracionProcesos){
                           agregarEvento(consultaActual);
@@ -120,16 +120,39 @@ public class Simulacion{
                       break;
 
                   case llegadaModuloProcesamientoConsultas:
-                      modAdminConsultas.procesarLlegada(consultaActual);
+                      //Deberiamos hacer los casos cuando entra por primera y segunda vez
+
+                      modAdminConsultas.procesarLlegada(consultaActual); //Desde el modulo de procesos
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
                           agregarEvento(consultaActual);
                       }
+                      //modAdminConsultas.procesarLlegada(consultaActual); //Cuando viene del modulo de transacciones
+
 
 
                       break;
 
                   case salidaModuloProcesamientoConsultas:
-                      modAdminConsultas.procesarSalida(consultaActual);
+                      //Deberiamos hacer los casos cuando sale por primera y segunda vez
+                      modAdminConsultas.procesarSalida(consultaActual);//Antes de ir a transacciones y datos
+                      if(Timeout(consultaActual)){
+                            modAdminClientes.restarConeccionesActivas();
+                      }
+                      else {
+                            consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
+                      }
+/*
+                      modAdminConsultas.procesarSalida(consultaActual);//Version dos, la segunda vez que sale del módoulo
+                      if(Timeout(consultaActual)){
+                          modAdminClientes.restarConeccionesActivas();
+                      }
+                      else {
+                          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
+                      }
+                      */
+
+
+
                       break;
 
                   case llegadaModuloTransacciones:

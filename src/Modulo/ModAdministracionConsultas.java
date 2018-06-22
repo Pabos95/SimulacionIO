@@ -2,6 +2,10 @@ package Modulo;
 import java.util.*;
 import SimulacionIO.*;
 import Estadisticos.*;
+
+import static SimulacionIO.Simulacion.agregarEvento;
+
+
 public class ModAdministracionConsultas extends Modulo{
     int n;
     int m;
@@ -111,19 +115,25 @@ public class ModAdministracionConsultas extends Modulo{
         consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
         consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
         consulta.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
+        --consultasActuales;
 
-        if(colaConsultas.isEmpty()){
-            --consultasActuales;
-        }
-        else{
-
+        if(!colaConsultas.isEmpty()){
+            Consulta c = colaConsultas.get(0);
+            colaConsultas.remove(0);
+            ++consultasActuales;
+            c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoVida(c.getTiempoVida() + c.getTiempoCola() );
+            c.setTiempoActual(c.getTiempoActual() + c.getTiempoCola());
+            c.setTipoEvento(Evento.tipoEvento.salidaModuloProcesamientoConsultas);
+            agregarEvento(c);
         }
     }
 
     public void procesarLlegada(Consulta consulta, double B) { //Cuando la llegada viene del modulo de Transacciones
         //Puede manejar m consultas en ejecución
         if (sentenciasEjecucion < m){
-            switch(consulta.getTConsulta()){           
+            timeSalida  = 0;
+            switch(consulta.getTConsulta()){
                 case ddl:                         
                     timeSalida = consulta.getTiempoActual() + 0.5; //Procesar ejecución de DDL                                        
                 break;               
@@ -141,9 +151,15 @@ public class ModAdministracionConsultas extends Modulo{
         } else {
             agregarConsultaEjecutar(consulta);
         }
-        timeSalida  = 0;
+
     }
-	
+
+
+    public void procesarSalida(Consulta c, double b){
+
+    }
+
+
     @Override
     public void procesarTimeOut(Consulta consulta) {
 

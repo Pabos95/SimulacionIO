@@ -13,13 +13,11 @@ import SimulacionIO.GeneradoraValoresAelatorios;
 import java.util.Iterator;
 
 import static SimulacionIO.Simulacion.agregarEvento;
-import static SimulacionIO.Simulacion.listaEventos;
+
 
 public class ModAdministracionProcesos extends Modulo {
 
     boolean systemCall;
-    double timeWhereGonnaBeFree;
-    double n;
     GeneradoraValoresAelatorios gen;
 
     public ModAdministracionProcesos(){
@@ -85,6 +83,7 @@ public class ModAdministracionProcesos extends Modulo {
             colaConsultas.remove(0);
             c.setTiempoCola(c.getTiempoCola() + (consultaSaliente.getTiempoActual() - c.getTiempoActual()));
             c.setTiempoVida(c.getTiempoVida() + c.getTiempoCola());
+            c.setTiempoActual(c.getTiempoActual() + c.getTiempoCola());
             c.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionProcesos);
             agregarEvento(c);
         }
