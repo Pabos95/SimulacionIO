@@ -23,4 +23,7 @@ public class ModAdministracionConexiones extends Modulo{
     public void procesarTimeOut(Consulta consulta) {
 
     }
+    public int getTamActualCola(){
+        return this.tamActualCola;
+    }
 }

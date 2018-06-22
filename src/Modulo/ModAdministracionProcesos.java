@@ -96,6 +96,9 @@ public class ModAdministracionProcesos extends Modulo {
     public void procesarTimeOut(Consulta consulta) {
 
     }
+    public int getTamActualCola(){
+        return this.tamFinalCola;
+    }
 }
 /*Hay que actualizar los estadísticos
 * El timeout se trabaja en simulación, cuando está a punto de salir de un módulo*/

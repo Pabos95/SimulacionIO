@@ -42,4 +42,7 @@ public class ModAdministracionClientes extends Modulo {
     public void procesarTimeOut(Consulta consulta) {
 
     }
+    public int getTamActualCola(){
+        return tamActualCola;
+    }
 }

@@ -158,7 +158,9 @@ public class Simulacion{
   }
 
 
-  public void actualizarVentena(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect.
+  public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
+      
+      
   }
 
   public static void agregarEvento(Consulta c) {
