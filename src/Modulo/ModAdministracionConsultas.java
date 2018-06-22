@@ -132,7 +132,7 @@ public class ModAdministracionConsultas extends Modulo{
     public void procesarLlegada(Consulta consulta, double B) { //Cuando la llegada viene del modulo de Transacciones
         //Puede manejar m consultas en ejecución
         if (sentenciasEjecucion < m){
-            timeSalida  = 0;
+            double timeSalida  = 0;
             switch(consulta.getTConsulta()){
                 case ddl:                         
                     timeEjecucion = consulta.getTiempoActual() + 0.5; //Procesar ejecución de DDL                                        
@@ -148,14 +148,11 @@ public class ModAdministracionConsultas extends Modulo{
                 break;                   
             }
 
-        } else {
+        } 
+        else {
             agregarConsultaEjecutar(consulta);
         }
-<<<<<<< HEAD
-
-=======
         timeEjecucion  = 0;
->>>>>>> 287d892fbf7f548ebd23f1cfe43cee53b9318d5e
     }
 
 

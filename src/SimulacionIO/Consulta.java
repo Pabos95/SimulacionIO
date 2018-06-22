@@ -6,6 +6,7 @@ public class Consulta{
     double tiempoCola;
     double tiempoVida;
     double tiempoActual;
+    int bloques;
     tipoConsulta tConsulta;
     public enum tipoConsulta{
         select, update, join, ddl;
@@ -17,15 +18,18 @@ public class Consulta{
          muerto = true; //Cuando entra al primer módulo, si se le admite se cambia
          if(numAelatorio >= 0.0 && numAelatorio <= 0.29){
              tConsulta = tipoConsulta.select;
+             bloques = 1;
          }
          else if(numAelatorio >= 0.30 && numAelatorio <= 0.54){
              tConsulta = tipoConsulta.update;
+             bloques = 0;
          }
          else if(numAelatorio >= 0.55 && numAelatorio <= 0.89){
              tConsulta = tipoConsulta.join;
          }
          else if(numAelatorio >= 0.90 && numAelatorio <= 0.99){
              tConsulta = tipoConsulta.ddl;
+             bloques = 0;
          }
          tiempoVida = 0;
          tiempoCola = 0;
