@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Interfaz;
-
+import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author Pabos95
@@ -16,6 +17,7 @@ public class VentanaEjecucion extends javax.swing.JFrame {
      */
     public VentanaEjecucion() {
         initComponents();
+      
     }
 
     /**
@@ -27,7 +29,6 @@ public class VentanaEjecucion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Fondo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,8 +47,6 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(482, 482));
 
-        Fondo.setPreferredSize(new java.awt.Dimension(482, 482));
-
         jLabel1.setText("Tiempo de ejecucion:");
 
         jLabel2.setText("Longitud cola modulo administracion consultas: ");
@@ -63,6 +62,11 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         jLabel7.setText("Conexiones descartadas por el servidor");
 
         TiempoEjecucion.setEditable(false);
+        TiempoEjecucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TiempoEjecucionActionPerformed(evt);
+            }
+        });
 
         LongitudModAdministracionConsultas.setEditable(false);
 
@@ -102,56 +106,55 @@ public class VentanaEjecucion extends javax.swing.JFrame {
                         .add(LongitudModAdministracionTransacciones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(LongitudModAdministracionProcesos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(NumConexionesDescartadas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(Fondo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(Fondo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 925, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(layout.createSequentialGroup()
-                                        .add(69, 69, 69)
-                                        .add(jLabel1)
-                                        .add(1, 1, 1))
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .add(TiempoEjecucion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                    .add(jLabel3)
-                                    .add(LongitudModAdministracionClientes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(18, 18, 18)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                    .add(jLabel2)
-                                    .add(LongitudModAdministracionConsultas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(18, 18, 18)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                    .add(jLabel4)
-                                    .add(LongitudModAdministracionConexiones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(18, 18, 18)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                    .add(jLabel5)
-                                    .add(LongitudModAdministracionTransacciones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(18, 18, 18)
-                                .add(jLabel6))
-                            .add(LongitudModAdministracionProcesos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(69, 69, 69)
+                                .add(jLabel1)
+                                .add(1, 1, 1))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .add(TiempoEjecucion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel7)
-                            .add(NumConexionesDescartadas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .add(0, 0, Short.MAX_VALUE))
+                            .add(jLabel3)
+                            .add(LongitudModAdministracionClientes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel2)
+                            .add(LongitudModAdministracionConsultas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel4)
+                            .add(LongitudModAdministracionConexiones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel5)
+                            .add(LongitudModAdministracionTransacciones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18)
+                        .add(jLabel6))
+                    .add(LongitudModAdministracionProcesos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel7)
+                    .add(NumConexionesDescartadas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(0, 664, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TiempoEjecucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TiempoEjecucionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TiempoEjecucionActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -188,14 +191,13 @@ public class VentanaEjecucion extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Fondo;
-    private javax.swing.JTextField LongitudModAdministracionClientes;
-    private javax.swing.JTextField LongitudModAdministracionConexiones;
-    private javax.swing.JTextField LongitudModAdministracionConsultas;
-    private javax.swing.JTextField LongitudModAdministracionProcesos;
-    private javax.swing.JTextField LongitudModAdministracionTransacciones;
-    private javax.swing.JTextField NumConexionesDescartadas;
-    private javax.swing.JTextField TiempoEjecucion;
+    public javax.swing.JTextField LongitudModAdministracionClientes;
+    public javax.swing.JTextField LongitudModAdministracionConexiones;
+    public javax.swing.JTextField LongitudModAdministracionConsultas;
+    public javax.swing.JTextField LongitudModAdministracionProcesos;
+    public javax.swing.JTextField LongitudModAdministracionTransacciones;
+    public javax.swing.JTextField NumConexionesDescartadas;
+    public static javax.swing.JTextField TiempoEjecucion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

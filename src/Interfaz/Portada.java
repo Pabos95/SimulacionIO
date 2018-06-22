@@ -78,11 +78,8 @@ public class Portada extends javax.swing.JFrame {
         });
         getContentPane().add(Salir);
         Salir.setBounds(270, 300, 80, 23);
-
-        jLabel2.setMinimumSize(new java.awt.Dimension(300, 400));
-        jLabel2.setPreferredSize(new java.awt.Dimension(522, 402));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -40, 520, 420);
+        jLabel2.setBounds(180, 180, 34, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

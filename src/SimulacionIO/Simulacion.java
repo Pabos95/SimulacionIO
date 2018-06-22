@@ -5,6 +5,7 @@ import Estadisticos.*;
 import Interfaz.*;
 import javafx.util.Pair;
 
+
 public class Simulacion{
   ModAdministracionClientes modAdminClientes;
   ModAdministracionConexiones modAdminConexiones;
@@ -190,7 +191,7 @@ public class Simulacion{
   }
 
 
-  public void actualizarVentena(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect.
+  public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
   }
 
   public static void agregarEvento(Consulta c) {
