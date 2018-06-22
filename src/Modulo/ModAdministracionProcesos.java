@@ -7,9 +7,13 @@ package Modulo;
 
 
 import SimulacionIO.Consulta;
+import SimulacionIO.Evento;
 import SimulacionIO.GeneradoraValoresAelatorios;
 
 import java.util.Iterator;
+
+import static SimulacionIO.Simulacion.agregarEvento;
+import static SimulacionIO.Simulacion.listaEventos;
 
 public class ModAdministracionProcesos extends Modulo {
 
@@ -52,22 +56,41 @@ public class ModAdministracionProcesos extends Modulo {
         }
 
     }
-    @Override
+    
+    
     public void procesarLlegada(Consulta consulta) {
         if(!systemCall) {
             systemCall = true;
+            consulta.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionProcesos);
         }
         else{
             agregarConsulta(consulta);
         }
-
     }
 
     @Override
-    public void procesarSalida(Consulta consulta) {
-        //Preguntar por el timeWhereGonnaBeFree
-        //Preguntar por la cola
-        //Pensar que hacer con la consulta que va a salir como parámetro
+    public void procesarSalida(Consulta consultaSaliente) {
+
+        //Procesa la salida de la consulta que llega como parámetro
+        GeneradoraValoresAelatorios g = new GeneradoraValoresAelatorios();
+        double valor = g.generarValorDistribuicionNormal(1.0,0.01);
+        consultaSaliente.setTiempoActual(consultaSaliente.getTiempoActual() + valor);
+        consultaSaliente.setTiempoVida( consultaSaliente.getTiempoVida() + valor);
+
+        //Si nadie está esperando un sysCall, se libera el recurso
+        if(colaConsultas.isEmpty()){
+            systemCall = false;
+        }
+        else{//En caso contrario, se saca un elemento de la cola y se le asigna el siguiente campo
+            Consulta c = colaConsultas.get(0);
+            colaConsultas.remove(0);
+            c.setTiempoCola(c.getTiempoCola() + (consultaSaliente.getTiempoActual() - c.getTiempoActual()));
+            c.setTiempoVida(c.getTiempoVida() + c.getTiempoCola());
+            c.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionProcesos);
+            agregarEvento(c);
+        }
+
+
     }
 
     @Override
@@ -75,3 +98,5 @@ public class ModAdministracionProcesos extends Modulo {
 
     }
 }
+/*Hay que actualizar los estadísticos
+* El timeout se trabaja en simulación, cuando está a punto de salir de un módulo*/

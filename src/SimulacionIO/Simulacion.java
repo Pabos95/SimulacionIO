@@ -19,11 +19,13 @@ public class Simulacion{
   int p; //numero de procesos disponibles para la ejecución de transacciones
   int m; //numero de procesos disponibles para la ejecución de consultas
   int t; //cantidad de segundos para el timeout de las conexiones
+  double tiempoActual;
   boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
-  List <Evento> listaEventos;
+
+  public static List<Consulta> listaEventos; //Contiene la lista de los eventos por ejecutar
   ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
   ArrayList <EstadisticosModulo> estadisticasModulo;
-  double tiempoActual;
+
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosEjecucionTransacciones, int numProcesosEjecucionConsultas, int segundosParaTimeOut, boolean slow){
@@ -49,36 +51,45 @@ public class Simulacion{
           modAdminConsultas = new ModAdministracionConsultas(n, m);
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
+          tiempoActual = 0;
           double num = gen.generarNumeroAelatorio();
           Consulta consultaActual = new Consulta(num, 0);
-          Evento e = new Evento();
           List listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
-          listaEventos.add(consultaActual);//El evento por default es entrada al modulo adm clientes y la consulta si es aleatoria
+          agregarEvento(consultaActual); //En tiempo 0
+
           while (tiempoActual < tiempoMaximo) {
-              consultaActual = generarConsulta();
-              consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
+              consultaActual = generarConsulta(); //Creamos un nuevo arribo en cada iteracion
+              consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
+              agregarEvento(consultaActual); //Se agrega a la lista
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
+              tiempoActual = consultaActual.getTiempoActual();
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:
-                      modAdminClientes.procesarLlegada(consultaActual);
-                      if(!consultaActual.getMuerto()){//Si fue admitida
-                          consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
-                          listaEventos.add(consultaActual);//Hay que implementar esto para que agregue por orden de prioridad
-                                                            //Primero por tiempo y luego por el tipo de consulta, por ahora agrega al final
+                      if(consultaActual.getTiempoVida() == 0) {//Recien entra al DBMS
+                          modAdminClientes.procesarLlegada(consultaActual);
+                          if(!consultaActual.getMuerto()){//Si fue admitida
+                              consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
+                              agregarEvento(consultaActual);
+                          }
+
                       }
+                      else{//Procesar con los Bloques
+                         //modAdminClientes.procesarLlegada(consultaActual, BLOQUES);
+                      }
+
+
                       break;
 
                   case salidaModuloAdministracionClientes:
                       modAdminClientes.procesarSalida(consultaActual);
                       if(consultaActual.getTiempoVida() == 0){
                           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionProcesos);
-                          listaEventos.add(consultaActual);//OJO QUE NO AGREGA POR EL TIEMPO, SOLO AL FINAL A LO CERDO
-                          //agregarElemento(consultaActual)*/
+                          agregarEvento(consultaActual);
                       }
                       else{//Enviar datos al usuario, cerrar la conexion
-
+                          //procesarSalida(consultaActual) . . .
                       }
 
 
@@ -87,13 +98,20 @@ public class Simulacion{
 
                   case llegadaModuloAdministracionProcesos:
                       modAdminProcesos.procesarLlegada(consultaActual);
-
+                      if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloAdministracionProcesos){
+                          agregarEvento(consultaActual);
+                      }
+                      //En caso contrario no se agrega nada porque entró a la cola
 
                       break;
 
 
                   case salidaModuloAdministracionProcesos:
                       modAdminProcesos.procesarSalida(consultaActual);
+                      if(!Timeout(consultaActual)){
+                          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloProcesamientoConsultas);
+                          agregarEvento(consultaActual);
+                      }
 
                       break;
 
@@ -131,39 +149,40 @@ public class Simulacion{
   }
 
 
+  public boolean Timeout(Consulta c){
+      boolean retorno = false;
+      if(c.getTiempoVida() >= t){
+          retorno = true;
+      }
+      return retorno;
+  }
+
 
   public void actualizarVentena(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect.
   }
+
+  public static void agregarEvento(Consulta c) {
+      if (listaEventos.isEmpty()) {//En caso que la cola esté vacía
+          listaEventos.add(0,c);
+      } else {
+          Iterator it = listaEventos.iterator();
+          Consulta aux;
+          boolean campo = false;
+          int espacio = 0;
+          while (it.hasNext() && !campo) {
+              aux = (Consulta) it.next();
+              if (aux.getTiempoActual() <= c.getTiempoActual()) {
+                  ++espacio;
+              } else {
+                  campo = true;
+              }
+          }
+          if (campo) {
+              listaEventos.add(espacio, c);
+          } else {
+              listaEventos.add(++espacio, c);
+          }
+      }
+
+  }
 }
-
-/* DESPUES LO USARÉ PARA METER DATOS A LA LISTA DE EVENTOS O LISTA DE CONSULTAS
-
-* public void agregarConsulta (Consulta c){//Se usa para agregar consultas desde el controlador, según se requiere en particular por cada módulo
-+                                            //En ese lugar, se preguntarán las condiciones: colaVacia, mod Ocupado, timeOut....
-+
-+        if(colaConsultas.isEmpty()){//En caso que la cola esté vacía
-+            colaConsultas.add(c);
-+        }
-+        else{
-+            Iterator it =  colaConsultas.iterator();
-+            Consulta aux;
-+            boolean campo = false;
-+            int espacio = 0;
-+            while(it.hasNext() && !campo){
-+                aux = (Consulta)it.next();
-+                if(aux.getTiempoCola() <= c.getTiempoCola()){
-+                    ++espacio;
-+                }
-+                else{
-+                    campo = true;
-+                }
-+            }
-+            if(campo) {
-+                colaConsultas.add(espacio, c);
-+            }
-+            else{
-+                colaConsultas.add(++espacio,c);
-+            }
-+        }
-+
-+    }*/
