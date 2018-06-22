@@ -45,17 +45,18 @@ public class Simulacion{
     return c;
   }
   public void procesarSimulacion() {
+      Random a = New Random();
       ventana = new VentanaEjecucion();
      ventana.setVisible(true);
      ventana.setLocationRelativeTo(null);
+     double num = 0;
       while (iteracionActual <= cantidadCorridas) {
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
           modAdminConsultas = new ModAdministracionConsultas(n, m);
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           tiempoActual = 0;
-          double num;
-          num = gen.generarNumeroAleatorio();
+          num = a.nextDouble();
           Consulta consultaActual = new Consulta(num, 0);
           List listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
