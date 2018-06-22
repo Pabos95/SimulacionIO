@@ -26,6 +26,7 @@ public class Consulta{
          }
          else if(numAelatorio >= 0.55 && numAelatorio <= 0.89){
              tConsulta = tipoConsulta.join;
+             bloques = 0;
          }
          else if(numAelatorio >= 0.90 && numAelatorio <= 0.99){
              tConsulta = tipoConsulta.ddl;
@@ -72,6 +73,9 @@ public class Consulta{
     }
     public void setTipoEvento(Evento.tipoEvento t){tipoEvento = t;}
     public Evento.tipoEvento getTipoEvento(){return tipoEvento;}
+    
+    public void setBloques(int b){bloques = b;}
+    public int getBloques(){return bloques;}
 }
 
  
