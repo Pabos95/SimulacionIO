@@ -17,6 +17,7 @@ public class ModAdministracionTransacciones extends Modulo {
     GeneradoraValoresAelatorios gen;
     PriorityQueue<Consulta> colaSentencias;
     double tiempoEjecucion;
+    Consulta sentenciaDDLEnEspera;
     
     public ModAdministracionTransacciones(int tam){
         flagDDL = false;
@@ -37,11 +38,17 @@ public class ModAdministracionTransacciones extends Modulo {
                   ++consultasActuales;
                   switch(consulta.getTConsulta()){
                         case ddl:
-                            flagDDL = true;
-                            liberarModulo();
-                            timeSalida = consulta.getTiempoActual() + tiempoEjecucion; //Procesar ejecución de DDL
-                            //cargar bloques es Bloques * 1/10 pero DDL carga 0 bloques, es decir no hay que hacer ninguna operación
-
+                            if(consultasActuales == 1){//Si la sentencia DDL es la única en el módulo
+                                timeSalida = consulta.getTiempoActual() + consultasActuales * 0.03; //Procesar ejecución de DDL, 1 * 0.03
+                                consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
+                                consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                                sentenciaDDLEnEspera = null;
+                            }
+                            else{
+                                flagDDL = true;
+                                sentenciaDDLEnEspera = consulta;
+                                
+                            }
                             break;
                         case update:
                             timeSalida = consulta.getTiempoActual() + (consultasActuales * 0.03);
@@ -80,10 +87,20 @@ public class ModAdministracionTransacciones extends Modulo {
     @Override
     public void procesarSalida(Consulta consulta) {
          
+        
         --consultasActuales;
         
+        if(flagDDL && consultasActuales == 1){
+            sentenciaDDLEnEspera.setTiempoVida(sentenciaDDLEnEspera.getTiempoVida() + (consulta.getTiempoActual() - sentenciaDDLEnEspera.getTiempoActual()));
+            sentenciaDDLEnEspera.setTiempoActual(consulta.getTiempoActual() + sentenciaDDLEnEspera.getTiempoVida());
+            flagDDL = false;
+            --consultasActuales;
+            Consulta aux = sentenciaDDLEnEspera;
+            procesarLlegada(aux);
+            agregarEvento(aux);
+        }
         //Se pregunta por la cola
-        if (colaSentencias.peek() != null){ //Hay más en la cola
+        if (!flagDDL && colaSentencias.peek() != null){ //Hay más en la cola
             Consulta c = colaSentencias.remove();  
             c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
             c.setTiempoVida(c.getTiempoVida() +(consulta.getTiempoActual() - c.getTiempoActual()));
@@ -94,14 +111,7 @@ public class ModAdministracionTransacciones extends Modulo {
         }
       
     }
-    
-    private void liberarModulo(){
-        
-    }
-    private void recargarModulo(){
-        
-        
-    }
+
     @Override
     public void procesarTimeOut(Consulta consulta) {
 

@@ -156,10 +156,18 @@ public class Simulacion{
 
                   case llegadaModuloTransacciones:
                       modAdminTransacciones.procesarLlegada(consultaActual);
+                      agregarEvento(consultaActual);
                       break;
 
                   case salidaModuloTransacciones:
                       modAdminTransacciones.procesarSalida(consultaActual);
+                       if(Timeout(consultaActual)){
+                            modAdminClientes.restarConeccionesActivas();
+                      }
+                        else {
+                            consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloProcesamientoConsultas);
+                            agregarEvento(consultaActual);
+                      }
                       break;
 
               }
