@@ -6,7 +6,7 @@ import Interfaz.*;
 import javafx.util.Pair;
 import java.awt.Color;
 
-public class Simulacion{
+public class Simulacion {
   ModAdministracionClientes modAdminClientes;
   ModAdministracionConsultas modAdminConsultas;
   ModAdministracionProcesos modAdminProcesos;
@@ -28,7 +28,7 @@ public class Simulacion{
 
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
-  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
+  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow,VentanaEjecucion vent){
       
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
@@ -41,17 +41,15 @@ public class Simulacion{
     iteracionActual = 1;
     modoLento = slow;
     gen = new GeneradoraValoresAelatorios();
-    System.out.println("funciono constructor de simulacion");
+     this.ventana = vent;
+    System.out.println("funciono constructor de simulacion"); 
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAleatorio();
     Consulta c = new Consulta(numAelatorio,tiempoActual);
     return c;
   }
-  public void procesarSimulacion() {
-      ventana = new VentanaEjecucion();
-     ventana.setVisible(true);
-     ventana.setLocationRelativeTo(null);
+  public void procesarSimulacion() {    
      double num = 0;
      Random a;
       System.out.println("So far so good");
@@ -80,7 +78,7 @@ public class Simulacion{
               System.out.println("check: se agregó evento dentro del ciclo");
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
-              tiempoActual = consultaActual.getTiempoActual(); //El tiempo actual no se est� actualizando bien, nunca pasa de 0
+              tiempoActual = consultaActual.getTiempoActual(); //El tiempo actual no se esta actualizando bien, nunca pasa de 0
               System.out.println("Tiempo actual " + String.valueOf(tiempoActual));
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:
@@ -210,13 +208,13 @@ public class Simulacion{
   }
 
 
-  public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
+ /*public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
      ventana.actualizarTiempoActual(tiempoActual);
      ventana.actualizarLongitudModAdministracionClientes(modAdminClientes.getTamActualCola());
      ventana.actualizarLongitudModAdministracionProcesos(modAdminProcesos.getTamActualCola());
      ventana.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
      ventana.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
-  }
+  }*/
 
   public static void agregarEvento(Consulta c) {
       //listaEventos.add(c);

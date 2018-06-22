@@ -15,10 +15,12 @@ import java.util.concurrent.TimeUnit;
 public class VentanaParametros extends javax.swing.JFrame {
     Boolean modLento;
     Simulacion s;
+    VentanaEjecucion ve;
     /**
      * Creates new form VentanaParametros
      */
     public VentanaParametros() {
+        ve = new VentanaEjecucion();
         modLento = false;
         initComponents();
     }
@@ -340,7 +342,7 @@ public class VentanaParametros extends javax.swing.JFrame {
     int procesosEjecucionConsultas= Integer.parseInt(text3);
   jPanel1.setVisible(false); //se deja de mostrar el panel 1 una vez que se tienen los datos 
   this.setVisible(false);
-  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
+  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento,ve);
   s.procesarSimulacion();
     }//GEN-LAST:event_jButton1MouseClicked
 

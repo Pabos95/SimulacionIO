@@ -98,6 +98,7 @@ public class Portada extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         vp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ContinuarMouseClicked
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
