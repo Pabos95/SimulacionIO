@@ -79,7 +79,6 @@ public class Portada extends javax.swing.JFrame {
         getContentPane().add(Salir);
         Salir.setBounds(270, 300, 80, 23);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/White-Abstract-background-1.jpg"))); // NOI18N
         jLabel2.setMinimumSize(new java.awt.Dimension(300, 400));
         jLabel2.setPreferredSize(new java.awt.Dimension(522, 402));
         getContentPane().add(jLabel2);
