@@ -27,7 +27,8 @@ public class GeneradoraValoresAelatorios{
         double nuevoValor = a + (b - a)*generarNumeroAleatorio();
         return nuevoValor;
     }
-    public double generarNumeroAleatorio(){ //genera un número entre 0 y 1            
+    public double generarNumeroAleatorio(){ //genera un número entre 0 y 1    
+        System.out.println(r.nextDouble());
         return r.nextDouble();
     }
 }
