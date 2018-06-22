@@ -51,13 +51,15 @@ public class Simulacion{
      ventana.setVisible(true);
      ventana.setLocationRelativeTo(null);
      double num = 0;
+     Random a;
       while (iteracionActual <= cantidadCorridas) {
+          a = new Random();
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
           modAdminConsultas = new ModAdministracionConsultas(n, m);
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           tiempoActual = 0;
-          num = gen.generarNumeroAleatorio();
+          num = a.nextDouble();
           Consulta consultaActual = new Consulta(num, 0);
           List listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
