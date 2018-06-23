@@ -8,6 +8,11 @@ import java.text.NumberFormat;
 import javax.swing.*;
 import SimulacionIO.*;
 import java.util.concurrent.TimeUnit;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.awt.Image;
 /**
  *
  * @author Pabos95
@@ -15,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 public class VentanaParametros extends javax.swing.JFrame {
     Boolean modLento;
     Simulacion s;
+    Image icon;
+    Image img;
     VentanaEjecucion ve;
     /**
      * Creates new form VentanaParametros
