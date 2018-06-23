@@ -214,6 +214,7 @@ public class Simulacion {
        for(int i = 0; i <= iteracionActual -1; i++){
         ind = itEstadisticosIteracion.nextIndex();
        }
+       ++iteracionActual;
       }
       estIt = estadisticosIteracion.get(ind);
       estIt.calcularTiempoPromedioVida(consultas);
