@@ -78,7 +78,8 @@ public class Simulacion {
 
           while (tiempoActual < tiempoMaximo) {
               System.out.println("Estamos ejecutando por el tiempo determinado");
-              consultaActual = generarConsulta(); //Creamos un nuevo arribo en cada iteracion             
+              num = a.nextDouble();
+              consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(30));//generarConsulta(); //Creamos un nuevo arribo en cada iteracion             
               System.out.println("¡Se generó la consulta!");
               consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
               agregarEvento(consultaActual); //Se agrega a la lista
@@ -86,7 +87,7 @@ public class Simulacion {
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               tiempoActual = consultaActual.getTiempoActual(); //El tiempo actual no se esta actualizando bien, nunca pasa de 0
-              System.out.println("Tiempo actual " + String.valueOf(tiempoActual));
+              System.out.println("Tiempo actual " + tiempoActual);
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
                         System.out.println("Primera llegada en al modClientes");
