@@ -15,5 +15,5 @@ abstract class Modulo {
 
     public abstract void procesarSalida(Consulta consulta);
     public abstract int getTamActualCola();
-    public abstract void restarConeccionesActivas();
+    public abstract void restarConexionesActivas();
 }

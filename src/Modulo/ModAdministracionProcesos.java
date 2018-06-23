@@ -94,7 +94,7 @@ public class ModAdministracionProcesos extends Modulo {
     public int getTamActualCola(){
         return colaConsultas.size();
     }
-    public void restarConeccionesActivas(){
+    public void restarConexionesActivas(){
         --consultasActuales;
     }
 }

@@ -115,7 +115,7 @@ public class ModAdministracionTransacciones extends Modulo {
     public int getTamActualCola(){
         return this.tamActualCola;
     }
-    public void restarConeccionesActivas(){
+    public void restarConexionesActivas(){
         --consultasActuales;
     }
 }
