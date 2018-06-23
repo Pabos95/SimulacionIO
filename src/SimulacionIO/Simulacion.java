@@ -6,7 +6,7 @@ import Interfaz.*;
 import javafx.util.Pair;
 import java.awt.Color;
 
-public class Simulacion {
+public class Simulacion {    
   ModAdministracionClientes modAdminClientes;
   ModAdministracionConsultas modAdminConsultas;
   ModAdministracionProcesos modAdminProcesos;
@@ -49,11 +49,12 @@ public class Simulacion {
     Consulta c = new Consulta(numAelatorio,tiempoActual);
     return c;
   }
-  public void procesarSimulacion() {    
-     double num = 0;
-     Random a;
+  public void procesarSimulacion() {  
+   double num = 0;
+     Random a;    
       System.out.println("So far so good");
       while (iteracionActual <= cantidadCorridas) {
+          System.out.println("Iteración actual :" + iteracionActual);
           a = new Random();
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
           modAdminConsultas = new ModAdministracionConsultas(n, m);
