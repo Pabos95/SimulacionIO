@@ -37,7 +37,6 @@ public class GeneradoraValoresAelatorios{
         double x = r.nextDouble();
         x = Math.round(x * Math.pow(10, 4)); //Redondear el valor a 4 decimales
         x = x/Math.pow(10, 4);
-        System.out.println("Random es :" + x);
         return x;
     }
 }

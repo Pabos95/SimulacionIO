@@ -62,7 +62,6 @@ public class Simulacion {
       int ind = 0; // se usa para recorrer los arrayList
    double num = 0;
      Random a;    
-      System.out.println("So far so good");
       EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
       ListIterator itEstadisticosIteracion;
       while (iteracionActual <= cantidadCorridas) {
@@ -73,51 +72,45 @@ public class Simulacion {
           modAdminProcesos = new ModAdministracionProcesos();
           modAdminTransacciones = new ModAdministracionTransacciones(p);
           tiempoActual = 0;
-          System.out.println("check: Instancia de modulos");
           num = a.nextDouble();
+          tiempoActual = 0;
           Consulta consultaActual = new Consulta(num, 0);
           listaEventos = new ArrayList<>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
-          System.out.println("check: Primer evento");
           agregarEvento(consultaActual); //En tiempo 0
-          System.out.println("check: se agregó el primer evento");
 
           while (tiempoActual < tiempoMaximo) {
               System.out.println("Estamos ejecutando por el tiempo determinado");
               num = a.nextDouble();
-              consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(30));//generarConsulta(); //Creamos un nuevo arribo en cada iteracion             
-              System.out.println("¡Se generó la consulta!");
+              consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(30));
               consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
               agregarEvento(consultaActual); //Se agrega a la lista
-              System.out.println("check: se agregó evento dentro del ciclo");
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
-              tiempoActual += consultaActual.getTiempoActual(); //El tiempo actual no se esta actualizando bien, nunca pasa de 0
+              tiempoActual = consultaActual.getTiempoActual(); 
               System.out.println("Tiempo actual " + tiempoActual);
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
-                        System.out.println("Primera llegada en al modClientes");
                         modAdminClientes.procesarLlegada(consultaActual);             
-                        System.out.println("¡Se procesó bien la llegada al modulo de clintes!");
+                        System.out.println("¡Se procesó bien la llegada al modulo de clientes!");
                         if(!consultaActual.getMuerto()){//Si fue admitida
                             consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
                             agregarEvento(consultaActual);
+                            System.out.println("La consulta pasa al módulo de adminisracion de procesos");
                         }
-                        else{
+                        else if(!consultaActual.getMuerto() && consultaActual.getTiempoVida() != 0){
                             agregarEvento(consultaActual);
                         }
                       // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
                       break;
 
                   case salidaModuloAdministracionClientes:                                  
-                      System.out.println("¡Ok estamos en la salida de ModClientes!");
                       modAdminClientes.procesarSalida(consultaActual);
                     //   ventana.setBackground(Color.BLACK); //Para prueba unicamente, si llega hasta la linea 95 la ventana se pone de fondo negro           
                       System.out.println("¡Procesar salida de ModClientes perfecto!");
                       break;
 
                   case llegadaModuloAdministracionProcesos:           
-                      System.out.println("¡Ya llagamos al moduloProcesos!");
                       modAdminProcesos.procesarLlegada(consultaActual);                                  
                       System.out.println("¡Aleluta se pudo procesar la llegada a ModProcesos!");
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloAdministracionProcesos){
@@ -129,7 +122,6 @@ public class Simulacion {
 
 
                   case salidaModuloAdministracionProcesos:                                   
-                      System.out.println("¡Ejecutando la salida de ModProcesos!");
                       modAdminProcesos.procesarSalida(consultaActual);                                  
                       System.out.println("¡Muy bien se pudo procesar la salida de ModProcesos!");
                       if(!Timeout(consultaActual)){
@@ -142,8 +134,8 @@ public class Simulacion {
                       // ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
                       break;
 
-                  case llegadaModuloProcesamientoConsultas:                                                                 
-                      System.out.println("Llegada a Consultas perfecto");                     
+                  case llegadaModuloProcesamientoConsultas:   
+                      System.out.println("AQUI ME VOY A CAER :VVV");
                       modAdminConsultas.procesarLlegada(consultaActual); //Desde el modulo de procesos                                                                 
                       System.out.println("Procesar la llegada a consultas funciono");
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
@@ -154,8 +146,7 @@ public class Simulacion {
 
                       break;
 
-                  case salidaModuloProcesamientoConsultas:                                                                 
-                      System.out.println("La salida de Consultas si funciono");                     
+                  case salidaModuloProcesamientoConsultas:                                                                                  
                       modAdminConsultas.procesarSalida(consultaActual);//Antes de ir a transacciones y datos                                                                 
                       System.out.println("Todo bien procesando la salida de consultas");
                       if(Timeout(consultaActual)){
@@ -168,14 +159,12 @@ public class Simulacion {
                       break;
 
                   case llegadaModuloTransacciones:                                                                                       
-                      System.out.println("Mmmm llegada a transsaciones muy bien");
                       modAdminTransacciones.procesarLlegada(consultaActual);                                                                 
                       System.out.println("oh wow sirvio procesar la llegada a transacciones");  
                       agregarEvento(consultaActual);
                       break;
 
                   case salidaModuloTransacciones:                                                                 
-                      System.out.println("esto es salida de transacciones!");
                       modAdminTransacciones.procesarSalida(consultaActual);                                                                 
                       System.out.println("¡procesar salida de transacciones exitosa yass!");
                        if(Timeout(consultaActual)){
@@ -188,7 +177,6 @@ public class Simulacion {
                       break;
                       
                   case llegada2ModuloProcesamientoConsultas:                                                                                
-                      System.out.println("¡Ya ya ya en llegada2 de Consultas!");
                       modAdminConsultas.procesarLlegada2(consultaActual);                                  
                       System.out.println("¡ok ok ok se proceso la llegada2 de consultas!");
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salida2ModuloProcesamientoConsultas){
@@ -199,7 +187,6 @@ public class Simulacion {
                       break;
                                            
                   case salida2ModuloProcesamientoConsultas:                                  
-                      System.out.println("Salida2 de Consultas");
                       modAdminConsultas.procesarSalida2(consultaActual);                                  
                       System.out.println(">Procesar salida2 de consultas salio bien");
                       if(Timeout(consultaActual)){
@@ -246,7 +233,6 @@ public class Simulacion {
   }*/
 
   public static void agregarEvento(Consulta c) {
-      //listaEventos.add(c);
       if (listaEventos.isEmpty()) {//En caso que la cola esté vacía
           listaEventos.add(0,c);
       } else {
@@ -254,8 +240,7 @@ public class Simulacion {
           Consulta aux;
           boolean campo = false;
           int espacio = 0;
-          while (it.hasNext()) {
-          //while (it.hasNext() && !campo) {
+          while (it.hasNext() && !campo) {
               aux = (Consulta) it.next();
               if (aux.getTiempoActual() <= c.getTiempoActual()) {
                   ++espacio;
@@ -264,13 +249,7 @@ public class Simulacion {
               }
           }
           listaEventos.add(espacio, c);
-          /*if (campo) {
-              listaEventos.add(espacio, c);
-          } else {
-              listaEventos.add(++espacio, c);
-          }*/
       }
-
   }
 }
 
