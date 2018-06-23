@@ -23,7 +23,7 @@ public class ModAdministracionTransacciones extends Modulo {
         flagDDL = false;
         p = tam;
         gen = new GeneradoraValoresAelatorios();
-        PriorityQueue<Consulta> colaSentencias = new PriorityQueue<Consulta>(100, new ComparadorConsultas());
+        colaSentencias = new PriorityQueue<Consulta>(100, new ComparadorConsultas());
 		consultasActuales = 0;
         timeSalida = 0;
         //tiempoEjecucion = consultasActuales * 0.03;
@@ -100,7 +100,7 @@ public class ModAdministracionTransacciones extends Modulo {
             agregarEvento(aux);
         }
         //Se pregunta por la cola
-        if (!flagDDL && colaSentencias.peek() != null){ //Hay más en la cola
+        if (!flagDDL && !colaSentencias.isEmpty()){ //Hay más en la cola
             Consulta c = colaSentencias.remove();  
             c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
             c.setTiempoVida(c.getTiempoVida() +(consulta.getTiempoActual() - c.getTiempoActual()));

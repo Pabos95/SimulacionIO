@@ -68,8 +68,8 @@ public class Consulta{
     public void setMuerto(boolean value){
         muerto = value;
     }
-    public String getTipoConsulta(){
-        return tConsulta.toString();
+    public tipoConsulta getTipoConsulta(){
+        return tConsulta;
     }
     public void setTipoEvento(Evento.tipoEvento t){tipoEvento = t;}
     public Evento.tipoEvento getTipoEvento(){return tipoEvento;}

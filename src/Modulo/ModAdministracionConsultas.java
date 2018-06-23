@@ -36,21 +36,15 @@ public class ModAdministracionConsultas extends Modulo{
             Consulta aux;
             boolean campo = false;
             int espacio = 0;
-            while(it.hasNext() && !campo){
-                aux = (Consulta)it.next();
-                if(aux.getTiempoActual() <= c.getTiempoActual()){
-                    ++espacio;
-                }
-                else{
-                    campo = true;
-                }
-            }
-            if(campo) {
-                colaConsultas.add(espacio, c);
-            }
-            else{
-                colaConsultas.add(++espacio,c);
-            }
+            while (it.hasNext() && !campo) {
+              aux = (Consulta) it.next();
+              if (aux.getTiempoActual() <= c.getTiempoActual()) {
+                  ++espacio;
+              } else {
+                  campo = true;
+              }
+          }
+          colaConsultas.add(espacio, c);
         }
         
     }
@@ -73,12 +67,7 @@ public class ModAdministracionConsultas extends Modulo{
                     campo = true;
                 }
             }
-            if(campo) {
-                colaEjecutar.add(espacio, c);
-            }
-            else{
-                colaEjecutar.add(++espacio,c);
-            }
+            colaEjecutar.add(espacio,c);
         }
     }
 
@@ -93,8 +82,8 @@ public class ModAdministracionConsultas extends Modulo{
             timeEjecucion +=  gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
             timeEjecucion +=  gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
             //Optimización de consultas
-            if ((consulta.getTConsulta().compareTo(Consulta.tipoConsulta.ddl) == 0) ||  //No son de read-only
-                    (consulta.getTConsulta().compareTo(Consulta.tipoConsulta.update) == 0)){  //No son de read-only
+            if ((consulta.getTConsulta() == Consulta.tipoConsulta.ddl) ||  //No son de read-only
+                    (consulta.getTConsulta() == Consulta.tipoConsulta.update)){  //No son de read-only
                 timeEjecucion +=  1/4;
             } else { //Son read-only
                 timeEjecucion +=  0.1;

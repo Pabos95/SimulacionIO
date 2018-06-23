@@ -82,9 +82,11 @@ public class Simulacion implements Runnable {
           while (tiempoActual < tiempoMaximo) {
               System.out.println("Estamos ejecutando por el tiempo determinado");
               num = a.nextDouble();
-              consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(30));
-              consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
-              agregarEvento(consultaActual); //Se agrega a la lista
+              /*
+              Se cortó la parte de agregar arribos nuevos
+              */
+              
+              
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               tiempoActual = consultaActual.getTiempoActual(); 
@@ -92,7 +94,7 @@ public class Simulacion implements Runnable {
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
                         modAdminClientes.procesarLlegada(consultaActual);             
-                        System.out.println("¡Se procesó bien la llegada al modulo de clientes!");
+                       // System.out.println("¡Se procesó bien la llegada al modulo de clientes!");
                         if(!consultaActual.getMuerto()){//Si fue admitida
                             consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
                             agregarEvento(consultaActual);
@@ -101,6 +103,10 @@ public class Simulacion implements Runnable {
                         else if(!consultaActual.getMuerto() && consultaActual.getTiempoVida() != 0){
                             agregarEvento(consultaActual);
                         }
+                        
+                        consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(30));
+                        consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
+                        agregarEvento(consultaActual); //Se agrega a la lista
                       // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
                       break;
 
@@ -134,8 +140,7 @@ public class Simulacion implements Runnable {
                       // ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
                       break;
 
-                  case llegadaModuloProcesamientoConsultas:   
-                      System.out.println("AQUI ME VOY A CAER :VVV");
+                  case llegadaModuloProcesamientoConsultas:  
                       modAdminConsultas.procesarLlegada(consultaActual); //Desde el modulo de procesos                                                                 
                       System.out.println("Procesar la llegada a consultas funciono");
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
@@ -154,14 +159,18 @@ public class Simulacion implements Runnable {
                       }
                       else {
                             consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
+                            agregarEvento(consultaActual);
                       }
 
                       break;
 
-                  case llegadaModuloTransacciones:                                                                                       
+                  case llegadaModuloTransacciones:         
                       modAdminTransacciones.procesarLlegada(consultaActual);                                                                 
-                      System.out.println("oh wow sirvio procesar la llegada a transacciones");  
-                      agregarEvento(consultaActual);
+                      System.out.println("oh wow sirvio procesar la llegada a trans{acciones"); 
+                      if(consultaActual.getTipoEvento()== Evento.tipoEvento.salidaModuloTransacciones){
+                           agregarEvento(consultaActual);
+                      }
+                      //Si no significa que está en la cola
                       break;
 
                   case salidaModuloTransacciones:                                                                 
@@ -169,7 +178,7 @@ public class Simulacion implements Runnable {
                       System.out.println("¡procesar salida de transacciones exitosa yass!");
                        if(Timeout(consultaActual)){
                             modAdminClientes.restarConexionesActivas();
-                      }
+                       }
                         else {
                             consultaActual.setTipoEvento(Evento.tipoEvento.llegada2ModuloProcesamientoConsultas);
                             agregarEvento(consultaActual);
@@ -194,6 +203,7 @@ public class Simulacion implements Runnable {
                       }
                       else{
                           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
+                          agregarEvento(consultaActual);
                       }
                       
                       break;

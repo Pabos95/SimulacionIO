@@ -35,7 +35,7 @@ public class ModAdministracionProcesos extends Modulo {
             Consulta aux;
             boolean campo = false;
             int espacio = 0;
-            while (it.hasNext()) {
+            while (it.hasNext() && !campo) {
             //while (it.hasNext() && !campo) {
                 aux = (Consulta)it.next();
                 if(aux.getTiempoActual() <= c.getTiempoActual()){
@@ -46,12 +46,6 @@ public class ModAdministracionProcesos extends Modulo {
                 }
             }
             colaConsultas.add(espacio, c);
-            /*if(campo) {
-                colaConsultas.add(espacio, c);
-            }
-            else{
-                colaConsultas.add(++espacio,c);
-            }*/
         }
 
     }
