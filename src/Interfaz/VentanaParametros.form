@@ -236,7 +236,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="350" width="688" height="113"/>
+              <AbsoluteConstraints x="20" y="360" width="688" height="113"/>
             </Constraint>
           </Constraints>
 
@@ -247,7 +247,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="c = numero de corridas a realizar&#xa;d = tiempo maximoo de una corrida&#xa;k = numero de conexiones concurrentes que puede manejar el sistema&#xa;n = numero de procesos disponibles para el procesamiento de consultas concurrentes&#xa;p = numero de procesos para la ejecucion de transacciones&#xa;t = numero de segundos para el timeOut de una conexion&#xa;m = numero de procesos disponibles para ejecutar consultas&#xa;"/>
+                <Property name="text" type="java.lang.String" value="c = numero de corridas a realizar&#xa;d = tiempo maximoo de una corrida&#xa;k = numero de conexiones concurrentes que puede manejar el sistema&#xa;p = numero de procesos para la ejecucion de transacciones&#xa;t = numero de segundos para el timeOut de una conexion&#xa;m = numero de procesos disponibles para ejecutar consultas&#xa;"/>
               </Properties>
             </Component>
           </SubComponents>
