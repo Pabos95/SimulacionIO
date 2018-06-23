@@ -49,8 +49,7 @@ public class Simulacion {
   }
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAleatorio();
-    Consulta c = new Consulta(numAelatorio,tiempoActual);
-    consultas.add(c);
+    Consulta c = new Consulta(numAelatorio,tiempoActual);    
     return c;
   }
   public void procesarSimulacion() {  
@@ -71,7 +70,7 @@ public class Simulacion {
           System.out.println("check: Instancia de modulos");
           num = a.nextDouble();
           Consulta consultaActual = new Consulta(num, 0);
-          listaEventos = new ArrayList<Consulta>(200);
+          listaEventos = new ArrayList<>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
           System.out.println("check: Primer evento");
           agregarEvento(consultaActual); //En tiempo 0
