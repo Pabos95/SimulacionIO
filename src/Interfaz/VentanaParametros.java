@@ -179,11 +179,11 @@ public class VentanaParametros extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("c = numero de corridas a realizar\nd = tiempo maximoo de una corrida\nk = numero de conexiones concurrentes que puede manejar el sistema\nn = numero de procesos disponibles para el procesamiento de consultas concurrentes\np = numero de procesos para la ejecucion de transacciones\nt = numero de segundos para el timeOut de una conexion\nm = numero de procesos disponibles para ejecutar consultas\n");
+        jTextArea1.setText("c = numero de corridas a realizar\nd = tiempo maximoo de una corrida\nk = numero de conexiones concurrentes que puede manejar el sistema\np = numero de procesos para la ejecucion de transacciones\nt = numero de segundos para el timeOut de una conexion\nm = numero de procesos disponibles para ejecutar consultas\n");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 350, 688, 113);
+        jScrollPane1.setBounds(20, 360, 688, 113);
 
         checkbox1.setBackground(new java.awt.Color(204, 255, 153));
         checkbox1.setLabel("ModoLento");
@@ -310,7 +310,6 @@ public class VentanaParametros extends javax.swing.JFrame {
         int procesosEjecucionConsultas= Integer.parseInt(text3);
         this.setVisible(false);
         s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento,ve);
-        ve.setVisible(true);
         s.procesarSimulacion();
     }//GEN-LAST:event_jButton1MouseClicked
 
