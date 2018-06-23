@@ -97,39 +97,56 @@ public class VentanaParametros extends javax.swing.JFrame {
         setBackground(javax.swing.UIManager.getDefaults().getColor("MenuItem.selectionBackground"));
         setForeground(javax.swing.UIManager.getDefaults().getColor("menu"));
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         jPanel1.setOpaque(false);
+        jPanel1.setLayout(null);
 
         jLabel4.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel4.setText("k");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(22, 175, 5, 14);
 
         jLabel6.setText("d");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(21, 149, 6, 14);
 
         jLabel5.setText("    n");
         jLabel5.setPreferredSize(new java.awt.Dimension(25, 25));
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 77, 27, 25);
 
         numMaxConexionesConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numMaxConexionesConcurrentesActionPerformed(evt);
             }
         });
+        jPanel1.add(numMaxConexionesConcurrentes);
+        numMaxConexionesConcurrentes.setBounds(37, 172, 73, 20);
 
         numCorridas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numCorridasActionPerformed(evt);
             }
         });
+        jPanel1.add(numCorridas);
+        numCorridas.setBounds(37, 120, 73, 20);
 
         numProcesosConsultasConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numProcesosConsultasConcurrentesActionPerformed(evt);
             }
         });
+        jPanel1.add(numProcesosConsultasConcurrentes);
+        numProcesosConsultasConcurrentes.setBounds(37, 79, 73, 20);
 
         duracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duracionActionPerformed(evt);
             }
         });
+        jPanel1.add(duracion);
+        duracion.setBounds(37, 146, 73, 20);
 
         jButton1.setText("Listo");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,8 +159,12 @@ public class VentanaParametros extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(289, 468, 55, 23);
 
         jLabel2.setText("c");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(21, 120, 5, 14);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -151,155 +172,91 @@ public class VentanaParametros extends javax.swing.JFrame {
         jTextArea1.setText("c = numero de corridas a realizar\nd = tiempo maximoo de una corrida\nk = numero de conexiones concurrentes que puede manejar el sistema\nn = numero de procesos disponibles para el procesamiento de consultas concurrentes\np = numero de procesos para la ejecucion de transacciones\nt = numero de segundos para el timeOut de una conexion\nm = numero de procesos disponibles para ejecutar consultas\n");
         jScrollPane1.setViewportView(jTextArea1);
 
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 351, 688, 113);
+
         checkbox1.setLabel("ModoLento");
+        jPanel1.add(checkbox1);
+        checkbox1.setBounds(21, 321, 87, 20);
 
         jLabel8.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel8.setText("p");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(22, 201, 16, 14);
 
         numProcesosEjecucionTransacciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numProcesosEjecucionTransaccionesActionPerformed(evt);
             }
         });
+        jPanel1.add(numProcesosEjecucionTransacciones);
+        numProcesosEjecucionTransacciones.setBounds(37, 198, 73, 20);
 
         numProcesosEjecucionConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numProcesosEjecucionConsultasActionPerformed(evt);
             }
         });
+        jPanel1.add(numProcesosEjecucionConsultas);
+        numProcesosEjecucionConsultas.setBounds(37, 233, 73, 20);
 
         jLabel9.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel9.setText("m");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(22, 236, 16, 14);
 
         jLabel10.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel10.setText("t");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(22, 262, 16, 14);
 
         segundosTimeOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 segundosTimeOutActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(268, 268, 268)
-                                .addComponent(jButton1))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(numProcesosConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(numCorridas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(numMaxConexionesConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(numProcesosEjecucionTransacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(numProcesosEjecucionConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(segundosTimeOut, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(824, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numProcesosConsultasConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(numCorridas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(duracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(numMaxConexionesConcurrentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(numProcesosEjecucionTransacciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(numProcesosEjecucionConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(segundosTimeOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(1, 1, 1))
-        );
+        jPanel1.add(segundosTimeOut);
+        segundosTimeOut.setBounds(37, 259, 73, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void numCorridasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCorridasActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numCorridasActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void duracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duracionActionPerformed
+    private void segundosTimeOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundosTimeOutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_duracionActionPerformed
+    }//GEN-LAST:event_segundosTimeOutActionPerformed
 
-    private void numProcesosConsultasConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosConsultasConcurrentesActionPerformed
+    private void numProcesosEjecucionConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosEjecucionConsultasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numProcesosConsultasConcurrentesActionPerformed
+    }//GEN-LAST:event_numProcesosEjecucionConsultasActionPerformed
 
-    private void numMaxConexionesConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numMaxConexionesConcurrentesActionPerformed
+    private void numProcesosEjecucionTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosEjecucionTransaccionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numMaxConexionesConcurrentesActionPerformed
+    }//GEN-LAST:event_numProcesosEjecucionTransaccionesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String text1 = numCorridas.getText();
@@ -309,62 +266,58 @@ public class VentanaParametros extends javax.swing.JFrame {
         String text5 = numProcesosEjecucionTransacciones.getText();
         String text6 = segundosTimeOut.getText();
         String text7 = numProcesosEjecucionConsultas.getText();
-        
-  try {
-    int corridas = Integer.parseInt(text1);
-    double tiempoSimulacion = Double.parseDouble(text2);
-    int maxConexionesConcurrentes = Integer.parseInt(text4);
-    int procesosEjecucionConsultasConcurrentes = Integer.parseInt(text3);
-    int procesosEjecucionTransacciones = Integer.parseInt(text5);
-    int procesosEjecucionConsultas = Integer.parseInt(text7);
-    int segundostimeOut = Integer.parseInt(text6);
-    // or Integer.parseInt(text), etc.
-    // OK, valid number.
-    
-  } catch (NumberFormatException nfe) {
-    // Muestra un mensaje de error y reinicia el programa
-    this.setVisible(false); 
-    jDialog1.setVisible(true);
-    numCorridas.setText(null);
-    numMaxConexionesConcurrentes.setText(null);
-    numProcesosEjecucionConsultas.setText(null);
-    numProcesosConsultasConcurrentes.setText(null);
-    numProcesosEjecucionTransacciones.setText(null);
-    segundosTimeOut.setText(null);
-    this.setVisible(true);
-  }
-  int corridas = Integer.parseInt(text1);
-      double tiempoSimulacion = Double.parseDouble(text2);
-  int maxConexionesConcurrentes = Integer.parseInt(text4);
-  int procesosConsultasConcurrentes = Integer.parseInt(text7);
-    int procesosEjecucionTransacciones = Integer.parseInt(text5);
-    int segundostimeOut = Integer.parseInt(text6);
-    int procesosEjecucionConsultas= Integer.parseInt(text3);
-  this.setVisible(false);
-  s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento,ve);
-   ve.setVisible(true);
-  s.procesarSimulacion();
+
+        try {
+            int corridas = Integer.parseInt(text1);
+            double tiempoSimulacion = Double.parseDouble(text2);
+            int maxConexionesConcurrentes = Integer.parseInt(text4);
+            int procesosEjecucionConsultasConcurrentes = Integer.parseInt(text3);
+            int procesosEjecucionTransacciones = Integer.parseInt(text5);
+            int procesosEjecucionConsultas = Integer.parseInt(text7);
+            int segundostimeOut = Integer.parseInt(text6);
+            // or Integer.parseInt(text), etc.
+            // OK, valid number.
+
+        } catch (NumberFormatException nfe) {
+            // Muestra un mensaje de error y reinicia el programa
+            this.setVisible(false);
+            jDialog1.setVisible(true);
+            numCorridas.setText(null);
+            numMaxConexionesConcurrentes.setText(null);
+            numProcesosEjecucionConsultas.setText(null);
+            numProcesosConsultasConcurrentes.setText(null);
+            numProcesosEjecucionTransacciones.setText(null);
+            segundosTimeOut.setText(null);
+            this.setVisible(true);
+        }
+        int corridas = Integer.parseInt(text1);
+        double tiempoSimulacion = Double.parseDouble(text2);
+        int maxConexionesConcurrentes = Integer.parseInt(text4);
+        int procesosConsultasConcurrentes = Integer.parseInt(text7);
+        int procesosEjecucionTransacciones = Integer.parseInt(text5);
+        int segundostimeOut = Integer.parseInt(text6);
+        int procesosEjecucionConsultas= Integer.parseInt(text3);
+        this.setVisible(false);
+        s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento,ve);
+        ve.setVisible(true);
+        s.procesarSimulacion();
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void duracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duracionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_duracionActionPerformed
 
-    private void numProcesosEjecucionTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosEjecucionTransaccionesActionPerformed
+    private void numProcesosConsultasConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosConsultasConcurrentesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numProcesosEjecucionTransaccionesActionPerformed
+    }//GEN-LAST:event_numProcesosConsultasConcurrentesActionPerformed
 
-    private void numProcesosEjecucionConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numProcesosEjecucionConsultasActionPerformed
+    private void numCorridasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCorridasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numProcesosEjecucionConsultasActionPerformed
+    }//GEN-LAST:event_numCorridasActionPerformed
 
-    private void segundosTimeOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundosTimeOutActionPerformed
+    private void numMaxConexionesConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numMaxConexionesConcurrentesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_segundosTimeOutActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_numMaxConexionesConcurrentesActionPerformed
     
     /**
      * @param args the command line arguments
