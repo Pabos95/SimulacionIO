@@ -4,9 +4,9 @@ import Modulo.*;
 import Estadisticos.*;
 import Interfaz.*;
 import javafx.util.Pair;
-import java.awt.Color;
 
-public class Simulacion {    
+
+public class Simulacion implements Runnable {    
   ModAdministracionClientes modAdminClientes;
   ModAdministracionConsultas modAdminConsultas;
   ModAdministracionProcesos modAdminProcesos;
@@ -30,7 +30,8 @@ public class Simulacion {
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
 
-  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow,VentanaEjecucion vent){
+  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
+   ventana = new VentanaEjecucion();
     estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
     estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
     tiempoMaximo = tMax;
@@ -44,13 +45,6 @@ public class Simulacion {
     iteracionActual = 1;
     modoLento = slow;
     gen = new GeneradoraValoresAelatorios();
-     this.ventana = vent;
-     vent.setVisible(true);
-     try {
-            Thread.sleep(11500); //Espera 11 segundos para que se cargue la pantalla
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
     System.out.println("funciono constructor de simulacion"); 
   }
   public Consulta generarConsulta(){
@@ -59,11 +53,17 @@ public class Simulacion {
     return c;
   }
   public void procesarSimulacion() {  
+      run();
       int ind = 0; // se usa para recorrer los arrayList
    double num = 0;
      Random a;    
       EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
       ListIterator itEstadisticosIteracion;
+       try {
+              Thread.sleep(25010); //Espera 3 segundos para que el usuario pueda ver los procesos
+          } catch(InterruptedException ex) {
+               Thread.currentThread().interrupt();
+            }
       while (iteracionActual <= cantidadCorridas) {
           System.out.println("Iteración actual :" + iteracionActual);
           a = new Random();
@@ -141,7 +141,7 @@ public class Simulacion {
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
                           agregarEvento(consultaActual);
                       }
-                       ventana.setBackground(Color.ORANGE); //Para prueba unicamente, si llega hasta la linea 128 la ventana se pone de fondo negro
+                    /*   ventana.setBackground(Color.ORANGE); //Para prueba unicamente, si llega hasta la linea 128 la ventana se pone de fondo negro*/
                        
 
                       break;
@@ -250,6 +250,12 @@ public class Simulacion {
           }
           listaEventos.add(espacio, c);
       }
+  }
+  @Override
+  public  void run(){
+      ventana.setSize(800,800);
+      ventana.pack();
+      ventana.setVisible(true);
   }
 }
 

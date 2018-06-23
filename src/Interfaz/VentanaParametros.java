@@ -22,12 +22,10 @@ public class VentanaParametros extends javax.swing.JFrame {
     Simulacion s;
     Image icon;
     Image img;
-    VentanaEjecucion ve;
     /**
      * Creates new form VentanaParametros
      */
     public VentanaParametros() {
-        ve = new VentanaEjecucion();
         modLento = false;
         initComponents();
     }
@@ -309,7 +307,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         int segundostimeOut = Integer.parseInt(text6);
         int procesosEjecucionConsultas= Integer.parseInt(text3);
         this.setVisible(false);
-        s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento,ve);
+        s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
         s.procesarSimulacion();
     }//GEN-LAST:event_jButton1MouseClicked
 
