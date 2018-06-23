@@ -218,7 +218,27 @@ public class VentanaEjecucion extends javax.swing.JFrame {
             }
         });
     }
-
+   public void actualizarLongitudModAdministracionClientes(int nuevaLong){
+       LongitudModAdministracionClientes.setText(String.valueOf(nuevaLong));
+    }
+   public void actualizarLongitudModAdministracionConexiones(int nuevaLong){
+      LongitudModAdministracionConexiones.setText(String.valueOf(nuevaLong));
+    }
+   public void actualizarLongitudModAdministracionConsultas(int nuevaLong){       
+     LongitudModAdministracionConsultas.setText(String.valueOf(nuevaLong));
+   }
+ public void actualizarLongitudModAdministracionProcesos(int nuevaLong){
+       LongitudModAdministracionProcesos.setText(String.valueOf(nuevaLong));
+   }
+   public void actualizarLongitudModAdministracionTransacciones(int nuevaLong){
+       LongitudModAdministracionTransacciones.setText(String.valueOf(nuevaLong));
+    }
+   public void actualizarTiempoActual(double nuevoTiempo){
+       TiempoEjecucion.setText(String.valueOf(nuevoTiempo));
+    }
+   public void actualizarNumConexionesDescartadas(int nuevoNum){
+       NumConexionesDescartadas.setText(String.valueOf(nuevoNum));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField LongitudModAdministracionClientes;
     private javax.swing.JTextField LongitudModAdministracionConexiones;

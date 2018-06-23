@@ -239,13 +239,13 @@ public class Simulacion {
       this.estadoSimulacion = vent;
   }
 
- /*public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
-     ventana.actualizarTiempoActual(tiempoActual);
-     ventana.actualizarLongitudModAdministracionClientes(modAdminClientes.getTamActualCola());
-     ventana.actualizarLongitudModAdministracionProcesos(modAdminProcesos.getTamActualCola());
-     ventana.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
-     ventana.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
-  }*/
+ public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
+     estadoSimulacion.actualizarTiempoActual(tiempoActual);
+     estadoSimulacion.actualizarLongitudModAdministracionClientes(modAdminClientes.getTamActualCola());
+     estadoSimulacion.actualizarLongitudModAdministracionProcesos(modAdminProcesos.getTamActualCola());
+     estadoSimulacion.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
+     estadoSimulacion.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
+  }
 
   public static void agregarEvento(Consulta c) {
       if (listaEventos.isEmpty()) {//En caso que la cola esté vacía
