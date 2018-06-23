@@ -86,6 +86,7 @@ public class Simulacion {
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               tiempoActual = consultaActual.getTiempoActual(); 
               System.out.println("Tiempo actual " + tiempoActual);
+              
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
                         modAdminClientes.procesarLlegada(consultaActual);             
@@ -98,7 +99,7 @@ public class Simulacion {
                         else if(!consultaActual.getMuerto() && consultaActual.getTiempoVida() != 0){
                             agregarEvento(consultaActual);
                         }
-                        
+                        this.actualizarVentana();
                         consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(0.5));                       
                         System.out.println("Random para consulta es: " + num);
                         System.out.println("TIPO ES: " + consultaActual.getTConsulta());
@@ -111,6 +112,7 @@ public class Simulacion {
                       modAdminClientes.procesarSalida(consultaActual);
                     //   ventana.setBackground(Color.BLACK); //Para prueba unicamente, si llega hasta la linea 95 la ventana se pone de fondo negro           
                       System.out.println("¡Procesar salida de ModClientes perfecto!");
+                      this.actualizarVentana();
                       break;
 
                   case llegadaModuloAdministracionProcesos:           
@@ -119,6 +121,7 @@ public class Simulacion {
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloAdministracionProcesos){
                           agregarEvento(consultaActual);
                       }
+                      this.actualizarVentana();
                       //En caso contrario no se agrega nada porque entró a la cola
                        //ventana.setBackground(Color.blue); //Para prueba unicamente, si llega hasta la linea 107 la ventana se pone de fondo azul
                       break;
@@ -135,6 +138,7 @@ public class Simulacion {
                           modAdminClientes.restarConexionesActivas(); //Así libera recursos para la próxima conección
                       }
                       // ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
+                      this.actualizarVentana();
                       break;
 
                   case llegadaModuloProcesamientoConsultas:  
@@ -144,8 +148,7 @@ public class Simulacion {
                           agregarEvento(consultaActual);
                       }
                     /*   ventana.setBackground(Color.ORANGE); //Para prueba unicamente, si llega hasta la linea 128 la ventana se pone de fondo negro*/
-                       
-
+                      this.actualizarVentana();
                       break;
 
                   case salidaModuloProcesamientoConsultas:                                                                                  
@@ -158,7 +161,7 @@ public class Simulacion {
                             consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
                             agregarEvento(consultaActual);
                       }
-
+                      this.actualizarVentana();
                       break;
 
                   case llegadaModuloTransacciones:        
@@ -168,6 +171,7 @@ public class Simulacion {
                            agregarEvento(consultaActual);
                       }
                       //Si no significa que está en la cola
+                      this.actualizarVentana();
                       break;
 
                   case salidaModuloTransacciones:                                                                 
@@ -180,6 +184,7 @@ public class Simulacion {
                             consultaActual.setTipoEvento(Evento.tipoEvento.llegada2ModuloProcesamientoConsultas);
                             agregarEvento(consultaActual);
                       }
+                      this.actualizarVentana(); 
                       break;
                       
                   case llegada2ModuloProcesamientoConsultas:                                                                                
@@ -189,7 +194,7 @@ public class Simulacion {
                           agregarEvento(consultaActual);
                       }
                       //En caso contrario, la consulta fue agregada a la cola del módulo
-                      
+                      this.actualizarVentana();
                       break;
                                            
                   case salida2ModuloProcesamientoConsultas:                                  
@@ -202,10 +207,11 @@ public class Simulacion {
                           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
                           agregarEvento(consultaActual);
                       }
-                      
+                      this.actualizarVentana();
                       break;
-
+                      
               }
+              
                 //Se podría sacar parte de la info guardada en cada modulo para presentarla al usuario
           }
 
