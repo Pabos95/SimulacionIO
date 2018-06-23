@@ -50,7 +50,6 @@ public class Simulacion {
   public Consulta generarConsulta(){
     double numAelatorio = gen.generarNumeroAleatorio();
     Consulta c = new Consulta(numAelatorio,tiempoActual);
-    consultas.add(c);
     return c;
   }
   public void procesarSimulacion() {  
