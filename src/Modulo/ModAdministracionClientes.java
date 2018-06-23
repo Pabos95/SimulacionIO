@@ -47,7 +47,7 @@ public class ModAdministracionClientes extends Modulo {
         }
     }
 
-    public void restarConeccionesActivas(){
+    public void restarConexionesActivas(){
         --consultasActuales;
     }
     public int getTamActualCola(){
