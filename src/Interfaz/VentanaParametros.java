@@ -19,6 +19,7 @@ import java.awt.Image;
  */
 public class VentanaParametros extends javax.swing.JFrame {
     Boolean modLento;
+    Boolean simulacionLlamada;
     Simulacion s;
     Image icon;
     Image img;
@@ -326,7 +327,9 @@ public class VentanaParametros extends javax.swing.JFrame {
     private void numMaxConexionesConcurrentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numMaxConexionesConcurrentesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numMaxConexionesConcurrentesActionPerformed
-    
+    public boolean getSimulacionLlamada(){
+        return this.simulacionLlamada;
+    }
     /**
      * @param args the command line arguments
      */

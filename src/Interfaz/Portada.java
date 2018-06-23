@@ -12,6 +12,7 @@ package Interfaz;
 import SimulacionIO.*;
 public class Portada extends javax.swing.JFrame {
     VentanaParametros vp;
+    VentanaEjecucion ve;
     /**
      * Creates new form Portada
      */
@@ -138,6 +139,7 @@ public class Portada extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
            public void run() {
                 new Portada().setVisible(true);
+                new VentanaEjecucion();
             }
        });
     }
