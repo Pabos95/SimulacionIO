@@ -20,15 +20,15 @@ public class GeneradoraValoresAelatorios{
         return nuevoValor;
     }
     public double generarValorDistribuicionExponencial(double lambda){
-        /*
+        
         double nuevoValor = 0;
         double r = generarNumeroAleatorio();
         nuevoValor = (-1/lambda)*(Math.log(1-r)); 
         nuevoValor = Math.round(nuevoValor * Math.pow(10, 4)); //Redondear el valor a 4 decimales
         nuevoValor = nuevoValor/Math.pow(10, 4);
         return nuevoValor;
-*/
-        return 2; //Si en 1 minuto llegan 30 sentencias
+
+        //return 2; //Si en 1 minuto llegan 30 sentencias
                   //entonces cada 2 segundos llega una nueva sentencia
     }
     public double generarValorDistribuicionUniforme(double a, double b){

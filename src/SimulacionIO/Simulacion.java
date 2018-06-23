@@ -104,7 +104,7 @@ public class Simulacion implements Runnable {
                             agregarEvento(consultaActual);
                         }
                         
-                        consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(30));
+                        consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(0.5));
                         consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
                         agregarEvento(consultaActual); //Se agrega a la lista
                       // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
@@ -197,7 +197,7 @@ public class Simulacion implements Runnable {
                                            
                   case salida2ModuloProcesamientoConsultas:                                  
                       modAdminConsultas.procesarSalida2(consultaActual);                                  
-                      System.out.println(">Procesar salida2 de consultas salio bien");
+                      System.out.println(">>>>Procesar salida2 de consultas salio bien");
                       if(Timeout(consultaActual)){
                           modAdminClientes.restarConexionesActivas();
                       }
@@ -221,6 +221,7 @@ public class Simulacion implements Runnable {
       }
       estIt = estadisticosIteracion.get(ind);
       estIt.calcularTiempoPromedioVida(consultas);*/ //Esto hay que corregirlo
+	  ++iteracionActual;
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
   }

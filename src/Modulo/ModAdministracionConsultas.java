@@ -90,7 +90,6 @@ public class ModAdministracionConsultas extends Modulo{
             }
             consulta.setTiempoVida(consulta.getTiempoVida() + timeEjecucion);
             consulta.setTiempoActual(consulta.getTiempoActual() + timeEjecucion);
-            consulta.setTipoEvento(Evento.tipoEvento.llegadaModuloTransacciones);
             consulta.setTipoEvento(Evento.tipoEvento.salidaModuloProcesamientoConsultas);
             }
             else {
