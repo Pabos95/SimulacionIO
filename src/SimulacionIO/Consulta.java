@@ -28,7 +28,7 @@ public class Consulta{
              tConsulta = tipoConsulta.join;
              bloques = 0;
          }
-         else if(numAelatorio >= 0.90 && numAelatorio <= 0.99){
+         else if(numAelatorio >= 0.90 && numAelatorio <= 1.0){
              tConsulta = tipoConsulta.ddl;
              bloques = 0;
          }
