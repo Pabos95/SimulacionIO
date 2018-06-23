@@ -245,6 +245,7 @@ public class Simulacion {
      estadoSimulacion.actualizarLongitudModAdministracionClientes(modAdminClientes.getTamActualCola());
      estadoSimulacion.actualizarLongitudModAdministracionProcesos(modAdminProcesos.getTamActualCola());
      estadoSimulacion.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
+     estadoSimulacion.actualizarLongitudModAdministracionTranacciones(modAdminTransacciones.getTamActualCola());
      estadoSimulacion.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
   }
 
