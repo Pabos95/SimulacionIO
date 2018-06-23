@@ -107,7 +107,9 @@ public class Portada extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_SalirMouseClicked
-
+    public VentanaParametros getVP(){
+        return this.vp;
+    }
     /**
      * @param args the command line arguments
      */
@@ -134,12 +136,15 @@ public class Portada extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Portada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>*/
-
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
            public void run() {
-                new Portada().setVisible(true);
-                new VentanaEjecucion();
+               Portada p;
+               VentanaEjecucion resultados;
+                 p =new Portada();
+                 p.setVisible(true);
+                new VentanaEjecucion().setVisible(true);
             }
        });
     }

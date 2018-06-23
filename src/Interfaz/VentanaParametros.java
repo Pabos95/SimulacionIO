@@ -27,6 +27,7 @@ public class VentanaParametros extends javax.swing.JFrame {
      * Creates new form VentanaParametros
      */
     public VentanaParametros() {
+        simulacionLlamada = false;
         modLento = false;
         initComponents();
     }

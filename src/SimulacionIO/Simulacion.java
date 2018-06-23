@@ -28,10 +28,9 @@ public class Simulacion implements Runnable {
   ArrayList <EstadisticosIteracion> estadisticosIteracion;
   EstadisticosGenerales eg;
   GeneradoraValoresAelatorios gen;
-  VentanaEjecucion ventana;
-
+  //VentanaEjecucion ventana; creo que ya no se va a usar esta ventana
+  VentanaEjecucion ve;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
-   ventana = new VentanaEjecucion();
     estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
     estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
     tiempoMaximo = tMax;
@@ -59,6 +58,7 @@ public class Simulacion implements Runnable {
      Random a;    
       EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
       ListIterator itEstadisticosIteracion;
+    //  ventanaEjecucion.mostrarVentana();
        try {
               Thread.sleep(25010); //Espera 3 segundos para que el usuario pueda ver los procesos
           } catch(InterruptedException ex) {
@@ -263,9 +263,7 @@ public class Simulacion implements Runnable {
   }
   @Override
   public  void run(){
-      ventana.setSize(800,800);
-      ventana.pack();
-      ventana.setVisible(true);
+      
   }
 }
 
