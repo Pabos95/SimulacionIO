@@ -86,12 +86,13 @@ public class Simulacion {
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
                         modAdminClientes.procesarLlegada(consultaActual);             
-                        System.out.println("¡Se procesó bien la llegada al modulo de clintes!");
+                        System.out.println("¡Se procesó bien la llegada al modulo de clientes!");
                         if(!consultaActual.getMuerto()){//Si fue admitida
                             consultaActual.setTipoEvento(Evento.tipoEvento.salidaModuloAdministracionClientes);
                             agregarEvento(consultaActual);
+                            System.out.println("La consulta pasa al módulo de adminisracion de procesos");
                         }
-                        else{
+                        else if(!consultaActual.getMuerto() && consultaActual.getTiempoVida() != 0){
                             agregarEvento(consultaActual);
                         }
                       // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
@@ -127,7 +128,8 @@ public class Simulacion {
                       // ventana.setBackground(Color.CYAN); //Para prueba unicamente, si llega hasta la linea 121 la ventana se pone de fondo cyan
                       break;
 
-                  case llegadaModuloProcesamientoConsultas:                                                                                   
+                  case llegadaModuloProcesamientoConsultas:   
+                      System.out.println("AQUI ME VOY A CAER :VVV");
                       modAdminConsultas.procesarLlegada(consultaActual); //Desde el modulo de procesos                                                                 
                       System.out.println("Procesar la llegada a consultas funciono");
                       if(consultaActual.getTipoEvento() == Evento.tipoEvento.salidaModuloProcesamientoConsultas){
