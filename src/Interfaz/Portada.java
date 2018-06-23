@@ -13,11 +13,16 @@ import SimulacionIO.*;
 public class Portada extends javax.swing.JFrame {
     VentanaParametros vp;
     VentanaEjecucion ve;
+    Boolean continuar;
+    Boolean salir;
     /**
      * Creates new form Portada
      */
     public Portada() {
         vp = new VentanaParametros();
+        ve = new VentanaEjecucion();
+        continuar = false;
+        salir = false;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -97,10 +102,10 @@ public class Portada extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void ContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinuarMouseClicked
-        // TODO add your handling code here:
-        this.setVisible(false);
-        vp.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:  
+        continuar = true;
+       
+
     }//GEN-LAST:event_ContinuarMouseClicked
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
@@ -109,6 +114,9 @@ public class Portada extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMouseClicked
     public VentanaParametros getVP(){
         return this.vp;
+    }
+    public VentanaEjecucion  getVE(){
+        return this.ve;
     }
     /**
      * @param args the command line arguments
@@ -140,13 +148,29 @@ public class Portada extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
            public void run() {
-               Portada p;
-               VentanaEjecucion resultados;
-                 p =new Portada();
-                 p.setVisible(true);
-                new VentanaEjecucion().setVisible(true);
-            }
+               
+                 }
        });
+       Portada p;
+       Simulacion s;
+                 p =new Portada();
+                 p.setVisible(true); 
+        while(true){
+            if(p.continuar == true){
+                p.setVisible(false);
+                p.getVP().setVisible(true);
+                while(true){
+                    if(p.getVP().getSimulacionLlamada() == true){
+                        p.getVP().setVisible(false);
+                        p.getVP().dispose();
+                        p.getVE().setVisible(true);
+                        s = p.getVP().getSimulacion();
+                        s.procesarSimulacion();
+                        break;
+                    }
+                      }
+            }
+        }
     }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables

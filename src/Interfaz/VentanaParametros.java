@@ -23,10 +23,14 @@ public class VentanaParametros extends javax.swing.JFrame {
     Simulacion s;
     Image icon;
     Image img;
+    VentanaEjecucion ve;
+    ParametrosSimulacion p;
     /**
      * Creates new form VentanaParametros
      */
     public VentanaParametros() {
+        ve = new VentanaEjecucion();
+        p = new ParametrosSimulacion();
         simulacionLlamada = false;
         modLento = false;
         initComponents();
@@ -301,7 +305,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             segundosTimeOut.setText(null);
             this.setVisible(true);
         }
-        int corridas = Integer.parseInt(text1);
+        int cantidadCorridas = Integer.parseInt(text1);
         double tiempoSimulacion = Double.parseDouble(text2);
         int maxConexionesConcurrentes = Integer.parseInt(text4);
         int procesosConsultasConcurrentes = Integer.parseInt(text7);
@@ -309,10 +313,19 @@ public class VentanaParametros extends javax.swing.JFrame {
         int segundostimeOut = Integer.parseInt(text6);
         int procesosEjecucionConsultas= Integer.parseInt(text3);
         this.setVisible(false);
-        s = new Simulacion(tiempoSimulacion, corridas, maxConexionesConcurrentes,procesosConsultasConcurrentes, procesosEjecucionTransacciones, procesosEjecucionConsultas, segundostimeOut, modLento);
-        s.procesarSimulacion();
+        this.setSimulacionLlamada(true);
+        p.setDuracion(tiempoSimulacion);
+        p.setCorridas(cantidadCorridas);
+        p.setParamK(maxConexionesConcurrentes);
+        p.setParamN(procesosConsultasConcurrentes);
+        p.setParamM(procesosEjecucionConsultas);
+        p.setParamT(segundostimeOut);
+        p.setSlow(this.modLento);
+        p.setParamP(procesosEjecucionTransacciones);
     }//GEN-LAST:event_jButton1MouseClicked
-
+    public Simulacion getSimulacion(){
+        return p.getSimulacion();
+    }
     private void duracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duracionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_duracionActionPerformed
@@ -330,6 +343,9 @@ public class VentanaParametros extends javax.swing.JFrame {
     }//GEN-LAST:event_numMaxConexionesConcurrentesActionPerformed
     public boolean getSimulacionLlamada(){
         return this.simulacionLlamada;
+    }
+    public void setSimulacionLlamada(Boolean estado){
+        simulacionLlamada = estado;
     }
     /**
      * @param args the command line arguments

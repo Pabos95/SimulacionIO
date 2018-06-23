@@ -6,29 +6,78 @@ import Interfaz.*;
 import javafx.util.Pair;
 
 
-public class Simulacion implements Runnable {       
-    ModAdministracionClientes modAdminClientes;
-    ModAdministracionConsultas modAdminConsultas;
-    ModAdministracionProcesos modAdminProcesos;
-    ModAdministracionTransacciones modAdminTransacciones;
-    int iteracionActual;
-    double tiempoMaximo;  //tiempo maximo de la simulacion
-    int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
-    int k; // numero maximo de conexiones concurrentes que puede administrar el sistema
-    int n; //numero de procesos disponibles para el procesamiento de consultas. concurrentes que puede manejar el sistema.
-    int p; //numero de procesos disponibles para la ejecución de transacciones
-    int m; //numero de procesos disponibles para la ejecución de consultas
-    int t; //cantidad de segundos para el timeout de las conexiones
-    double tiempoActual;
-    boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
-
-    public static List<Consulta> listaEventos; //Contiene la lista de los eventos por ejecutar
-    ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
-    ArrayList <EstadisticosModulo> estadisticasModulo;
-    ArrayList <EstadisticosIteracion> estadisticosIteracion;
-    EstadisticosGenerales eg;
-    GeneradoraValoresAelatorios gen;
-    VentanaEjecucion ventana;
+public class Simulacion implements Runnable {    
+  ModAdministracionClientes modAdminClientes;
+  ModAdministracionConsultas modAdminConsultas;
+  ModAdministracionProcesos modAdminProcesos;
+  ModAdministracionTransacciones modAdminTransacciones;
+  int iteracionActual;
+  double tiempoMaximo;  //tiempo maximo de la simulacion
+  int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
+  int k; // numero maximo de conexiones concurrentes que puede administrar el sistema
+  int n; //numero de procesos disponibles para el procesamiento de consultas. concurrentes que puede manejar el sistema.
+  int p; //numero de procesos disponibles para la ejecución de transacciones
+  int m; //numero de procesos disponibles para la ejecución de consultas
+  int t; //cantidad de segundos para el timeout de las conexiones
+  double tiempoActual;
+  boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
+  VentanaEjecucion estadoSimulacion;
+  public static List<Consulta> listaEventos; //Contiene la lista de los eventos por ejecutar
+  ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
+  ArrayList <EstadisticosModulo> estadisticasModulo;
+  ArrayList <EstadisticosIteracion> estadisticosIteracion;
+  EstadisticosGenerales eg;
+  GeneradoraValoresAelatorios gen;
+  //VentanaEjecucion ventana; creo que ya no se va a usar esta ventana
+  VentanaEjecucion ve;
+  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
+    estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
+    estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
+    tiempoMaximo = tMax;
+    cantidadCorridas = numCorridas;
+    k = numConexionesConcurrentesMaximo;
+    n = numProcesosProcesamientoConsultasConcurrentes;
+    p = numProcesosEjecucionTransacciones;
+    m = numProcesosEjecucionConsultas;
+    t = segundosParaTimeOut;
+    tiempoActual = 0.0;
+    iteracionActual = 1;
+    modoLento = slow;
+    gen = new GeneradoraValoresAelatorios();
+    System.out.println("funciono constructor de simulacion"); 
+  }
+  public Consulta generarConsulta(){
+    double numAelatorio = gen.generarNumeroAleatorio();
+    Consulta c = new Consulta(numAelatorio,tiempoActual);    
+    return c;
+  }
+  public void procesarSimulacion() {  
+      run();
+      int ind = 0; // se usa para recorrer los arrayList
+   double num = 0;
+     Random a;    
+      EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
+      ListIterator itEstadisticosIteracion;
+    //  ventanaEjecucion.mostrarVentana();
+       try {
+              Thread.sleep(25010); //Espera 3 segundos para que el usuario pueda ver los procesos
+          } catch(InterruptedException ex) {
+               Thread.currentThread().interrupt();
+            }
+      while (iteracionActual <= cantidadCorridas) {
+          System.out.println("Iteración actual :" + iteracionActual);
+          a = new Random();
+          modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
+          modAdminConsultas = new ModAdministracionConsultas(n, m);
+          modAdminProcesos = new ModAdministracionProcesos();
+          modAdminTransacciones = new ModAdministracionTransacciones(p);
+          tiempoActual = 0;
+          num = a.nextDouble();
+          tiempoActual = 0;
+          Consulta consultaActual = new Consulta(num, 0);
+          listaEventos = new ArrayList<>(200);
+          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
+          agregarEvento(consultaActual); //En tiempo 0
 
     public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){       
         ventana = new VentanaEjecucion();
