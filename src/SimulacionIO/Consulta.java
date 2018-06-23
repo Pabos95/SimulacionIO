@@ -16,15 +16,15 @@ public class Consulta{
     public Consulta(double numAelatorio, double tiempoCreacion){
 
          muerto = true; //Cuando entra al primer módulo, si se le admite se cambia
-         if(numAelatorio >= 0.0 && numAelatorio <= 0.29){
+         if(numAelatorio >= 0.0 && numAelatorio <= 0.2999){
              tConsulta = tipoConsulta.select;
              bloques = 1;
          }
-         else if(numAelatorio >= 0.30 && numAelatorio <= 0.54){
+         else if(numAelatorio >= 0.30 && numAelatorio <= 0.5499){
              tConsulta = tipoConsulta.update;
              bloques = 0;
          }
-         else if(numAelatorio >= 0.55 && numAelatorio <= 0.89){
+         else if(numAelatorio >= 0.55 && numAelatorio <= 0.8999){
              tConsulta = tipoConsulta.join;
              bloques = 0;
          }
@@ -57,6 +57,8 @@ public class Consulta{
         tiempoVida = param;
     }
     public double getTiempoActual(){
+        tiempoActual = Math.round(tiempoActual * Math.pow(10, 4)); //Redondear el valor a 4 decimales
+        tiempoActual = tiempoActual/Math.pow(10, 4);
         return  tiempoActual;
     }
     public void setTiempoActual(double param){
@@ -68,8 +70,8 @@ public class Consulta{
     public void setMuerto(boolean value){
         muerto = value;
     }
-    public tipoConsulta getTipoConsulta(){
-        return tConsulta;
+    public String getTipoConsulta(){
+        return tConsulta.toString();
     }
     public void setTipoEvento(Evento.tipoEvento t){tipoEvento = t;}
     public Evento.tipoEvento getTipoEvento(){return tipoEvento;}
