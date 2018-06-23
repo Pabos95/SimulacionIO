@@ -45,6 +45,12 @@ public class Simulacion {
     modoLento = slow;
     gen = new GeneradoraValoresAelatorios();
      this.ventana = vent;
+     vent.setVisible(true);
+     try {
+            Thread.sleep(11500); //Espera 11 segundos para que se cargue la pantalla
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     System.out.println("funciono constructor de simulacion"); 
   }
   public Consulta generarConsulta(){
@@ -207,17 +213,17 @@ public class Simulacion {
           }
 
           //Actualizar estadísticas por cada corrida
-       itEstadisticosIteracion =estadisticosIteracion.listIterator();
+      /* itEstadisticosIteracion =estadisticosIteracion.listIterator();
        for(int i = 0; i <= iteracionActual -1; i++){
         ind = itEstadisticosIteracion.nextIndex();
        }
        ++iteracionActual;
       }
       estIt = estadisticosIteracion.get(ind);
-      estIt.calcularTiempoPromedioVida(consultas);
+      estIt.calcularTiempoPromedioVida(consultas);*/ //Esto hay que corregirlo
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
-
+  }
 
   public boolean Timeout(Consulta c){
       boolean retorno = false;
