@@ -247,7 +247,8 @@ public class Simulacion {
      estadoSimulacion.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
      estadoSimulacion.actualizarLongitudModAdministracionTransacciones(modAdminTransacciones.getTamActualCola());
      estadoSimulacion.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
-  }
+     estadoSimulacion.actualizarLongitudColaEjecucionModAdmConsultas(modAdminConsultas.getTamActualColaEjecutar());
+ }
 
   public static void agregarEvento(Consulta c) {
       if (listaEventos.isEmpty()) {//En caso que la cola esté vacía
