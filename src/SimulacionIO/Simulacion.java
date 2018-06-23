@@ -6,87 +6,88 @@ import Interfaz.*;
 import javafx.util.Pair;
 
 
-public class Simulacion implements Runnable {    
-  ModAdministracionClientes modAdminClientes;
-  ModAdministracionConsultas modAdminConsultas;
-  ModAdministracionProcesos modAdminProcesos;
-  ModAdministracionTransacciones modAdminTransacciones;
-  int iteracionActual;
-  double tiempoMaximo;  //tiempo maximo de la simulacion
-  int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
-  int k; // numero maximo de conexiones concurrentes que puede administrar el sistema
-  int n; //numero de procesos disponibles para el procesamiento de consultas. concurrentes que puede manejar el sistema.
-  int p; //numero de procesos disponibles para la ejecución de transacciones
-  int m; //numero de procesos disponibles para la ejecución de consultas
-  int t; //cantidad de segundos para el timeout de las conexiones
-  double tiempoActual;
-  boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
+public class Simulacion implements Runnable {       
+    ModAdministracionClientes modAdminClientes;
+    ModAdministracionConsultas modAdminConsultas;
+    ModAdministracionProcesos modAdminProcesos;
+    ModAdministracionTransacciones modAdminTransacciones;
+    int iteracionActual;
+    double tiempoMaximo;  //tiempo maximo de la simulacion
+    int cantidadCorridas;// cantidad de corridas que se van a ejecutar de la simulación
+    int k; // numero maximo de conexiones concurrentes que puede administrar el sistema
+    int n; //numero de procesos disponibles para el procesamiento de consultas. concurrentes que puede manejar el sistema.
+    int p; //numero de procesos disponibles para la ejecución de transacciones
+    int m; //numero de procesos disponibles para la ejecución de consultas
+    int t; //cantidad de segundos para el timeout de las conexiones
+    double tiempoActual;
+    boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
 
-  public static List<Consulta> listaEventos; //Contiene la lista de los eventos por ejecutar
-  ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
-  ArrayList <EstadisticosModulo> estadisticasModulo;
-  ArrayList <EstadisticosIteracion> estadisticosIteracion;
-  EstadisticosGenerales eg;
-  GeneradoraValoresAelatorios gen;
-  //VentanaEjecucion ventana; creo que ya no se va a usar esta ventana
-  VentanaEjecucion ve;
-  public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
-    estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
-    estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
-    tiempoMaximo = tMax;
-    cantidadCorridas = numCorridas;
-    k = numConexionesConcurrentesMaximo;
-    n = numProcesosProcesamientoConsultasConcurrentes;
-    p = numProcesosEjecucionTransacciones;
-    m = numProcesosEjecucionConsultas;
-    t = segundosParaTimeOut;
-    tiempoActual = 0.0;
-    iteracionActual = 1;
-    modoLento = slow;
-    gen = new GeneradoraValoresAelatorios();
-    System.out.println("funciono constructor de simulacion"); 
-  }
-  public Consulta generarConsulta(){
-    double numAelatorio = gen.generarNumeroAleatorio();
-    Consulta c = new Consulta(numAelatorio,tiempoActual);    
-    return c;
-  }
-  public void procesarSimulacion() {  
-      run();
-      int ind = 0; // se usa para recorrer los arrayList
-   double num = 0;
-     Random a;    
-      EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
-      ListIterator itEstadisticosIteracion;
-    //  ventanaEjecucion.mostrarVentana();
-       try {
-              Thread.sleep(25010); //Espera 3 segundos para que el usuario pueda ver los procesos
-          } catch(InterruptedException ex) {
-               Thread.currentThread().interrupt();
-            }
-      while (iteracionActual <= cantidadCorridas) {
-          System.out.println("Iteración actual :" + iteracionActual);
-          a = new Random();
-          modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
-          modAdminConsultas = new ModAdministracionConsultas(n, m);
-          modAdminProcesos = new ModAdministracionProcesos();
-          modAdminTransacciones = new ModAdministracionTransacciones(p);
-          tiempoActual = 0;
-          num = a.nextDouble();
-          tiempoActual = 0;
-          Consulta consultaActual = new Consulta(num, 0);
-          listaEventos = new ArrayList<>(200);
-          consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
-          agregarEvento(consultaActual); //En tiempo 0
+    public static List<Consulta> listaEventos; //Contiene la lista de los eventos por ejecutar
+    ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
+    ArrayList <EstadisticosModulo> estadisticasModulo;
+    ArrayList <EstadisticosIteracion> estadisticosIteracion;
+    EstadisticosGenerales eg;
+    GeneradoraValoresAelatorios gen;
+    VentanaEjecucion ventana;
 
-          while (tiempoActual < tiempoMaximo) {
+    public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){       
+        ventana = new VentanaEjecucion();
+        estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
+        estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
+        tiempoMaximo = tMax;
+        cantidadCorridas = numCorridas;
+        k = numConexionesConcurrentesMaximo;
+        n = numProcesosProcesamientoConsultasConcurrentes;
+        p = numProcesosEjecucionTransacciones;
+        m = numProcesosEjecucionConsultas;
+        t = segundosParaTimeOut;
+        tiempoActual = 0.0;
+        iteracionActual = 1;
+        modoLento = slow;
+        gen = new GeneradoraValoresAelatorios();
+        System.out.println("funciono constructor de simulacion"); 
+    }
+    
+    public Consulta generarConsulta(){    
+        double numAelatorio = gen.generarNumeroAleatorio();
+        Consulta c = new Consulta(numAelatorio,tiempoActual);    
+        return c;
+  }
+    
+    public void procesarSimulacion() {       
+        run();     
+        int ind = 0; // se usa para recorrer los arrayList
+        double num = 0;
+        EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
+        ListIterator itEstadisticosIteracion;
+        try {              
+            Thread.sleep(25010); //Espera 3 segundos para que el usuario pueda ver los procesos
+          } catch(InterruptedException ex) {                     
+              Thread.currentThread().interrupt();
+          }
+        while (iteracionActual <= cantidadCorridas) {           
+            System.out.println("Iteración actual :" + iteracionActual);          
+            modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
+            modAdminConsultas = new ModAdministracionConsultas(n, m);
+            modAdminProcesos = new ModAdministracionProcesos();
+            modAdminTransacciones = new ModAdministracionTransacciones(p);
+            tiempoActual = 0;
+            num = gen.generarNumeroAleatorio();
+            tiempoActual = 0;
+            Consulta consultaActual = new Consulta(num, 0);                                
+            System.out.println("Random para consulta es: " + num);
+            System.out.println("TIPO ES: " + consultaActual.getTConsulta());
+            listaEventos = new ArrayList<>(200);
+            consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
+            agregarEvento(consultaActual); //En tiempo 0
+
+          while (tiempoActual < tiempoMaximo) {              
               System.out.println("Estamos ejecutando por el tiempo determinado");
-              num = a.nextDouble();
+              num = gen.generarNumeroAleatorio();
               /*
               Se cortó la parte de agregar arribos nuevos
               */
-              
-              
+                            
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               tiempoActual = consultaActual.getTiempoActual(); 
@@ -104,7 +105,9 @@ public class Simulacion implements Runnable {
                             agregarEvento(consultaActual);
                         }
                         
-                        consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(0.5));
+                        consultaActual = new Consulta(num, tiempoActual + gen.generarValorDistribuicionExponencial(0.5));                       
+                        System.out.println("Random para consulta es: " + num);
+                        System.out.println("TIPO ES: " + consultaActual.getTConsulta());
                         consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
                         agregarEvento(consultaActual); //Se agrega a la lista
                       // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
@@ -164,7 +167,7 @@ public class Simulacion implements Runnable {
 
                       break;
 
-                  case llegadaModuloTransacciones:         
+                  case llegadaModuloTransacciones:        
                       modAdminTransacciones.procesarLlegada(consultaActual);                                                                 
                       System.out.println("oh wow sirvio procesar la llegada a trans{acciones"); 
                       if(consultaActual.getTipoEvento()== Evento.tipoEvento.salidaModuloTransacciones){
@@ -221,7 +224,7 @@ public class Simulacion implements Runnable {
       }
       estIt = estadisticosIteracion.get(ind);
       estIt.calcularTiempoPromedioVida(consultas);*/ //Esto hay que corregirlo
-	  ++iteracionActual;
+      ++iteracionActual;
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
   }
@@ -264,7 +267,9 @@ public class Simulacion implements Runnable {
   }
   @Override
   public  void run(){
-      
+      ventana.setSize(800,800);
+      ventana.pack();
+      ventana.setVisible(true);
   }
 }
 
