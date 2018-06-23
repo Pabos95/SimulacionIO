@@ -29,8 +29,10 @@ public class Simulacion {
   EstadisticosGenerales eg;
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
+
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow,VentanaEjecucion vent){
-      
+    estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
+    estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
     k = numConexionesConcurrentesMaximo;
@@ -51,10 +53,12 @@ public class Simulacion {
     return c;
   }
   public void procesarSimulacion() {  
+      int ind = 0; // se usa para recorrer los arrayList
    double num = 0;
      Random a;    
       System.out.println("So far so good");
-      EstadisticosIteracion estIt = new EstadisticosIteracion();
+      EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
+      ListIterator itEstadisticosIteracion;
       while (iteracionActual <= cantidadCorridas) {
           System.out.println("Iteración actual :" + iteracionActual);
           a = new Random();
@@ -66,7 +70,7 @@ public class Simulacion {
           System.out.println("check: Instancia de modulos");
           num = a.nextDouble();
           Consulta consultaActual = new Consulta(num, 0);
-          listaEventos = new ArrayList<>(200);
+          listaEventos = new ArrayList<Consulta>(200);
           consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
           System.out.println("check: Primer evento");
           agregarEvento(consultaActual); //En tiempo 0
@@ -197,7 +201,13 @@ public class Simulacion {
           }
 
           //Actualizar estadísticas por cada corrida
+       itEstadisticosIteracion =estadisticosIteracion.listIterator();
+       for(int i = 0; i <= iteracionActual -1; i++){
+        ind = itEstadisticosIteracion.nextIndex();
+       }
       }
+      estIt = estadisticosIteracion.get(ind);
+      estIt.calcularTiempoPromedioVida(consultas);
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
 
