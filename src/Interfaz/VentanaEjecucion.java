@@ -29,8 +29,6 @@ public class VentanaEjecucion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        LongitudModAdministracionConexiones = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TiempoEjecucion = new javax.swing.JTextField();
@@ -44,138 +42,95 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         LongitudModAdministracionTransacciones = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         LongitudModAdministracionProcesos = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        LongitudModAdministracionConsultas1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.lightGray);
-        setPreferredSize(new java.awt.Dimension(482, 482));
-
-        jLabel4.setText("Longitud cola modulo administracion conexiones: ");
-
-        LongitudModAdministracionConexiones.setEditable(false);
+        setPreferredSize(new java.awt.Dimension(640, 511));
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(java.awt.Color.lightGray);
+        jPanel1.setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tiempo de ejecucion:");
         this.add(jLabel1);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(32, 14, 370, 22);
 
         TiempoEjecucion.setEditable(false);
+        jPanel1.add(TiempoEjecucion);
+        TiempoEjecucion.setBounds(500, 20, 138, 20);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Longitud cola modulo administracion clientes: ");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(0, 52, 420, 22);
 
         LongitudModAdministracionClientes.setEditable(false);
+        jPanel1.add(LongitudModAdministracionClientes);
+        LongitudModAdministracionClientes.setBounds(500, 50, 138, 20);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Longitud cola modulo administracion consultas: ");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 103, 410, 22);
 
         LongitudModAdministracionConsultas.setEditable(false);
+        jPanel1.add(LongitudModAdministracionConsultas);
+        LongitudModAdministracionConsultas.setBounds(500, 100, 138, 20);
 
         NumConexionesDescartadas.setEditable(false);
+        jPanel1.add(NumConexionesDescartadas);
+        NumConexionesDescartadas.setBounds(500, 260, 138, 20);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Conexiones descartadas por el servidor");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(10, 251, 380, 22);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Longitud cola modulo administracion transacciones: ");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 186, 460, 22);
 
         LongitudModAdministracionTransacciones.setEditable(false);
+        jPanel1.add(LongitudModAdministracionTransacciones);
+        LongitudModAdministracionTransacciones.setBounds(500, 180, 138, 20);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Longitud cola modulo administracion procesos: ");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(10, 141, 400, 22);
 
         LongitudModAdministracionProcesos.setEditable(false);
+        jPanel1.add(LongitudModAdministracionProcesos);
+        LongitudModAdministracionProcesos.setBounds(500, 140, 138, 20);
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(jPanel1Layout.createSequentialGroup()
-                            .add(32, 32, 32)
-                            .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 247, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(TiempoEjecucion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(jPanel1Layout.createSequentialGroup()
-                            .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 247, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(LongitudModAdministracionClientes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 247, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(18, 18, 18)
-                                .add(LongitudModAdministracionConsultas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(jLabel7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 247, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(NumConexionesDescartadas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(jLabel5)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(LongitudModAdministracionTransacciones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 247, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(LongitudModAdministracionProcesos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(128, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(TiempoEjecucion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1))
-                .add(18, 18, 18)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel3)
-                    .add(LongitudModAdministracionClientes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(28, 28, 28)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(LongitudModAdministracionConsultas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 145, Short.MAX_VALUE)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel6)
-                    .add(LongitudModAdministracionProcesos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(LongitudModAdministracionTransacciones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel7)
-                    .add(NumConexionesDescartadas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(64, 64, 64))
-        );
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Longitud segunda cola modulo administracion consultas");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(10, 209, 460, 33);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(0, 0, Short.MAX_VALUE)
-                .add(LongitudModAdministracionConexiones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 138, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(377, 377, 377))
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(30, 30, 30)
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(136, 136, 136)
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 247, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(318, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(28, 28, 28)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(320, 320, 320)
-                .add(jLabel4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(LongitudModAdministracionConexiones, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1528, Short.MAX_VALUE))
-        );
+        LongitudModAdministracionConsultas1.setEditable(false);
+        jPanel1.add(LongitudModAdministracionConsultas1);
+        LongitudModAdministracionConsultas1.setBounds(500, 220, 138, 20);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/geometric-background.png")));
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(-33, -29, 900, 650);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(30, 28, 640, 511);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -221,9 +176,7 @@ public class VentanaEjecucion extends javax.swing.JFrame {
    public void actualizarLongitudModAdministracionClientes(int nuevaLong){
        LongitudModAdministracionClientes.setText(String.valueOf(nuevaLong));
     }
-   public void actualizarLongitudModAdministracionConexiones(int nuevaLong){
-      LongitudModAdministracionConexiones.setText(String.valueOf(nuevaLong));
-    }
+ 
    public void actualizarLongitudModAdministracionConsultas(int nuevaLong){       
      LongitudModAdministracionConsultas.setText(String.valueOf(nuevaLong));
    }
@@ -241,8 +194,8 @@ public class VentanaEjecucion extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField LongitudModAdministracionClientes;
-    private javax.swing.JTextField LongitudModAdministracionConexiones;
     private javax.swing.JTextField LongitudModAdministracionConsultas;
+    private javax.swing.JTextField LongitudModAdministracionConsultas1;
     private javax.swing.JTextField LongitudModAdministracionProcesos;
     private javax.swing.JTextField LongitudModAdministracionTransacciones;
     private javax.swing.JTextField NumConexionesDescartadas;
@@ -250,10 +203,11 @@ public class VentanaEjecucion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

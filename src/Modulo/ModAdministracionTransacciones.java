@@ -113,7 +113,7 @@ public class ModAdministracionTransacciones extends Modulo {
     }
     
     public int getTamActualCola(){
-        return this.tamActualCola;
+        return colaSentencias.size();
     }
     public void restarConexionesActivas(){
         --consultasActuales;

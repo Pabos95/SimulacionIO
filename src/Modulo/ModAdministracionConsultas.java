@@ -164,7 +164,7 @@ public class ModAdministracionConsultas extends Modulo{
     }
     
     public int getTamActualCola(){
-        return this.tamActualCola;
+        return tamActualCola;
     }
     public void restarConexionesActivas(){
         --consultasActuales;
