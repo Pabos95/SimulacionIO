@@ -80,7 +80,8 @@ public class Portada extends javax.swing.JFrame {
         getContentPane().add(Salir);
         Salir.setBounds(270, 300, 80, 23);
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(180, 180, 34, 14);
+        jLabel2.setBounds(0, 0, 520, 400);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/White-Abstract-background-1.jpg")));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
