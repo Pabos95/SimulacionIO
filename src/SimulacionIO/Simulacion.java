@@ -235,7 +235,9 @@ public class Simulacion {
       }
       return retorno;
   }
-
+  public void setVentana(VentanaEjecucion vent){
+      this.estadoSimulacion = vent;
+  }
 
  /*public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
      ventana.actualizarTiempoActual(tiempoActual);
