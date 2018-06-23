@@ -77,14 +77,14 @@ public class ModAdministracionConsultas extends Modulo{
             ++consultasActuales;
              //Se procesan consultas haciendo etapas de validación
             timeEjecucion = 0; //Se resetea
-            timeEjecucion = 1/10; //Duración de validación Léxica
+            timeEjecucion = 0.1; //Duración de validación Léxica = 1/10
             timeEjecucion +=  gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
             timeEjecucion +=  gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
             timeEjecucion +=  gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
             //Optimización de consultas
             if ((consulta.getTConsulta() == Consulta.tipoConsulta.ddl) ||  //No son de read-only
                     (consulta.getTConsulta() == Consulta.tipoConsulta.update)){  //No son de read-only
-                timeEjecucion +=  1/4;
+                timeEjecucion +=  0.25; // es 1/4
             } else { //Son read-only
                 timeEjecucion +=  0.1;
             }
