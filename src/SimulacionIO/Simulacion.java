@@ -238,11 +238,11 @@ public class Simulacion {
   }
   public void setVentana(VentanaEjecucion vent){
       this.estadoSimulacion = vent;
+      estadoSimulacion.setSize(640,511);
   }
 
  public void actualizarVentana(){ //aqui se muestra cada evento de la simulacion, el tamaño de las colas ect
      estadoSimulacion.actualizarTiempoActual(tiempoActual);
-     estadoSimulacion.actualizarLongitudModAdministracionClientes(modAdminClientes.getTamActualCola());
      estadoSimulacion.actualizarLongitudModAdministracionProcesos(modAdminProcesos.getTamActualCola());
      estadoSimulacion.actualizarLongitudModAdministracionConsultas(modAdminConsultas.getTamActualCola());
      estadoSimulacion.actualizarLongitudModAdministracionTransacciones(modAdminTransacciones.getTamActualCola());

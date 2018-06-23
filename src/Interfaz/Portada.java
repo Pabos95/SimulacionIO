@@ -165,6 +165,7 @@ public class Portada extends javax.swing.JFrame {
                         p.getVP().dispose();
                         p.getVE().setVisible(true);
                         s = p.getVP().getSimulacion();
+                  
                         s.setVentana(p.getVE());
                         s.procesarSimulacion();
                        p.getVP().setSimulacionLlamada(false);

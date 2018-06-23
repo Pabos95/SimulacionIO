@@ -10,8 +10,9 @@ import java.util.*;
 public class ModAdministracionClientes extends Modulo {
     int k;
     int consultasRechazadas;
-
+    
     public ModAdministracionClientes(int tam) {
+        tamActualCola = 0;
         k = tam;
     }
 

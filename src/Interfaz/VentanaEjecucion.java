@@ -32,8 +32,6 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TiempoEjecucion = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        LongitudModAdministracionClientes = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         LongitudModAdministracionConsultas = new javax.swing.JTextField();
         NumConexionesDescartadas = new javax.swing.JTextField();
@@ -43,7 +41,7 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         LongitudModAdministracionProcesos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        LongitudModAdministracionConsultas1 = new javax.swing.JTextField();
+        LongitudColaEjecucionModAdmConsultas = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,65 +63,55 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         jPanel1.add(TiempoEjecucion);
         TiempoEjecucion.setBounds(500, 20, 138, 20);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Longitud cola modulo administracion clientes: ");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(0, 52, 420, 22);
-
-        LongitudModAdministracionClientes.setEditable(false);
-        jPanel1.add(LongitudModAdministracionClientes);
-        LongitudModAdministracionClientes.setBounds(500, 50, 138, 20);
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Longitud cola modulo administracion consultas: ");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 103, 410, 22);
+        jLabel2.setBounds(20, 50, 410, 22);
 
         LongitudModAdministracionConsultas.setEditable(false);
         jPanel1.add(LongitudModAdministracionConsultas);
-        LongitudModAdministracionConsultas.setBounds(500, 100, 138, 20);
+        LongitudModAdministracionConsultas.setBounds(500, 60, 138, 20);
 
         NumConexionesDescartadas.setEditable(false);
         jPanel1.add(NumConexionesDescartadas);
-        NumConexionesDescartadas.setBounds(500, 260, 138, 20);
+        NumConexionesDescartadas.setBounds(500, 240, 138, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Conexiones descartadas por el servidor");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 251, 380, 22);
+        jLabel7.setBounds(30, 230, 380, 22);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Longitud cola modulo administracion transacciones: ");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 186, 460, 22);
+        jLabel5.setBounds(20, 140, 460, 22);
 
         LongitudModAdministracionTransacciones.setEditable(false);
         jPanel1.add(LongitudModAdministracionTransacciones);
-        LongitudModAdministracionTransacciones.setBounds(500, 180, 138, 20);
+        LongitudModAdministracionTransacciones.setBounds(500, 150, 138, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Longitud cola modulo administracion procesos: ");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 141, 400, 22);
+        jLabel6.setBounds(20, 100, 400, 22);
 
         LongitudModAdministracionProcesos.setEditable(false);
         jPanel1.add(LongitudModAdministracionProcesos);
-        LongitudModAdministracionProcesos.setBounds(500, 140, 138, 20);
+        LongitudModAdministracionProcesos.setBounds(500, 100, 138, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Longitud segunda cola modulo administracion consultas");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(10, 209, 460, 33);
+        jLabel8.setBounds(10, 180, 460, 33);
 
-        LongitudModAdministracionConsultas1.setEditable(false);
-        jPanel1.add(LongitudModAdministracionConsultas1);
-        LongitudModAdministracionConsultas1.setBounds(500, 220, 138, 20);
+        LongitudColaEjecucionModAdmConsultas.setEditable(false);
+        jPanel1.add(LongitudColaEjecucionModAdmConsultas);
+        LongitudColaEjecucionModAdmConsultas.setBounds(500, 190, 138, 20);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/geometric-background.png")));
         jPanel1.add(jLabel9);
@@ -173,9 +161,6 @@ public class VentanaEjecucion extends javax.swing.JFrame {
             }
         });
     }
-   public void actualizarLongitudModAdministracionClientes(int nuevaLong){
-       LongitudModAdministracionClientes.setText(String.valueOf(nuevaLong));
-    }
  
    public void actualizarLongitudModAdministracionConsultas(int nuevaLong){       
      LongitudModAdministracionConsultas.setText(String.valueOf(nuevaLong));
@@ -192,17 +177,18 @@ public class VentanaEjecucion extends javax.swing.JFrame {
    public void actualizarNumConexionesDescartadas(int nuevoNum){
        NumConexionesDescartadas.setText(String.valueOf(nuevoNum));
     }
+   public void actualizarLongitudColaEjecucionModAdmConsultas(int nuevoNum){
+       LongitudColaEjecucionModAdmConsultas.setText(String.valueOf(nuevoNum));
+   }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField LongitudModAdministracionClientes;
+    private javax.swing.JTextField LongitudColaEjecucionModAdmConsultas;
     private javax.swing.JTextField LongitudModAdministracionConsultas;
-    private javax.swing.JTextField LongitudModAdministracionConsultas1;
     private javax.swing.JTextField LongitudModAdministracionProcesos;
     private javax.swing.JTextField LongitudModAdministracionTransacciones;
     private javax.swing.JTextField NumConexionesDescartadas;
     private javax.swing.JTextField TiempoEjecucion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
