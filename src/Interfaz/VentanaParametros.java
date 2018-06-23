@@ -57,6 +57,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         segundosTimeOut = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jDialog1.setSize(new java.awt.Dimension(500, 500));
         jDialog1.setType(java.awt.Window.Type.POPUP);
@@ -94,22 +95,24 @@ public class VentanaParametros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SimulacionDBMS");
-        setBackground(javax.swing.UIManager.getDefaults().getColor("MenuItem.selectionBackground"));
+        setBackground(new java.awt.Color(204, 255, 153));
         setForeground(javax.swing.UIManager.getDefaults().getColor("menu"));
+        setPreferredSize(new java.awt.Dimension(1000, 563));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 153));
         jPanel1.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1010, 540));
         jPanel1.setLayout(null);
 
         jLabel4.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel4.setText("k");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(22, 175, 5, 14);
+        jLabel4.setBounds(22, 169, 20, 20);
 
         jLabel6.setText("d");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(21, 149, 6, 14);
+        jLabel6.setBounds(21, 143, 30, 20);
 
         jLabel5.setText("    n");
         jLabel5.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -122,7 +125,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numMaxConexionesConcurrentes);
-        numMaxConexionesConcurrentes.setBounds(37, 172, 73, 20);
+        numMaxConexionesConcurrentes.setBounds(50, 170, 73, 20);
 
         numCorridas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +133,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numCorridas);
-        numCorridas.setBounds(37, 120, 73, 20);
+        numCorridas.setBounds(50, 110, 73, 20);
 
         numProcesosConsultasConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +141,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numProcesosConsultasConcurrentes);
-        numProcesosConsultasConcurrentes.setBounds(37, 79, 73, 20);
+        numProcesosConsultasConcurrentes.setBounds(50, 80, 73, 20);
 
         duracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +149,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(duracion);
-        duracion.setBounds(37, 146, 73, 20);
+        duracion.setBounds(50, 140, 73, 20);
 
         jButton1.setText("Listo");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,11 +163,11 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(289, 468, 55, 23);
+        jButton1.setBounds(320, 490, 55, 23);
 
         jLabel2.setText("c");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(21, 120, 5, 14);
+        jLabel2.setBounds(21, 114, 20, 20);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -173,8 +176,9 @@ public class VentanaParametros extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 351, 688, 113);
+        jScrollPane1.setBounds(20, 350, 688, 113);
 
+        checkbox1.setBackground(new java.awt.Color(204, 255, 153));
         checkbox1.setLabel("ModoLento");
         jPanel1.add(checkbox1);
         checkbox1.setBounds(21, 321, 87, 20);
@@ -182,7 +186,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         jLabel8.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel8.setText("p");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(22, 201, 16, 14);
+        jLabel8.setBounds(22, 201, 20, 20);
 
         numProcesosEjecucionTransacciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,7 +194,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numProcesosEjecucionTransacciones);
-        numProcesosEjecucionTransacciones.setBounds(37, 198, 73, 20);
+        numProcesosEjecucionTransacciones.setBounds(50, 200, 73, 20);
 
         numProcesosEjecucionConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,17 +202,17 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numProcesosEjecucionConsultas);
-        numProcesosEjecucionConsultas.setBounds(37, 233, 73, 20);
+        numProcesosEjecucionConsultas.setBounds(50, 230, 73, 20);
 
         jLabel9.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel9.setText("m");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(22, 236, 16, 14);
+        jLabel9.setBounds(22, 230, 20, 20);
 
         jLabel10.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel10.setText("t");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(22, 262, 16, 14);
+        jLabel10.setBounds(22, 262, 20, 14);
 
         segundosTimeOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,23 +220,23 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(segundosTimeOut);
-        segundosTimeOut.setBounds(37, 259, 73, 20);
+        segundosTimeOut.setBounds(50, 260, 73, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/abstract-background-wallpaper.jpg")));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(-16, -3, 1060, 560);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
         );
 
         pack();
@@ -361,6 +365,7 @@ public class VentanaParametros extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
