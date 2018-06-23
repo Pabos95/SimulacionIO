@@ -86,7 +86,7 @@ public class Simulacion {
               System.out.println("check: se agregó evento dentro del ciclo");
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
-              tiempoActual = consultaActual.getTiempoActual(); //El tiempo actual no se esta actualizando bien, nunca pasa de 0
+              tiempoActual += consultaActual.getTiempoActual(); //El tiempo actual no se esta actualizando bien, nunca pasa de 0
               System.out.println("Tiempo actual " + tiempoActual);
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
