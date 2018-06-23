@@ -59,11 +59,6 @@ public class Simulacion {
         double num = 0;
         EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
         ListIterator itEstadisticosIteracion;
-        try {              
-            Thread.sleep(25010); //Espera 3 segundos para que el usuario pueda ver los procesos
-          } catch(InterruptedException ex) {                     
-              Thread.currentThread().interrupt();
-          }
         while (iteracionActual <= cantidadCorridas) {           
             System.out.println("Iteración actual :" + iteracionActual);          
             modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro
