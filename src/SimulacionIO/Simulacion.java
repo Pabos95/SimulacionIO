@@ -25,7 +25,8 @@ public class Simulacion {
   public static List<Consulta> listaEventos; //Contiene la lista de los eventos por ejecutar
   ArrayList <Consulta> consultas; //almacena las consultas de la simulacion para al final de una corrida poder calcular el tiempo de vida promedio
   ArrayList <EstadisticosModulo> estadisticasModulo;
-
+  ArrayList <EstadisticosIteracion> estadisticosIteracion;
+  EstadisticosGenerales eg;
   GeneradoraValoresAelatorios gen;
   VentanaEjecucion ventana;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow,VentanaEjecucion vent){
@@ -53,6 +54,7 @@ public class Simulacion {
      double num = 0;
      Random a;
       System.out.println("So far so good");
+      EstadisticosIteracion estIt = new EstadisticosIteracion();
       while (iteracionActual <= cantidadCorridas) {
           a = new Random();
           modAdminClientes = new ModAdministracionClientes(k); //Revisar que todo esté bien y claro

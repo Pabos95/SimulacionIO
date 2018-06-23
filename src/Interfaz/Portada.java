@@ -133,12 +133,10 @@ public class Portada extends javax.swing.JFrame {
         }
         //</editor-fold>*/
 
- Portada p = new Portada();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
            public void run() {
-                
-                p.setVisible(true);
+                new Portada().setVisible(true);
             }
        });
     }

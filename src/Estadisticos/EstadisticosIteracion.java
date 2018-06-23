@@ -12,7 +12,7 @@ import SimulacionIO.*;
  */
 public class EstadisticosIteracion {
     private int numConexionesDescartadas;
-    private double[] tamañoPromedioColaModulo; //Almacena los tamaños promedio de cada modulo de la corrida
+    private double[] tamPromedioColaModulo; //Almacena los tamaños promedio de cada modulo de la corrida
     private double tiempoPromedioVida; //Almacena el tiempo promedio de vida de una consulta
     /*0 Modulo AdministracionClientes
     1 Modulo AdministracionConexiones
@@ -21,12 +21,12 @@ public class EstadisticosIteracion {
     4 Modulo Administracion Transacciones*/
     public EstadisticosIteracion(){
 
-        tamañoPromedioColaModulo = new double[5];
+        tamPromedioColaModulo = new double[5];
     }
 
-    public void agregarTamañoPromedio(double tamPromedio,int pos){ //se usa para agregar un tamaño promedio al arreglo
+    public void agregarTamPromedio(double tamPromedio,int pos){ //se usa para agregar un tamaño promedio al arreglo
 
-        tamañoPromedioColaModulo[pos] = tamPromedio;
+        tamPromedioColaModulo[pos] = tamPromedio;
     }
 
     public void calcularTiempoPromedioVida(ArrayList <Consulta> listaConsultas){
