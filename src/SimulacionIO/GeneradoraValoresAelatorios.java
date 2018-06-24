@@ -28,8 +28,6 @@ public class GeneradoraValoresAelatorios{
         nuevoValor = nuevoValor/Math.pow(10, 4);
         return nuevoValor;
 
-        //return 2; //Si en 1 minuto llegan 30 sentencias
-                  //entonces cada 2 segundos llega una nueva sentencia
     }
     public double generarValorDistribuicionUniforme(double a, double b){
         double nuevoValor = a + (b - a)*generarNumeroAleatorio();
