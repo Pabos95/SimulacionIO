@@ -28,7 +28,9 @@ public class EstadisticosIteracion {
 
         tamPromedioColaModulo[pos] = tamPromedio;
     }
-
+    public double getTiempoPromedioVida(){
+        return tiempoPromedioVida;
+    }
     public void calcularTiempoPromedioVida(ArrayList <Consulta> listaConsultas){
         double sumatoria = 0;
         Consulta[] arregloConsultas =  new Consulta[listaConsultas.size()];

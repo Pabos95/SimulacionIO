@@ -229,18 +229,20 @@ public class Simulacion {
                 //Se podría sacar parte de la info guardada en cada modulo para presentarla al usuario
                 
           }
-           estadoSimulacion.diIt.setVisible(true);
            
           //Actualizar estadísticas por cada corrida
        itEstadisticosIteracion =estadisticosIteracion.listIterator();
        for(int i = 0; i <= iteracionActual -1; i++){
         ind = itEstadisticosIteracion.nextIndex();
        }
+       estadoSimulacion.diIt.actualizarIteracion(iteracionActual);
        ++iteracionActual;
        estIt = estadisticosIteracion.get(ind);
       estIt.calcularTiempoPromedioVida(consultas); 
        consultas.clear();  
-      }
+       estadoSimulacion.diIt.actualizarTiempoVidaPromedio(estIt.getTiempoPromedioVida());
+       estadoSimulacion.diIt.setVisible(true);
+    }
       
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
