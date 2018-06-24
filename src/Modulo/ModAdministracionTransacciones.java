@@ -12,11 +12,10 @@ import java.util.PriorityQueue;
 
 public class ModAdministracionTransacciones extends Modulo {  
     int p;
-    double timeSalida;
     boolean flagDDL;
     GeneradoraValoresAelatorios gen;
     PriorityQueue<Consulta> colaSentencias;
-    double tiempoEjecucion;
+    double timeEjecucion;
     Consulta sentenciaDDLEnEspera;
     
     public ModAdministracionTransacciones(int tam){
@@ -24,9 +23,7 @@ public class ModAdministracionTransacciones extends Modulo {
         p = tam;
         gen = new GeneradoraValoresAelatorios();
         colaSentencias = new PriorityQueue<Consulta>(100, new ComparadorConsultas());
-		consultasActuales = 0;
-        timeSalida = 0;
-        //tiempoEjecucion = consultasActuales * 0.03;
+	consultasActuales = 0;
     }
 
     @Override
@@ -36,12 +33,13 @@ public class ModAdministracionTransacciones extends Modulo {
               if(!flagDDL){//Si no se ha detectado ninguna sentencia DDL
                   //Se procesan consultas
                   ++consultasActuales;
+                  timeEjecucion = 0;
                   switch(consulta.getTConsulta()){
                         case ddl:
                             if(consultasActuales == 1){//Si la sentencia DDL es la única en el módulo
-                                timeSalida = consulta.getTiempoActual() + consultasActuales * 0.03; //Procesar ejecución de DDL, 1 * 0.03
-                                consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
-                                consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                                timeEjecucion = consultasActuales * 0.03;
+                                consulta.setTiempoActual(consulta.getTiempoActual() + timeEjecucion);
+                                consulta.setTiempoVida(consulta.getTiempoVida() + timeEjecucion);
                                 sentenciaDDLEnEspera = null;
                             }
                             else{
@@ -51,24 +49,24 @@ public class ModAdministracionTransacciones extends Modulo {
                             }
                             break;
                         case update:
-                            timeSalida = consulta.getTiempoActual() + (consultasActuales * 0.03);
-                            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
-                            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                            timeEjecucion = consultasActuales * 0.03;
+                            consulta.setTiempoActual(consulta.getTiempoActual() + timeEjecucion);
+                            consulta.setTiempoVida(consulta.getTiempoVida() + timeEjecucion);
                             //cargar bloques es Bloques * 1/10 pero UPDATE carga 0 bloques, es decir no hay que hacer ninguna operación
                             break;
                         case join:
-                            timeSalida = consulta.getTiempoActual() + (consultasActuales * 0.03);
                             int bloques = (int)gen.generarValorDistribuicionUniforme(1.0, 64.0);
-                            timeSalida = timeSalida + 1/10 * bloques;
-                            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
-                            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                            timeEjecucion = consultasActuales * 0.03;
+                            timeEjecucion += timeEjecucion + 0.1 * bloques;
+                            consulta.setTiempoActual(consulta.getTiempoActual() + timeEjecucion);
+                            consulta.setTiempoVida(consulta.getTiempoVida() + timeEjecucion);
                             consulta.setBloques(bloques);
                             break;
                         case select:
-                            timeSalida = consulta.getTiempoActual() + tiempoEjecucion;
-                            timeSalida = timeSalida + 1/10 * 1; //bloques = 1
-                            consulta.setTiempoActual(consulta.getTiempoActual() + timeSalida);
-                            consulta.setTiempoVida(consulta.getTiempoVida() + timeSalida);
+                            timeEjecucion = consultasActuales * 0.03;
+                            timeEjecucion += timeEjecucion + 0.1 * 1; //bloques = 1
+                            consulta.setTiempoActual(consulta.getTiempoActual() + timeEjecucion);
+                            consulta.setTiempoVida(consulta.getTiempoVida() + timeEjecucion);
                             break;
                     }      
         
@@ -113,7 +111,7 @@ public class ModAdministracionTransacciones extends Modulo {
     }
     
     public int getTamActualCola(){
-        return colaSentencias.size();
+        return this.tamActualCola;
     }
     public void restarConexionesActivas(){
         --consultasActuales;
