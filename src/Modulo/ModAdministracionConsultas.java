@@ -9,17 +9,14 @@ import static SimulacionIO.Simulacion.agregarEvento;
 public class ModAdministracionConsultas extends Modulo{
     int n;
     int m;
-    double timeEjecucion; //Tiempo de ejecución después de realizar las etapas de validación 
-    int tamFinalColaP;
-    int tamActualColaP;
-    GeneradoraValoresAelatorios gen;
+    double timeEjecucion; //Tiempo de ejecución después de realizar las etapas de validación
     List<Consulta> colaEjecutar; //Cola para cuando la llegada venga de Modulo de transacciones
     int sentenciasEjecucion; //Contador de cuantas sentencias están siendo ejecutadas
 
     public ModAdministracionConsultas(int tam, int tam2){
 		n = tam;
 		m = tam2;
-        gen = new GeneradoraValoresAelatorios();
+        gen = new GeneradoraValoresAleatorios();
         colaConsultas = new ArrayList<Consulta>(); //Esto podría ser new LinkedList<>() que tiene los mismos métodos que Priority Queue y disciplina FIFO
         colaEjecutar = new ArrayList<Consulta>();
         timeEjecucion = 0;
@@ -163,6 +160,7 @@ public class ModAdministracionConsultas extends Modulo{
         
     }
     
+    @Override
     public int getTamActualCola(){
         return colaConsultas.size();
     }
@@ -171,7 +169,4 @@ public class ModAdministracionConsultas extends Modulo{
         return colaEjecutar.size();
     }
 	
-    public void restarConexionesActivas(){
-        --consultasActuales;
-    }
 }

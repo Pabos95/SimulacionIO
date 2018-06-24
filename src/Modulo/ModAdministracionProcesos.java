@@ -8,7 +8,7 @@ package Modulo;
 
 import SimulacionIO.Consulta;
 import SimulacionIO.Evento;
-import SimulacionIO.GeneradoraValoresAelatorios;
+import SimulacionIO.GeneradoraValoresAleatorios;
 import java.util.*;
 
 import static SimulacionIO.Simulacion.agregarEvento;
@@ -17,11 +17,10 @@ import static SimulacionIO.Simulacion.agregarEvento;
 public class ModAdministracionProcesos extends Modulo {
 
     boolean systemCall;
-    GeneradoraValoresAelatorios gen;
 
     public ModAdministracionProcesos(){
         systemCall = false;
-        gen = new GeneradoraValoresAelatorios();
+        gen = new GeneradoraValoresAleatorios();
         colaConsultas = new ArrayList<>();
 
     }
@@ -56,7 +55,7 @@ public class ModAdministracionProcesos extends Modulo {
             systemCall = true;
             
              //Procesa la salida de la consulta que llega como parámetro
-            GeneradoraValoresAelatorios g = new GeneradoraValoresAelatorios();
+            GeneradoraValoresAleatorios g = new GeneradoraValoresAleatorios();
             double valor = g.generarValorDistribuicionNormal(1.0,0.01);
             consulta.setTiempoActual(consulta.getTiempoActual() + valor);
             consulta.setTiempoVida( consulta.getTiempoVida() + valor);
@@ -85,12 +84,8 @@ public class ModAdministracionProcesos extends Modulo {
 
     }
 
+    @Override
     public int getTamActualCola(){
         return colaConsultas.size();
     }
-    public void restarConexionesActivas(){
-        --consultasActuales;
-    }
 }
-/*Hay que actualizar los estadísticos
-* El timeout se trabaja en simulación, cuando está a punto de salir de un módulo*/

@@ -13,7 +13,6 @@ import java.util.PriorityQueue;
 public class ModAdministracionTransacciones extends Modulo {  
     int p;
     boolean flagDDL;
-    GeneradoraValoresAelatorios gen;
     PriorityQueue<Consulta> colaSentencias;
     double timeEjecucion;
     Consulta sentenciaDDLEnEspera;
@@ -21,7 +20,7 @@ public class ModAdministracionTransacciones extends Modulo {
     public ModAdministracionTransacciones(int tam){
         flagDDL = false;
         p = tam;
-        gen = new GeneradoraValoresAelatorios();
+        gen = new GeneradoraValoresAleatorios();
         colaSentencias = new PriorityQueue<Consulta>(100, new ComparadorConsultas());
 	consultasActuales = 0;
     }
@@ -112,8 +111,5 @@ public class ModAdministracionTransacciones extends Modulo {
     
     public int getTamActualCola(){
         return colaSentencias.size();
-    }
-    public void restarConexionesActivas(){
-        --consultasActuales;
     }
 }

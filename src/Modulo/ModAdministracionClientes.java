@@ -12,7 +12,6 @@ public class ModAdministracionClientes extends Modulo {
     int consultasRechazadas;
     
     public ModAdministracionClientes(int tam) {
-        tamActualCola = 0;
         k = tam;
     }
 
@@ -48,12 +47,16 @@ public class ModAdministracionClientes extends Modulo {
         }
     }
 
-    public void restarConexionesActivas(){
-        --consultasActuales;
-    }
+    @Override
     public int getTamActualCola(){
         return colaConsultas.size();
     }
+    
+    public void restarConexionesActivas(){
+        --consultasActuales;
+    }
+    
+   
     public int getConsultasRechazadas(){
         return consultasRechazadas;
     }

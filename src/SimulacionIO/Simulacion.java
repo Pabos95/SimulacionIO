@@ -19,7 +19,7 @@ public class Simulacion {
   int n; //numero de procesos disponibles para el procesamiento de consultas. concurrentes que puede manejar el sistema.
   int p; //numero de procesos disponibles para la ejecución de transacciones
   int m; //numero de procesos disponibles para la ejecución de consultas
-  int t; //cantidad de segundos para el timeout de las conexiones
+  double t; //cantidad de segundos para el timeout de las conexiones
   double tiempoActual;
   boolean modoLento;// true si la conexión está en modoLento y falso en caso contrario
   VentanaEjecucion estadoSimulacion;
@@ -28,7 +28,7 @@ public class Simulacion {
   ArrayList <EstadisticosModulo> estadisticasModulo;
   ArrayList <EstadisticosIteracion> estadisticosIteracion;
   EstadisticosGenerales eg;
-  GeneradoraValoresAelatorios gen;
+  GeneradoraValoresAleatorios gen;
   //VentanaEjecucion ventana; creo que ya no se va a usar esta ventana
   VentanaEjecucion ve;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
@@ -45,7 +45,7 @@ public class Simulacion {
     tiempoActual = 0.0;
     iteracionActual = 1;
     modoLento = slow;
-    gen = new GeneradoraValoresAelatorios();
+    gen = new GeneradoraValoresAleatorios();
     System.out.println("funciono constructor de simulacion"); 
   }
   public Consulta generarConsulta(){

@@ -1,12 +1,12 @@
 package SimulacionIO;
 import java.util.Random;
 
-public class GeneradoraValoresAelatorios{
+public class GeneradoraValoresAleatorios{
     Random r;
-    public GeneradoraValoresAelatorios(){      
+    public GeneradoraValoresAleatorios(){      
         r = new Random();
     }
-    //Como sabemos que los valores nunca cambian podría solo devovler el valor
+    
     //m=1       (o-)^2 = 0.01
     public double generarValorDistribuicionNormal(double media, double varianza){ //utiliza el método de convolución para generar un valor aelatorio con distribuición uniforme
         double nuevoValor = 0;
