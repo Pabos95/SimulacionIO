@@ -36,6 +36,7 @@ public class Simulacion {
     estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
+    consultas = new ArrayList<Consulta>(20);
     k = numConexionesConcurrentesMaximo;
     n = numProcesosProcesamientoConsultasConcurrentes;
     p = numProcesosEjecucionTransacciones;
@@ -70,6 +71,7 @@ public class Simulacion {
             estadisticosIteracion.add(estIt);
             num = gen.generarNumeroAleatorio();
             Consulta consultaActual = new Consulta(num, 0);
+           
             consultas.add(consultaActual);
             System.out.println("Random para consulta es: " + num);
             System.out.println("TIPO ES: " + consultaActual.getTConsulta());
