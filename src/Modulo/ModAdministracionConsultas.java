@@ -12,7 +12,6 @@ public class ModAdministracionConsultas extends Modulo{
     double timeEjecucion; //Tiempo de ejecución después de realizar las etapas de validación 
     int tamFinalColaP;
     int tamActualColaP;
-    GeneradoraValoresAelatorios gen;
     List<Consulta> colaEjecutar; //Cola para cuando la llegada venga de Modulo de transacciones
     int sentenciasEjecucion; //Contador de cuantas sentencias están siendo ejecutadas
 

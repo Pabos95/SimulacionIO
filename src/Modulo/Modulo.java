@@ -9,7 +9,7 @@ abstract class Modulo {
     int consultasActuales;
     List<Consulta> colaConsultas;
     EstadisticosModulo estadisticosMod;
-    GeneradoraValoresAelatorios generador;
+    GeneradoraValoresAelatorios gen;
 
     public abstract void procesarLlegada(Consulta consulta);
 

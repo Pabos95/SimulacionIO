@@ -17,7 +17,6 @@ import static SimulacionIO.Simulacion.agregarEvento;
 public class ModAdministracionProcesos extends Modulo {
 
     boolean systemCall;
-    GeneradoraValoresAelatorios gen;
 
     public ModAdministracionProcesos(){
         systemCall = false;
