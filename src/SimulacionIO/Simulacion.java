@@ -56,7 +56,6 @@ public class Simulacion {
     
     public void procesarSimulacion() {           
         int ind = 0; // se usa para recorrer los arrayList
-        double dif = 0; //la diferencia entre el tiempo actual y el anterior, para efectos de delay en modoLento
         double num = 0;
         EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
         ListIterator itEstadisticosIteracion;
@@ -83,10 +82,9 @@ public class Simulacion {
                             
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
-              dif = consultaActual.getTiempoActual() - tiempoActual;
               if(modoLento == true){
                    try {
-            Thread.sleep((int) dif*1000); //Espera 3 segundos para que el usuario pueda ver los procesos
+            Thread.sleep((1000); //Espera 1 segundo
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
