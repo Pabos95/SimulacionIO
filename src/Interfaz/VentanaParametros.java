@@ -322,9 +322,15 @@ public class VentanaParametros extends javax.swing.JFrame {
         p.setParamT(segundostimeOut);
         p.setSlow(this.modLento);
         p.setParamP(procesosEjecucionTransacciones);
+        this.setVisible(false);
+        this.dispose();
+        ve.setVisible(true)  ;
     }//GEN-LAST:event_jButton1MouseClicked
     public Simulacion getSimulacion(){
         return p.getSimulacion();
+    }
+    public VentanaEjecucion getVe(){
+        return ve;
     }
     private void duracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duracionActionPerformed
         // TODO add your handling code here:

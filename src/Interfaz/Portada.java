@@ -20,7 +20,6 @@ public class Portada extends javax.swing.JFrame {
      */
     public Portada() {
         vp = new VentanaParametros();
-        ve = new VentanaEjecucion();
         continuar = false;
         salir = false;
         initComponents();
@@ -160,11 +159,9 @@ public class Portada extends javax.swing.JFrame {
             if(p.continuar == true){
                 while(true){
                     if(p.getVP().getSimulacionLlamada() == true){
-                        p.getVP().setVisible(false);
-                        p.getVP().dispose();
-                        p.getVE().setVisible(true);
+                        
                         s = p.getVP().getSimulacion();             
-                        s.setVentana(p.getVE());
+                        s.setVentana(p.getVP().getVe());
                         s.procesarSimulacion();
                        p.getVP().setSimulacionLlamada(false);
                     }
