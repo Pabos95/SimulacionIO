@@ -75,9 +75,9 @@ public class ModAdministracionProcesos extends Modulo {
         if(!colaConsultas.isEmpty()){
             Consulta c = colaConsultas.get(0);
             colaConsultas.remove(0);
-            c.setTiempoCola(c.getTiempoCola() + (consultaSaliente.getTiempoActual() - c.getTiempoActual()));
-            c.setTiempoVida(c.getTiempoVida() + c.getTiempoCola());
-            c.setTiempoActual(c.getTiempoActual() + c.getTiempoCola());
+            c.setTiempoCola(c.getTiempoCola() + (consultaSaliente.getTiempoActual() - c.getTiempoActual())); //Tiempo en cola total de una consulta por todos los modulos
+            c.setTiempoVida(c.getTiempoVida() + (consultaSaliente.getTiempoActual() - c.getTiempoActual())); //Hay que agregar solo el tiempo en cola de este modulo
+            c.setTiempoActual(c.getTiempoActual() + (consultaSaliente.getTiempoActual() - c.getTiempoActual()));
             procesarLlegada(c);//Así se procesará adecuadamente
             agregarEvento(c); //Se agrega para que en un futuro se procese su salida
         }
