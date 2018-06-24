@@ -51,66 +51,66 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 540));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tiempo de ejecucion:");
         this.add(jLabel1);
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(32, 14, 370, 22);
+        jLabel1.setBounds(32, 14, 370, 17);
 
         TiempoEjecucion.setEditable(false);
         jPanel1.add(TiempoEjecucion);
-        TiempoEjecucion.setBounds(500, 20, 138, 20);
+        TiempoEjecucion.setBounds(420, 20, 210, 20);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Longitud cola modulo administracion consultas: ");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 50, 410, 22);
+        jLabel2.setBounds(20, 50, 390, 17);
 
         LongitudModAdministracionConsultas.setEditable(false);
         jPanel1.add(LongitudModAdministracionConsultas);
-        LongitudModAdministracionConsultas.setBounds(500, 60, 138, 20);
+        LongitudModAdministracionConsultas.setBounds(420, 50, 210, 20);
 
         NumConexionesDescartadas.setEditable(false);
         jPanel1.add(NumConexionesDescartadas);
-        NumConexionesDescartadas.setBounds(500, 240, 138, 20);
+        NumConexionesDescartadas.setBounds(410, 230, 220, 20);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Conexiones descartadas por el servidor");
+        jLabel7.setText("Conexiones descartadas por el servidor:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(30, 230, 380, 22);
+        jLabel7.setBounds(30, 230, 380, 17);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Longitud cola modulo administracion transacciones: ");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 140, 460, 22);
+        jLabel5.setBounds(10, 140, 400, 17);
 
         LongitudModAdministracionTransacciones.setEditable(false);
         jPanel1.add(LongitudModAdministracionTransacciones);
-        LongitudModAdministracionTransacciones.setBounds(500, 150, 138, 20);
+        LongitudModAdministracionTransacciones.setBounds(418, 140, 210, 20);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Longitud cola modulo administracion procesos: ");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 100, 400, 22);
+        jLabel6.setBounds(20, 102, 390, 20);
 
         LongitudModAdministracionProcesos.setEditable(false);
         jPanel1.add(LongitudModAdministracionProcesos);
-        LongitudModAdministracionProcesos.setBounds(500, 100, 138, 20);
+        LongitudModAdministracionProcesos.setBounds(418, 100, 210, 20);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Longitud segunda cola modulo administracion consultas");
+        jLabel8.setText("Longitud segunda cola modulo administracion consultas:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(10, 180, 460, 33);
+        jLabel8.setBounds(10, 180, 400, 33);
 
         LongitudColaEjecucionModAdmConsultas.setEditable(false);
         jPanel1.add(LongitudColaEjecucionModAdmConsultas);
-        LongitudColaEjecucionModAdmConsultas.setBounds(500, 190, 138, 20);
+        LongitudColaEjecucionModAdmConsultas.setBounds(418, 180, 210, 20);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/geometric-background.png")));
         jPanel1.add(jLabel9);
