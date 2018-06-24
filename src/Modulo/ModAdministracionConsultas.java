@@ -165,14 +165,8 @@ public class ModAdministracionConsultas extends Modulo{
     
     public int getTamActualCola(){
         return colaConsultas.size();
-<<<<<<< HEAD
     }
     
-    public int getTamActualColaEjecutar(){
-        return colaEjecutar.size();
-=======
->>>>>>> cd19fca71fb774680a9309a4a046c2dbd1c67abc
-    }
     public int getTamActualColaEjecutar(){
         return colaEjecutar.size();
     }
