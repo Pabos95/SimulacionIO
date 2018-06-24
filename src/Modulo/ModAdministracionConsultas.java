@@ -77,14 +77,14 @@ public class ModAdministracionConsultas extends Modulo{
             ++consultasActuales;
              //Se procesan consultas haciendo etapas de validación
             timeEjecucion = 0; //Se resetea
-            timeEjecucion = 0.1; //Duración de validación Léxica = 1/10
+            timeEjecucion = 0.1; //Duración de validación Léxica
             timeEjecucion +=  gen.generarValorDistribuicionUniforme(0.0, 1.0); //Duración de validación Sintáctica
             timeEjecucion +=  gen.generarValorDistribuicionUniforme(0.0, 2.0); //Duración de validación Semántica
             timeEjecucion +=  gen.generarValorDistribuicionExponencial(0.7); //Verificación de permisos
             //Optimización de consultas
             if ((consulta.getTConsulta() == Consulta.tipoConsulta.ddl) ||  //No son de read-only
                     (consulta.getTConsulta() == Consulta.tipoConsulta.update)){  //No son de read-only
-                timeEjecucion +=  0.25; // es 1/4
+                timeEjecucion +=  0.25;
             } else { //Son read-only
                 timeEjecucion +=  0.1;
             }
@@ -121,19 +121,19 @@ public class ModAdministracionConsultas extends Modulo{
             timeEjecucion  = 0;
             switch(consulta.getTConsulta()){
                 case ddl:                         
-                    timeEjecucion = consulta.getTiempoActual() + 0.5; //Procesar ejecución de DDL
+                    timeEjecucion = 0.5; //Procesar ejecución de DDL
                 break;      
                 
                 case update:
-                    timeEjecucion = consulta.getTiempoActual() + 1;                    
+                    timeEjecucion = 1;                    
                 break;  
                 
                 case join:
-                    timeEjecucion = consulta.getTiempoActual() + (Math.pow(consulta.getBloques(), 2) * 0.001); //Recordar que B^2 son milisegundos por lo que hay que pasarlos a segundos                
+                    timeEjecucion = (Math.pow(consulta.getBloques(), 2) * 0.001); //Recordar que B^2 son milisegundos por lo que hay que pasarlos a segundos                
                 break;   
                 
                 case select:
-                    timeEjecucion = consulta.getTiempoActual() + (Math.pow(consulta.getBloques(), 2) * 0.001);
+                    timeEjecucion = (Math.pow(consulta.getBloques(), 2) * 0.001);
                 break;   
                 
             }
@@ -156,7 +156,7 @@ public class ModAdministracionConsultas extends Modulo{
             colaEjecutar.remove(0);
             c.setTiempoCola(c.getTiempoCola() + (consulta.getTiempoActual() - c.getTiempoActual()));
             c.setTiempoVida(c.getTiempoVida() + (consulta.getTiempoActual() - c.getTiempoActual()));
-            c.setTiempoActual(consulta.getTiempoActual());
+            c.setTiempoActual(consulta.getTiempoActual() + (consulta.getTiempoActual() - c.getTiempoActual()));
             procesarLlegada2(c);
             agregarEvento(c);
         }
@@ -164,10 +164,7 @@ public class ModAdministracionConsultas extends Modulo{
     }
     
     public int getTamActualCola(){
-        return colaConsultas.size();
-    }
-    public int getTamActualColaEjecutar(){
-        return colaEjecutar.size();
+        return this.tamActualCola;
     }
     public void restarConexionesActivas(){
         --consultasActuales;
