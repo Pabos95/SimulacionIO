@@ -39,7 +39,7 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Tamaño promedio cola Modulo Administracion Consultas");
+        jLabel1.setText(" promedio consultas cola Modulo Administracion Consultas");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
