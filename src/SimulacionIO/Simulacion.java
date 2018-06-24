@@ -69,7 +69,8 @@ public class Simulacion {
             estIt = new EstadisticosIteracion();
             estadisticosIteracion.add(estIt);
             num = gen.generarNumeroAleatorio();
-            Consulta consultaActual = new Consulta(num, 0);                                
+            Consulta consultaActual = new Consulta(num, 0);
+            consultas.add(consultaActual);
             System.out.println("Random para consulta es: " + num);
             System.out.println("TIPO ES: " + consultaActual.getTConsulta());
             listaEventos = new ArrayList<>(200);
@@ -95,6 +96,7 @@ public class Simulacion {
               tiempoActual = consultaActual.getTiempoActual(); 
               System.out.println("Tiempo actual " + tiempoActual);
               System.out.println("Tamano cola mod admin procesos: "+ String.valueOf(modAdminProcesos.getTamActualCola()));
+              this.actualizarVentana();
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
                         modAdminClientes.procesarLlegada(consultaActual);             
@@ -114,7 +116,8 @@ public class Simulacion {
                         consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes); //Seleccionamos su tipo como arribo al primer módulo
                         agregarEvento(consultaActual); //Se agrega a la lista
                       // ventana.setBackground(Color.RED); //Para prueba unicamente, si llega hasta la linea 82 la ventana se pone roja
-                      break;
+                      
+                        break;
 
                   case salidaModuloAdministracionClientes:                                  
                       modAdminClientes.procesarSalida(consultaActual);
@@ -231,11 +234,10 @@ public class Simulacion {
        ++iteracionActual;
       }
       estIt = estadisticosIteracion.get(ind);
-      estIt.calcularTiempoPromedioVida(consultas); //Esto hay que corregirlo
-      ++iteracionActual;
+      estIt.calcularTiempoPromedioVida(consultas); 
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
-  }
+  
 
   public boolean Timeout(Consulta c){
       boolean retorno = false;
