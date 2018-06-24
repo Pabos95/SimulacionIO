@@ -111,7 +111,7 @@ public class ModAdministracionTransacciones extends Modulo {
     }
     
     public int getTamActualCola(){
-        return this.tamActualCola;
+        return colaConsultas.size();
     }
     public void restarConexionesActivas(){
         --consultasActuales;

@@ -52,7 +52,7 @@ public class ModAdministracionClientes extends Modulo {
         --consultasActuales;
     }
     public int getTamActualCola(){
-        return tamActualCola;
+        return colaConsultas.size();
     }
     public int getConsultasRechazadas(){
         return consultasRechazadas;
