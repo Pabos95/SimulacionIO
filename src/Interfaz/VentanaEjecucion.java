@@ -45,11 +45,10 @@ public class VentanaEjecucion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(java.awt.Color.lightGray);
         setPreferredSize(new java.awt.Dimension(640, 511));
-        getContentPane().setLayout(null);
 
         jPanel1.setBackground(java.awt.Color.lightGray);
+        jPanel1.setPreferredSize(new java.awt.Dimension(560, 540));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -115,10 +114,18 @@ public class VentanaEjecucion extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/geometric-background.png")));
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(-33, -29, 900, 650);
+        jLabel9.setBounds(-33, -119, 670, 740);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 28, 640, 511);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

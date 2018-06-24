@@ -86,7 +86,7 @@ public class Simulacion {
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               tiempoActual = consultaActual.getTiempoActual(); 
               System.out.println("Tiempo actual " + tiempoActual);
-              
+              System.out.println("Tamano cola mod admin procesos: "+ String.valueOf(modAdminProcesos.getTamActualCola()));
               switch (consultaActual.tipoEvento) {
                   case llegadaModuloAdministracionClientes:             
                         modAdminClientes.procesarLlegada(consultaActual);             
