@@ -104,7 +104,8 @@ public class Portada extends javax.swing.JFrame {
     private void ContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinuarMouseClicked
         // TODO add your handling code here:  
         continuar = true;
-       
+        p.setVisible(false);
+        p.getVP().setVisible(true);
 
     }//GEN-LAST:event_ContinuarMouseClicked
 
@@ -157,8 +158,6 @@ public class Portada extends javax.swing.JFrame {
                  p.setVisible(true); 
         while(true){
             if(p.continuar == true){
-                p.setVisible(false);
-                p.getVP().setVisible(true);
                 while(true){
                     if(p.getVP().getSimulacionLlamada() == true){
                         p.getVP().setVisible(false);
