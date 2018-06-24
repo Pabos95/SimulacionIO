@@ -56,6 +56,7 @@ public class Simulacion {
     
     public void procesarSimulacion() {           
         int ind = 0; // se usa para recorrer los arrayList
+        double dif = 0; //la diferencia entre el tiempo actual y el anterior, para efectos de delay en modoLento
         double num = 0;
         EstadisticosIteracion estIt; //los Estadisticos de la iteracion actual
         ListIterator itEstadisticosIteracion;
@@ -67,14 +68,12 @@ public class Simulacion {
             modAdminTransacciones = new ModAdministracionTransacciones(p);
             tiempoActual = 0;
             num = gen.generarNumeroAleatorio();
-            tiempoActual = 0;
             Consulta consultaActual = new Consulta(num, 0);                                
             System.out.println("Random para consulta es: " + num);
             System.out.println("TIPO ES: " + consultaActual.getTConsulta());
             listaEventos = new ArrayList<>(200);
             consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
             agregarEvento(consultaActual); //En tiempo 0
-
           while (tiempoActual < tiempoMaximo) {              
               System.out.println("Estamos ejecutando por el tiempo determinado");
               num = gen.generarNumeroAleatorio();
@@ -84,6 +83,15 @@ public class Simulacion {
                             
               consultaActual = (Consulta) listaEventos.get(0); //Tomamos el primer valor de la lista
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
+              dif = consultaActual.getTiempoActual() - tiempoActual;
+              if(modoLento == true){
+                   try {
+            Thread.sleep((int) dif*1000); //Espera 3 segundos para que el usuario pueda ver los procesos
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+
+              }
               tiempoActual = consultaActual.getTiempoActual(); 
               System.out.println("Tiempo actual " + tiempoActual);
               System.out.println("Tamano cola mod admin procesos: "+ String.valueOf(modAdminProcesos.getTamActualCola()));
