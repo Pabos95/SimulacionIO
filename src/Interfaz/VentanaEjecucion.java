@@ -11,11 +11,12 @@ import java.awt.*;
  * @author Pabos95
  */
 public class VentanaEjecucion extends javax.swing.JFrame {
-
+public DialogoEstadisticosIteracion diIt;
     /**
      * Creates new form VentanaEjecucion
      */
     public VentanaEjecucion() {
+        diIt = new DialogoEstadisticosIteracion(this, false);
         initComponents();
       
     }

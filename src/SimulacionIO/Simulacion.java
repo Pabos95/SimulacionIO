@@ -78,6 +78,7 @@ public class Simulacion {
             listaEventos = new ArrayList<>(200);
             consultaActual.setTipoEvento(Evento.tipoEvento.llegadaModuloAdministracionClientes);
             agregarEvento(consultaActual); //En tiempo 0
+            this.actualizarVentana();
           while (tiempoActual < tiempoMaximo) {              
               System.out.println("Estamos ejecutando por el tiempo determinado");
               num = gen.generarNumeroAleatorio();
@@ -224,19 +225,23 @@ public class Simulacion {
                       break;
                       
               }
-              
+             
                 //Se podría sacar parte de la info guardada en cada modulo para presentarla al usuario
+                
           }
-
+           estadoSimulacion.diIt.setVisible(true);
+           
           //Actualizar estadísticas por cada corrida
        itEstadisticosIteracion =estadisticosIteracion.listIterator();
        for(int i = 0; i <= iteracionActual -1; i++){
         ind = itEstadisticosIteracion.nextIndex();
        }
        ++iteracionActual;
-      }
-      estIt = estadisticosIteracion.get(ind);
+       estIt = estadisticosIteracion.get(ind);
       estIt.calcularTiempoPromedioVida(consultas); 
+       consultas.clear();  
+      }
+      
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
   

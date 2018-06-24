@@ -136,7 +136,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numMaxConexionesConcurrentes);
-        numMaxConexionesConcurrentes.setBounds(50, 170, 73, 22);
+        numMaxConexionesConcurrentes.setBounds(50, 170, 73, 20);
 
         numCorridas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +144,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numCorridas);
-        numCorridas.setBounds(50, 110, 73, 22);
+        numCorridas.setBounds(50, 110, 73, 20);
 
         numProcesosConsultasConcurrentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +152,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numProcesosConsultasConcurrentes);
-        numProcesosConsultasConcurrentes.setBounds(50, 80, 73, 22);
+        numProcesosConsultasConcurrentes.setBounds(50, 80, 73, 20);
 
         duracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +160,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(duracion);
-        duracion.setBounds(50, 140, 73, 22);
+        duracion.setBounds(50, 140, 73, 20);
 
         jButton1.setText("Listo");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +174,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(320, 490, 59, 25);
+        jButton1.setBounds(320, 490, 55, 23);
 
         jLabel2.setText("c");
         jPanel1.add(jLabel2);
@@ -205,7 +205,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numProcesosEjecucionTransacciones);
-        numProcesosEjecucionTransacciones.setBounds(50, 200, 73, 22);
+        numProcesosEjecucionTransacciones.setBounds(50, 200, 73, 20);
 
         numProcesosEjecucionConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +213,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(numProcesosEjecucionConsultas);
-        numProcesosEjecucionConsultas.setBounds(50, 230, 73, 22);
+        numProcesosEjecucionConsultas.setBounds(50, 230, 73, 20);
 
         jLabel9.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel9.setText("m");
@@ -223,7 +223,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         jLabel10.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.borderLight"));
         jLabel10.setText("t");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(22, 262, 20, 16);
+        jLabel10.setBounds(22, 262, 20, 14);
 
         segundosTimeOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +231,7 @@ public class VentanaParametros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(segundosTimeOut);
-        segundosTimeOut.setBounds(50, 260, 73, 22);
+        segundosTimeOut.setBounds(50, 260, 73, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/abstract-background-wallpaper.jpg")));
         jPanel1.add(jLabel1);
