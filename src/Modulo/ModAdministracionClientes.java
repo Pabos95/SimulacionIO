@@ -1,6 +1,6 @@
 package Modulo;
 
-
+import Estadisticos.EstadisticosModulo;
 import SimulacionIO.Consulta;
 import SimulacionIO.Evento;
 import static SimulacionIO.Simulacion.agregarEvento;
@@ -10,9 +10,9 @@ import java.util.*;
 public class ModAdministracionClientes extends Modulo {
     int k;
     int consultasRechazadas;
-    
     public ModAdministracionClientes(int tam) {
         k = tam;
+        estadisticosMod = new EstadisticosModulo();
     }
 
     @Override
@@ -21,6 +21,7 @@ public class ModAdministracionClientes extends Modulo {
             if (consultasActuales < k) {
             consulta.setMuerto(false);
             ++consultasActuales;
+            estadisticosMod.actualizarLambda();
             }
         else {//Hemos llegado al máximo
             ++consultasRechazadas;

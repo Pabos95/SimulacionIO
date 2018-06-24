@@ -244,6 +244,7 @@ public class Simulacion {
        estadoSimulacion.diIt.setVisible(true);
     }
       
+                   
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
   

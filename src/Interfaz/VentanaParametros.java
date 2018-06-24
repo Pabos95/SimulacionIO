@@ -303,6 +303,11 @@ public class VentanaParametros extends javax.swing.JFrame {
             numProcesosConsultasConcurrentes.setText(null);
             numProcesosEjecucionTransacciones.setText(null);
             segundosTimeOut.setText(null);
+            try {
+            Thread.sleep((50000)); //Espera 50 segundos para que el usuario pueda ver el mensaje de erro
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
             this.setVisible(true);
         }
         int cantidadCorridas = Integer.parseInt(text1);
