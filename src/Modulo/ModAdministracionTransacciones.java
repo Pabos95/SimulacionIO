@@ -22,7 +22,7 @@ public class ModAdministracionTransacciones extends Modulo {
         p = tam;
         gen = new GeneradoraValoresAleatorios();
         colaSentencias = new PriorityQueue<Consulta>(100, new ComparadorConsultas());
-	consultasActuales = 0;
+		consultasActuales = 0;
     }
 
     @Override

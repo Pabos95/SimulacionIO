@@ -9,6 +9,7 @@ abstract class Modulo {
     EstadisticosModulo estadisticosMod;
     GeneradoraValoresAleatorios gen;
 
+
     public abstract void procesarLlegada(Consulta consulta);
 
     public abstract void procesarSalida(Consulta consulta);
