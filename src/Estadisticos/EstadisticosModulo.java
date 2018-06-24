@@ -2,7 +2,7 @@ package Estadisticos;
 import SimulacionIO.*;
 
 public class EstadisticosModulo {
-    private double tamañoPromedioCola; //Lq del modulo
+    private double tamPromedioCola; //Lq del modulo
     private double promedioConsultasSiendoServidas; //Ls del modulo
     private double promedioConsultasEnModulo; //L del modulo
     private double tiempoPromedioServicio; // Ws del modulo
@@ -30,7 +30,7 @@ public class EstadisticosModulo {
     /* 3 Select
     */
     public EstadisticosModulo(){ //constructor de la clase, inicializa todos los datos en 0
-        tamañoPromedioCola = 0;
+        tamPromedioCola = 0;
         promedioConsultasSiendoServidas = 0;
         promedioConsultasEnModulo = 0;
         tiempoPromedioServicio = 0;
@@ -47,7 +47,6 @@ public class EstadisticosModulo {
         mu = 0;
         tiempoPromedioPorTipoSentencia = new double[4];
     }
-    
     public void actualizarTiempoPromedioServicio(double tiempoServicio){
         sumatoriaTiempoServicio += tiempoServicio;
         tiempoPromedioServicio = sumatoriaTiempoServicio/consultasServidas;
@@ -67,7 +66,7 @@ public class EstadisticosModulo {
         actualizarRho();
     }
     public void actualizarPromedioConsultasEnModulo(){
-        promedioConsultasEnModulo = tamañoPromedioCola + promedioConsultasSiendoServidas;
+        promedioConsultasEnModulo = tamPromedioCola + promedioConsultasSiendoServidas;
         actualizarLambda();
     }
     public void actualizarRho(){
@@ -118,8 +117,8 @@ public class EstadisticosModulo {
     private double getConsultasPasadasEnCola(){
         return consultasPasadasEnCola;
     }
-    public double getTamañoPromedioCola(){
-        return tamañoPromedioCola;
+    public double getTamPromedioCola(){
+        return tamPromedioCola;
     }
     public double getPromedioConsultasSiendoServidas(){
         return promedioConsultasSiendoServidas;

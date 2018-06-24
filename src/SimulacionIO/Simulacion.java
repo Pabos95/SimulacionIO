@@ -66,6 +66,8 @@ public class Simulacion {
             modAdminProcesos = new ModAdministracionProcesos();
             modAdminTransacciones = new ModAdministracionTransacciones(p);
             tiempoActual = 0;
+            estIt = new EstadisticosIteracion();
+            estadisticosIteracion.add(estIt);
             num = gen.generarNumeroAleatorio();
             Consulta consultaActual = new Consulta(num, 0);                                
             System.out.println("Random para consulta es: " + num);
@@ -84,7 +86,7 @@ public class Simulacion {
               listaEventos.remove(0); //Sacamos de la lista el primer elemento
               if(modoLento == true){
                    try {
-            Thread.sleep((1000); //Espera 1 segundo
+            Thread.sleep((1000)); //Espera 1 segundo
         } catch(InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -222,14 +224,14 @@ public class Simulacion {
           }
 
           //Actualizar estadísticas por cada corrida
-      /* itEstadisticosIteracion =estadisticosIteracion.listIterator();
+       itEstadisticosIteracion =estadisticosIteracion.listIterator();
        for(int i = 0; i <= iteracionActual -1; i++){
         ind = itEstadisticosIteracion.nextIndex();
        }
        ++iteracionActual;
       }
       estIt = estadisticosIteracion.get(ind);
-      estIt.calcularTiempoPromedioVida(consultas);*/ //Esto hay que corregirlo
+      estIt.calcularTiempoPromedioVida(consultas); //Esto hay que corregirlo
       ++iteracionActual;
       System.out.println("Simulacion finalizada"); //Para prueba unicamente
   }
