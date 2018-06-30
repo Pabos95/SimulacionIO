@@ -241,6 +241,7 @@ public class Simulacion {
       estIt.calcularTiempoPromedioVida(consultas); 
        consultas.clear();  
        estadoSimulacion.diIt.actualizarTiempoVidaPromedio(estIt.getTiempoPromedioVida());
+       estadoSimulacion.diIt.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
        estadoSimulacion.diIt.setVisible(true);
     }
       
