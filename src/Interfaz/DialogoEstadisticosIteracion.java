@@ -43,6 +43,8 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
         jTextField6 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,7 +92,7 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
 
         jLabel4.setText("Total conexiones descartadas por el servidor");
 
-        jLabel5.setText("Promedio consultas cola Modulo Administracion Transacciones");
+        jLabel5.setText("Promedio consultas ejecutar cola Modulo Administracion Clientes");
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +113,14 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Promedio consultas cola Modulo Administracion Clientes");
+
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
             }
         });
 
@@ -141,16 +151,18 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
                             .add(layout.createSequentialGroup()
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 339, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                 .add(18, 18, 18)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField3)
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField1)
                                     .add(jTextField5)
-                                    .add(jTextField7))))))
+                                    .add(jTextField7)
+                                    .add(jTextField3)
+                                    .add(jTextField8))))))
                 .add(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -163,8 +175,7 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(18, 18, 18)
-                        .add(jLabel2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
+                        .add(jLabel2))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -172,11 +183,19 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
                         .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(14, 14, 14)))
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(22, 22, 22)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel3))))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(26, 26, 26)
+                        .add(jLabel8)
+                        .add(2, 2, 2))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5)
                     .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -232,19 +251,26 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
      public void actualizarIteracion(int valorNuevo){
        jTextField6.setText(String.valueOf(valorNuevo));
     }
-     public void actualizarPromedioConsultasColaModAdminConsultas(int nuevoNum){
+     public void actualizarPromedioConsultasColaModAdminConsultas(double nuevoNum){
       jTextField4.setText(String.valueOf(nuevoNum));
     }
-     public void actualizarPromedioConsultasColaEjecutarModAdminConsultas(int nuevoNum){
+     public void actualizarPromedioConsultasColaModAdminClientes(double nuevoNum){
+      jTextField8.setText(String.valueOf(nuevoNum));
+    }
+     public void actualizarPromedioConsultasColaEjecutarModAdminConsultas(double nuevoNum){
       jTextField5.setText(String.valueOf(nuevoNum));
     }
-   public void actualizarPromedioConsultasColaModAdminProcesos(int nuevoNum){
+   public void actualizarPromedioConsultasColaModAdminProcesos(double nuevoNum){
       jTextField2.setText(String.valueOf(nuevoNum));
     }
-   public void actualizarPromedioConsultasModAdministracionTransacciones(int nuevoNum){
+   public void actualizarPromedioConsultasColaModAdminTransacciones(double nuevoNum){
        jTextField3.setText(String.valueOf(nuevoNum));
     }
    public void actualizarNumConexionesDescartadas(int nuevoNum){
@@ -304,6 +330,7 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -311,5 +338,6 @@ public class DialogoEstadisticosIteracion extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

@@ -242,6 +242,11 @@ public class Simulacion {
        consultas.clear();  
        estadoSimulacion.diIt.actualizarTiempoVidaPromedio(estIt.getTiempoPromedioVida());
        estadoSimulacion.diIt.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());
+       estadoSimulacion.diIt.actualizarPromedioConsultasColaModAdminClientes(estIt.getTamPromedioColaModulo(0));
+       estadoSimulacion.diIt.actualizarPromedioConsultasColaModAdminConsultas(estIt.getTamPromedioColaModulo(1));
+       estadoSimulacion.diIt.actualizarPromedioConsultasColaModAdminTransacciones(estIt.getTamPromedioColaModulo(2));
+       estadoSimulacion.diIt.actualizarPromedioConsultasColaModAdminProcesos(estIt.getTamPromedioColaModulo(3));
+       estadoSimulacion.diIt.actualizarPromedioConsultasColaEjecutarModAdminConsultas(estIt.getTamPromedioColaModulo(4));
        estadoSimulacion.diIt.setVisible(true);
     }
       

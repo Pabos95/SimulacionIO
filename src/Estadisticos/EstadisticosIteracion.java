@@ -15,13 +15,18 @@ public class EstadisticosIteracion {
     private double[] tamPromedioColaModulo; //Almacena los tamaños promedio de cada modulo de la corrida
     private double tiempoPromedioVida; //Almacena el tiempo promedio de vida de una consulta
     /*0 Modulo AdministracionClientes
-    1 Modulo AdministracionConexiones
-    2 Modulo Administracion consultas
-    3 Modulo AdministracionProcesos
-    4 Modulo Administracion Transacciones*/
+    1 Modulo AdministracionConsultas
+    2 Modulo Administracion procesos
+    3 Modulo Administracion Transacciones
+    4 Modulo Administracion Consultas Segunda Pasada*/
     public EstadisticosIteracion(){
 
         tamPromedioColaModulo = new double[5];
+        tamPromedioColaModulo[0] = 0;
+        tamPromedioColaModulo[1] = 0;
+        tamPromedioColaModulo[2] = 0;
+        tamPromedioColaModulo[3] = 0;
+        tamPromedioColaModulo[4]  = 0;
     }
 
     public void agregarTamPromedio(double tamPromedio,int pos){ //se usa para agregar un tamaño promedio al arreglo
@@ -39,5 +44,8 @@ public class EstadisticosIteracion {
          sumatoria = sumatoria + arregloConsultas[i].getTiempoVida();
         }
         tiempoPromedioVida = sumatoria/listaConsultas.size();
+    }
+    public double getTamPromedioColaModulo(int ind){
+        return tamPromedioColaModulo[ind];
     }
 }
