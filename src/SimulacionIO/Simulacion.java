@@ -32,7 +32,7 @@ public class Simulacion {
   //VentanaEjecucion ventana; creo que ya no se va a usar esta ventana
   VentanaEjecucion ve;
   public Simulacion(double tMax,int numCorridas,int numConexionesConcurrentesMaximo,int numProcesosProcesamientoConsultasConcurrentes,int numProcesosEjecucionTransacciones,int numProcesosEjecucionConsultas , int segundosParaTimeOut, boolean slow){
-    estadisticasModulo = new ArrayList<EstadisticosModulo>(20);
+    estadisticasModulo = new ArrayList<EstadisticosModulo>(5);
     estadisticosIteracion = new ArrayList<EstadisticosIteracion>(20);
     tiempoMaximo = tMax;
     cantidadCorridas = numCorridas;
