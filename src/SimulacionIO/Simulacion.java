@@ -239,6 +239,7 @@ public class Simulacion {
        ++iteracionActual;
        estIt = estadisticosIteracion.get(ind);
       estIt.calcularTiempoPromedioVida(consultas); 
+      estIt.agregarTamPromedio(modAdminProcesos.getTamPromedioCola(), 3);
        consultas.clear();  
        estadoSimulacion.diIt.actualizarTiempoVidaPromedio(estIt.getTiempoPromedioVida());
        estadoSimulacion.diIt.actualizarNumConexionesDescartadas(modAdminClientes.getConsultasRechazadas());

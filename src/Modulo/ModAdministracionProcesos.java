@@ -5,7 +5,7 @@
  */
 package Modulo;
 
-
+import Estadisticos.EstadisticosModulo;
 import SimulacionIO.Consulta;
 import SimulacionIO.Evento;
 import SimulacionIO.GeneradoraValoresAleatorios;
@@ -17,17 +17,20 @@ import static SimulacionIO.Simulacion.agregarEvento;
 public class ModAdministracionProcesos extends Modulo {
 
     boolean systemCall;
-
+    int tamFinalCola;
     public ModAdministracionProcesos(){
         systemCall = false;
         gen = new GeneradoraValoresAleatorios();
         colaConsultas = new ArrayList<>();
-
+        tamFinalCola = 0;
+        estadisticosMod = new EstadisticosModulo();
     }
     public void agregarConsulta (Consulta c){//Agrega consultas en orden FIFO, considerando los tiempos en los que arribaron
 
         if(colaConsultas.isEmpty()){//En caso que la cola esté vacía
+            estadisticosMod.aumentarConsultasEnCola();
             colaConsultas.add(c);
+            tamFinalCola++;
         }
         else{
             Iterator it =  colaConsultas.iterator();
@@ -73,7 +76,9 @@ public class ModAdministracionProcesos extends Modulo {
         //Si hay alguien en cola se debe proveer del recurso
         if(!colaConsultas.isEmpty()){
             Consulta c = colaConsultas.get(0);
-            colaConsultas.remove(0);
+            estadisticosMod.actualizarTiempoPromedioCola(c.getTiempoCola());
+            estadisticosMod.actualizarPromedioConsultasEnModulo();
+            colaConsultas.remove(c);
             c.setTiempoCola(c.getTiempoCola() + (consultaSaliente.getTiempoActual() - c.getTiempoActual())); //Tiempo en cola total de una consulta por todos los modulos
             c.setTiempoVida(c.getTiempoVida() + (consultaSaliente.getTiempoActual() - c.getTiempoActual())); //Hay que agregar solo el tiempo en cola de este modulo
             c.setTiempoActual(c.getTiempoActual() + (consultaSaliente.getTiempoActual() - c.getTiempoActual()));
@@ -83,7 +88,9 @@ public class ModAdministracionProcesos extends Modulo {
             
 
     }
-
+    public double getTamPromedioCola(){
+        return estadisticosMod.getTamPromedioCola();
+    }
     @Override
     public int getTamActualCola(){
         return colaConsultas.size();

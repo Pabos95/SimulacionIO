@@ -66,6 +66,7 @@ public class EstadisticosModulo {
     public void actualizarLambda(){
         lambda = promedioConsultasEnModulo/tiempoPromedio;
         actualizarRho();
+        actualizarLq();
     }
     public void actualizarLq(){
         tamPromedioCola = lambda * tiempoPromedioEnCola;
