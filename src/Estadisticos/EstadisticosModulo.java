@@ -50,10 +50,12 @@ public class EstadisticosModulo {
     public void actualizarTiempoPromedioServicio(double tiempoServicio){
         sumatoriaTiempoServicio += tiempoServicio;
         tiempoPromedioServicio = sumatoriaTiempoServicio/consultasServidas;
+        actualizarTiempoPromedio();
     }
     public void actualizarTiempoPromedioCola(double tiempoEnCola){
         sumatoriaTiempoCola += tiempoEnCola;
         tiempoPromedioEnCola = sumatoriaTiempoCola/consultasPasadasEnCola;
+        actualizarTiempoPromedio();
     }
     public void aumentarConsultasServidas(){
         consultasServidas++;
@@ -64,6 +66,9 @@ public class EstadisticosModulo {
     public void actualizarLambda(){
         lambda = promedioConsultasEnModulo/tiempoPromedio;
         actualizarRho();
+    }
+    public void actualizarLq(){
+        tamPromedioCola = lambda * tiempoPromedioEnCola;
     }
     public void actualizarPromedioConsultasEnModulo(){
         promedioConsultasEnModulo = tamPromedioCola + promedioConsultasSiendoServidas;
